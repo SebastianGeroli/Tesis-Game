@@ -6,6 +6,7 @@ public class Destroyer : MonoBehaviour
 {
     public GameObject rb;
     private Rigidbody rb2;
+    public float Dvelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -17,18 +18,36 @@ public class Destroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoveDestroyer();
+    //}
+    //private void OnTriggerEnter(Collider otherObj)
+    //{
+    //    Destroy(otherObj.gameObject);
+    //    //if (otherObj.gameObject.tag == "Floor")
+    //    //{
+    //    //    Destroy(otherObj, .5f);
+    //    //    Debug.Log("destroyertrigger");
+    //    //}
+    //    //    rb = other.GetComponent<GameObject>();
+    //    //Destroy(rb);
         
     }
-    private void OnTriggerEnter(Collider otherObj)
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(otherObj.gameObject);
-        //if (otherObj.gameObject.tag == "Floor")
-        //{
-        //    Destroy(otherObj, .5f);
-        //    Debug.Log("destroyertrigger");
-        //}
-        //    rb = other.GetComponent<GameObject>();
-        //Destroy(rb);
-        
+        Debug.Log("entre");
+        // Debug.Log(other.name);
+        if (other.tag == "Boundary")
+        {
+            return;
+        }
+        Destroy(other.gameObject);
+        //Destroy(gameObject);
+        Debug.Log("destrui");
+
+    }
+
+    public void MoveDestroyer()
+    {
+        transform.Translate(0, 0, Dvelocity);
     }
 }

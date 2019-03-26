@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Hole
   - Walls
+  - Boundary
   layers:
   - Default
   - TransparentFX

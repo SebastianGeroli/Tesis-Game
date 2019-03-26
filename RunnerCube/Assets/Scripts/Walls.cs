@@ -18,6 +18,6 @@ public class Walls : MonoBehaviour
         MoveFloor();
     }
     public void MoveFloor() {
-        rb.transform.Translate(0,0,-1);
+        rb.transform.Translate(0,0,1);
     }
 }

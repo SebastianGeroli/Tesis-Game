@@ -60,6 +60,8 @@ public class Player : MonoBehaviour {
     //Update Con detector de keypressed
     void Update()
     {
+        MovePlayer();
+
         if (Input.GetKeyDown(KeyCode.W)) {
             Jump();
         }
@@ -80,5 +82,9 @@ public class Player : MonoBehaviour {
             DobleJump();
         }
 
+    }
+    public void MovePlayer()
+    {
+        transform.Translate(0, 0, 0.25f);
     }
 }
