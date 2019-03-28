@@ -8,6 +8,11 @@ public class Destroyer : MonoBehaviour
     private Rigidbody rb2;
     public float Dvelocity;
 
+    //Mueve el Destroyer NOTA: NO ES NECESARIO ROMPE EL CODIGO
+    public void MoveDestroyer()
+    {
+        transform.Translate(0, 0, Dvelocity);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +23,7 @@ public class Destroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveDestroyer();
+    //    MoveDestroyer();
     //}
     //private void OnTriggerEnter(Collider otherObj)
     //{
@@ -34,20 +39,19 @@ public class Destroyer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("entre");
+        Transform tr = other.GetComponent<Transform>();
+        Debug.Log("Destroyer Entre");
         // Debug.Log(other.name);
         if (other.tag == "Boundary")
         {
             return;
         }
-        Destroy(other.gameObject);
+        
+        Destroy(tr.parent.gameObject);
         //Destroy(gameObject);
-        Debug.Log("destrui");
+        Debug.Log("Destroyer Destruyo");
 
     }
 
-    public void MoveDestroyer()
-    {
-        transform.Translate(0, 0, Dvelocity);
-    }
+  
 }

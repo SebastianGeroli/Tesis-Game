@@ -9,7 +9,7 @@ public class WallGenerator : MonoBehaviour
     //public GameObject wallLeft;
     //public GameObject floor;
     //public GameObject roof;
-
+    public Vector3 velocity = new Vector3(0, 0, -0.5f);
     public float minTime;
     public float maxTime;
     public float spawnTime = 1f;
@@ -18,7 +18,7 @@ public class WallGenerator : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(GenerateBack());
+        //StartCoroutine(GenerateBack());
         // rb = new Rigidbody2D();
         //Generator();
         //wall = new GameObject[3];
@@ -35,15 +35,15 @@ public class WallGenerator : MonoBehaviour
     //    Invoke("Generator", Random.Range(minTime, maxTime));
 
     //}
-    IEnumerator GenerateBack()
-    {
+    //IEnumerator GenerateBack()
+    //{
         
        
-        Instantiate(WallGenerators, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(spawnTime);
-        StartCoroutine(GenerateBack());
-        Debug.Log("CoRoutine");
-    }
+    //    Instantiate(WallGenerators, transform.position, Quaternion.identity);
+    //    yield return new WaitForSeconds(spawnTime);
+    //    StartCoroutine(GenerateBack());
+    //    Debug.Log("CoRoutine");
+    //}
 
     // Update is called once per frame
     void Update()
@@ -53,9 +53,12 @@ public class WallGenerator : MonoBehaviour
 
 
     }
-
+    private void FixedUpdate()
+    {
+        MoveWallGenerator();
+    }
     public void MoveWallGenerator()
     {
-        transform.Translate(0, 0, 0.5f);
+        transform.Translate(velocity);
     }
 }

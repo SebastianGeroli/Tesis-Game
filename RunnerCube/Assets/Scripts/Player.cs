@@ -57,11 +57,15 @@ public class Player : MonoBehaviour {
         }
         
     }
+    //Mueve Al player en Z  NOTA NO ES NECESARIO ROMPE EL CODIGO
+    public void MovePlayer()
+    {
+        transform.Translate(0, 0, 0.25f);
+    }
     //Update Con detector de keypressed
+
     void Update()
     {
-        MovePlayer();
-
         if (Input.GetKeyDown(KeyCode.W)) {
             Jump();
         }
@@ -83,8 +87,5 @@ public class Player : MonoBehaviour {
         }
 
     }
-    public void MovePlayer()
-    {
-        transform.Translate(0, 0, 0.25f);
-    }
+
 }

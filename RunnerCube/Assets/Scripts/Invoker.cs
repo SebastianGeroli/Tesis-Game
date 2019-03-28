@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Invoker : MonoBehaviour
 {
-    public GameObject invocador;
     public float minTime,maxTime;
-    private Rigidbody rb;
-
+    private int lastInvoked = 0;
+    private float time;
     // Start is called before the first frame update
     void Start()
     {
-        rb.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -20,7 +19,17 @@ public class Invoker : MonoBehaviour
         generator();
     }
     public void generator() {
-        invocador.tag = "Floor";
-        Instantiate(invocador,transform.position, Quaternion.identity);
+        time += Time.deltaTime;
+        if (lastInvoked == 0&& time>0.15f){
+            Instantiate(Resources.Load("WhiteWalls"), transform.position, Quaternion.identity);
+            lastInvoked = 1;
+            time = 0;
+        }
+        else if(time>0.15f){
+            Instantiate(Resources.Load("BlueWalls"), transform.position, Quaternion.identity);
+            lastInvoked = 0;
+            time = 0;
+        }
+        
     }
 }
