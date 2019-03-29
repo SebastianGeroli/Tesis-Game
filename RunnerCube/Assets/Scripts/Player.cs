@@ -3,18 +3,190 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    //Jump
-    public void Jump() {
-        if (transform.position.y < 4) {
-            transform.Translate(0, 2, 0);
+    private float timer;
+    public int GravityPos = 0;
+    bool isJumping;
+    //Reset esta funcion devuelve el cubo a su posicion anterior luego de 2 segundos inicial luego de 2 segundos
+    public void ResetPos()
+    {
+        switch (GravityPos) {
+            case 0:
+                transform.Translate(0, -4, 0);
+                break;
+            case 1:
+                transform.Translate(0, 4, 0);
+                break;
+            case 2:
+                transform.Translate(4.5f, 0, 0);
+                break;
+            case 3:
+                transform.Translate(-4.5f, 0, 0);
+                break;
         }
-        
+        isJumping = false;
     }
-    //Doble Jump 
-    public void DobleJump() {
+    //Swipe Up
+    public void SwipeUp() {
+      
+        switch (GravityPos) {
+            //Gravedad  arriba -> abajo
+            case 0:
+                if (!isJumping && transform.position.y !=8) {
+                    transform.Translate(0, 4, 0);
+                    isJumping = true;
+                }
+                break;
+            case 2:
+                if (isJumping && transform.position.y == 7)
+                {
+                    transform.Translate(0, 1, 0);
+                    isJumping = false;
+                    GravityPos = 1;
+                }
+                else if (transform.position.y != 7)
+                {
+                    transform.Translate(0, 3, 0);
+                }
+
+                break;
+            case 3:
+                if (isJumping && transform.position.y == 7)
+                {
+                    transform.Translate(0, 1, 0);
+                    isJumping = false;
+                    GravityPos = 1;
+                }
+                else if (transform.position.y != 7)
+                {
+                    transform.Translate(0, 3, 0);
+                }
+
+                break;
+        }
+    }
+    //Swipe Left
+    public void SwipeLeft() {
+
+        switch (GravityPos) {
+            case 0:
+                if (isJumping && transform.position.x == -3)
+                {
+                    transform.Translate(-1.5f, 0, 0);
+                    isJumping = false;
+                    GravityPos = 3;
+                }
+                else if (transform.position.x != -3)
+                {
+                    transform.Translate(-3, 0, 0);
+                }
+                break;
+
+            case 1:
+                if (isJumping && transform.position.x == -3)
+                {
+                    transform.Translate(-1.5f, 0, 0);
+                    isJumping = false;
+                    GravityPos = 3;
+                }
+                else if (transform.position.x != -3)
+                {
+                    transform.Translate(-3, 0, 0);
+                }
+                break;
+
+            case 2:
+                if (!isJumping && transform.position.x == 4.5f) {
+                   
+                    transform.Translate(-4.5f, 0, 0);
+                    isJumping = true;
+                }
+                
+                break;
+        }
+    }
+    //Swipe Right
+    public void SwipeRight() {
+        switch (GravityPos)
+        {
+            case 0:
+                if (isJumping && transform.position.x == 3)
+                {
+                    transform.Translate(1.5f, 0, 0);
+                    isJumping = false;
+                    GravityPos = 2;
+
+                }
+                else if (transform.position.x < 3)
+                {
+                    transform.Translate(3, 0, 0);
+                }
+                break;
+            case 1:
+                if (isJumping && transform.position.x == 3)
+                {
+                    transform.Translate(1.5f, 0, 0);
+                    isJumping = false;
+                    GravityPos = 2;
+
+                }
+                else if (transform.position.x < 3)
+                {
+                    transform.Translate(3, 0, 0);
+                }
+                break;
+            case 3:
+                if (!isJumping && transform.position.x == -4.5f)
+                {
+                 
+                    transform.Translate(4.5f, 0, 0);
+                    isJumping = true;
+                }
+                break;
+        }
+            
+    }
+    //Swipe Down
+    public void SwipeDown() {
+        switch (GravityPos)
+        {
+  
+            case 1:
+                if (!isJumping && transform.position.y !=0) {
+                  
+                    transform.Translate(0, -4, 0);
+                    isJumping = true;
+                }
+                break;
+            case 2:
+                if (isJumping && transform.position.y == 1) {
+                    transform.Translate(0f, -1, 0);
+                    isJumping = false;
+                    GravityPos = 0;
+                }else if(transform.position.y > 1)
+                {
+                    transform.Translate(0, -3, 0);
+                }
+                break;
+            case 3:
+                if (isJumping && transform.position.y == 1)
+                {
+                    transform.Translate(0f, -1, 0);
+                    isJumping = false;
+                    GravityPos = 0;
+                }
+                else if (transform.position.y > 1)
+                {
+                    transform.Translate(0, -3, 0);
+                }
+                break;
+        } 
+    }
+    //Teleport FUNCION EN PRUEBA  
+    public void DobleJump()
+    {
         float posY = transform.position.y;
         int i = (int)posY;
-        switch(i)
+        switch (i)
         {
             case 0:
                 transform.Translate(0, 4, 0);
@@ -26,37 +198,6 @@ public class Player : MonoBehaviour {
 
         }
     }
-    //Move Left
-    public void MoveLeft() {
-        if (transform.position.x > -2) {
-            transform.Translate(-2, 0, 0);
-        }
-        else
-        {
-            transform.Translate(4, 0, 0);
-        }
-
-    }
-    //Move Right
-    public void MoveRight() {
-        if (transform.position.x < 2)
-        {
-            transform.Translate(2, 0, 0);
-        }
-        else {
-            transform.Translate(-4, 0, 0);
-        }
-            
-    }
-    //Stick to left
-    //Stick to right
-    //Duck
-    public void Duck() {
-        if (transform.position.y > 0) {
-            transform.Translate(0, -2, 0);
-        }
-        
-    }
     //Mueve Al player en Z  NOTA NO ES NECESARIO ROMPE EL CODIGO
     public void MovePlayer()
     {
@@ -65,26 +206,38 @@ public class Player : MonoBehaviour {
     //Update Con detector de keypressed
 
     void Update()
-    {
+    {// Debugs
+        Debug.Log("Timer: " + timer);
+        Debug.Log("Esta saltando: "+ isJumping);
+        Debug.Log("Gravedad: "+GravityPos);
+        //Fin Debugs
+        timer += Time.deltaTime;
+        if (isJumping && timer > 2) {
+            ResetPos();
+        }
+        if (!isJumping) {
+            timer = 0;
+        }
+        
         if (Input.GetKeyDown(KeyCode.W)) {
-            Jump();
+            SwipeUp();
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            MoveLeft();
+            SwipeLeft();
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            MoveRight();
+            SwipeRight();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-           Duck();
+           SwipeDown();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DobleJump();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    DobleJump();
+        //}
 
     }
 
