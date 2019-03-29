@@ -31,9 +31,21 @@ public class Player : MonoBehaviour {
         switch (GravityPos) {
             //Gravedad  arriba -> abajo
             case 0:
-                if (!isJumping && transform.position.y !=8) {
+                if (!isJumping && transform.position.y != 8)
+                {
                     transform.Translate(0, 4, 0);
                     isJumping = true;
+                }
+                else if (isJumping && transform.position.y != 8) {
+                    transform.Translate(0, 4, 0);
+                    isJumping = false;
+                    GravityPos = 1;
+                }
+                break;
+            case 1:
+                if (isJumping) {
+                    transform.Translate(0, 4, 0);
+                    isJumping = false;
                 }
                 break;
             case 2:
@@ -46,6 +58,10 @@ public class Player : MonoBehaviour {
                 else if (transform.position.y != 7)
                 {
                     transform.Translate(0, 3, 0);
+                }
+                else {
+                    transform.Translate(-1.5f, 1, 0);
+                    GravityPos = 1;
                 }
 
                 break;
@@ -60,7 +76,68 @@ public class Player : MonoBehaviour {
                 {
                     transform.Translate(0, 3, 0);
                 }
+                else {
+                    transform.Translate(1.5f, 1, 0);
+                    GravityPos = 1;
+                }
 
+                break;
+        }
+    }
+    //Swipe Down
+    public void SwipeDown()
+    {
+        switch (GravityPos)
+        {
+            case 0:
+                if (isJumping) {
+                    transform.Translate(0, -4, 0);
+                    isJumping = false;
+                }
+                break;
+            case 1:
+                if (!isJumping && transform.position.y != 0)
+                {
+
+                    transform.Translate(0, -4, 0);
+                    isJumping = true;
+                }
+                else if (isJumping && transform.position.y != 0) {
+                    transform.Translate(0, -4, 0);
+                    isJumping = false;
+                    GravityPos = 0;
+                }
+                break;
+            case 2:
+                if (isJumping && transform.position.y == 1)
+                {
+                    transform.Translate(0f, -1, 0);
+                    isJumping = false;
+                    GravityPos = 0;
+                }
+                else if (transform.position.y > 1)
+                {
+                    transform.Translate(0, -3, 0);
+                }else
+                {
+                    transform.Translate(-1.5f, -1, 0);
+                    GravityPos = 0;
+                }
+                break;
+            case 3:
+                if (isJumping && transform.position.y == 1)
+                {
+                    transform.Translate(0f, -1, 0);
+                    isJumping = false;
+                    GravityPos = 0;
+                }
+                else if (transform.position.y > 1)
+                {
+                    transform.Translate(0, -3, 0);
+                }else {
+                    transform.Translate(1.5f, -1, 0);
+                    GravityPos = 0;
+                }
                 break;
         }
     }
@@ -78,6 +155,9 @@ public class Player : MonoBehaviour {
                 else if (transform.position.x != -3)
                 {
                     transform.Translate(-3, 0, 0);
+                }else {
+                    transform.Translate(-1.5f, 1, 0);
+                    GravityPos = 3;
                 }
                 break;
 
@@ -92,15 +172,32 @@ public class Player : MonoBehaviour {
                 {
                     transform.Translate(-3, 0, 0);
                 }
+                else
+                {
+                    transform.Translate(-1.5f, -1, 0);
+                    GravityPos = 3;
+                }
                 break;
 
             case 2:
-                if (!isJumping && transform.position.x == 4.5f) {
-                   
+                if (!isJumping && transform.position.x == 4.5f)
+                {
+
                     transform.Translate(-4.5f, 0, 0);
                     isJumping = true;
                 }
+                else if (isJumping && transform.position.x != -4.5f) {
+                    transform.Translate(-4.5f, 0, 0);
+                    isJumping = false;
+                    GravityPos = 3;
+                }
                 
+                break;
+            case 3:
+                if (isJumping) {
+                    transform.Translate(-4.5f, 0, 0);
+                    isJumping = false;
+                }
                 break;
         }
     }
@@ -116,9 +213,15 @@ public class Player : MonoBehaviour {
                     GravityPos = 2;
 
                 }
+                
                 else if (transform.position.x < 3)
                 {
                     transform.Translate(3, 0, 0);
+                }
+                else
+                {
+                    transform.Translate(1.5f, 1, 0);
+                    GravityPos = 2;
                 }
                 break;
             case 1:
@@ -133,53 +236,35 @@ public class Player : MonoBehaviour {
                 {
                     transform.Translate(3, 0, 0);
                 }
+                else
+                {
+                    transform.Translate(1.5f, -1, 0);
+                    GravityPos = 2;
+                }
+                break;
+
+            case 2:
+                if (isJumping)
+                {
+                    transform.Translate(4.5f, 0, 0);
+                    isJumping = false;
+                }
                 break;
             case 3:
                 if (!isJumping && transform.position.x == -4.5f)
                 {
-                 
+
                     transform.Translate(4.5f, 0, 0);
                     isJumping = true;
+                }
+                else if (isJumping && transform.position.x != 4.5f) {
+                    transform.Translate(4.5f, 0, 0);
+                    isJumping = false;
+                    GravityPos = 2;
                 }
                 break;
         }
             
-    }
-    //Swipe Down
-    public void SwipeDown() {
-        switch (GravityPos)
-        {
-  
-            case 1:
-                if (!isJumping && transform.position.y !=0) {
-                  
-                    transform.Translate(0, -4, 0);
-                    isJumping = true;
-                }
-                break;
-            case 2:
-                if (isJumping && transform.position.y == 1) {
-                    transform.Translate(0f, -1, 0);
-                    isJumping = false;
-                    GravityPos = 0;
-                }else if(transform.position.y > 1)
-                {
-                    transform.Translate(0, -3, 0);
-                }
-                break;
-            case 3:
-                if (isJumping && transform.position.y == 1)
-                {
-                    transform.Translate(0f, -1, 0);
-                    isJumping = false;
-                    GravityPos = 0;
-                }
-                else if (transform.position.y > 1)
-                {
-                    transform.Translate(0, -3, 0);
-                }
-                break;
-        } 
     }
     //Teleport FUNCION EN PRUEBA  
     public void DobleJump()
