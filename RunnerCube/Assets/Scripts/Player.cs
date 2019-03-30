@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
     private float timer;
     public int GravityPos = 0;
     bool isJumping;
+    Transform obstacle;
     //Reset esta funcion devuelve el cubo a su posicion anterior luego de 2 segundos inicial luego de 2 segundos
     public void ResetPos()
     {
@@ -292,9 +293,9 @@ public class Player : MonoBehaviour {
 
     void Update()
     {// Debugs
-        Debug.Log("Timer: " + timer);
-        Debug.Log("Esta saltando: "+ isJumping);
-        Debug.Log("Gravedad: "+GravityPos);
+        //Debug.Log("Timer: " + timer);
+        //Debug.Log("Esta saltando: "+ isJumping);
+        //Debug.Log("Gravedad: "+GravityPos);
         //Fin Debugs
         timer += Time.deltaTime;
         if (isJumping && timer > 2) {
@@ -325,5 +326,11 @@ public class Player : MonoBehaviour {
         //}
 
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        obstacle = other.gameObject.GetComponent<Transform>();
+        if (obstacle.tag == "Objeto") {
+            Debug.Log("Choco");
+        }
+    }
 }

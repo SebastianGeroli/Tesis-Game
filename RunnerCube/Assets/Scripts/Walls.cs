@@ -15,9 +15,13 @@ public class Walls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+    }
+    private void FixedUpdate()
+    {
         MoveFloor();
     }
     public void MoveFloor() {
-        rb.transform.Translate(0,0,1);
+        rb.transform.Translate(0,0,-0.5f);
     }
 }
