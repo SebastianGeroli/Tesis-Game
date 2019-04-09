@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
+	public Transform invoker;
 	public Walls wall;
     public GameObject rb;
     private Rigidbody rb2;
@@ -31,12 +32,20 @@ public class Destroyer : MonoBehaviour
         }
         if (tr.parent == null)
         {
+			if (tr.parent.tag == "Escenario") {
+				Destroy(tr.gameObject);
+			}
             //Destroy(tr.gameObject);
 			wall.LlegoDestino = true;
+			tr.position = invoker.position;
         }
         else {
+			if (tr.parent.tag == "Escenario") {
+				Destroy(tr.parent.gameObject);
+			}
             //Destroy(tr.parent.gameObject);
 			wall.LlegoDestino = true;
+			tr.position = invoker.position;
         }
        
         //Destroy(gameObject);

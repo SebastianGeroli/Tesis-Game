@@ -5,6 +5,7 @@ using UnityEngine;
 public class Walls : MonoBehaviour
 {
 	public bool LlegoDestino = false;
+	public bool PuedeSalir = false;
     // Start is called before the first frame update
     public Rigidbody rb;
     void Start()
@@ -23,7 +24,7 @@ public class Walls : MonoBehaviour
         MoveFloor();
     }
     public void MoveFloor() {
-		if(!LlegoDestino)
+		if(!LlegoDestino && PuedeSalir)
         rb.transform.Translate(0,0,-0.5f);
 		
     }
