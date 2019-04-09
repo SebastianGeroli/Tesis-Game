@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
+	public Walls wall;
     public GameObject rb;
     private Rigidbody rb2;
     // Start is called before the first frame update
@@ -20,6 +21,7 @@ public class Destroyer : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+		wall = other.GetComponent<Walls> ();
         Transform tr = other.GetComponent<Transform>();
       //  Debug.Log("Destroyer Entre");
         // Debug.Log(other.name);
@@ -29,10 +31,12 @@ public class Destroyer : MonoBehaviour
         }
         if (tr.parent == null)
         {
-            Destroy(tr.gameObject);
+            //Destroy(tr.gameObject);
+			wall.LlegoDestino = true;
         }
         else {
-            Destroy(tr.parent.gameObject);
+            //Destroy(tr.parent.gameObject);
+			wall.LlegoDestino = true;
         }
        
         //Destroy(gameObject);

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Walls : MonoBehaviour
 {
+	public bool LlegoDestino = false;
     // Start is called before the first frame update
     public Rigidbody rb;
     void Start()
@@ -22,6 +23,8 @@ public class Walls : MonoBehaviour
         MoveFloor();
     }
     public void MoveFloor() {
+		if(!LlegoDestino)
         rb.transform.Translate(0,0,-0.5f);
+		
     }
 }

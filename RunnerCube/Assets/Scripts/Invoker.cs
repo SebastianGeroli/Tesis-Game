@@ -10,14 +10,10 @@ public class Invoker : MonoBehaviour
     private float timerObs;
     private int nextObj;
     private float nextObjTime = 1f;
-    private int invMax = 9;
-    private int invMin = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
+	private Obstacles obs = new Obstacles();
+  //  private int invMax = 9;
+   // private int invMin = 0;
+	private GameObject[] obstacles = new GameObject[5];
     // Update is called once per frame
     void Update()
     {
@@ -41,98 +37,10 @@ public class Invoker : MonoBehaviour
     }
     //Creador de obstaculos
     public void ObstacleGenerator() {
-        timerObs += Time.deltaTime;
-        switch (nextObj) {
-            case 0:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("HalfWallTop"), transform.position+new Vector3(0,7,0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj =(int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 1:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("HalfWallBottom"), transform.position, Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 2:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("HalfWallLeft"), transform.position+ new Vector3(-3,4,0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 3:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("HalfWallRight"), transform.position + new Vector3(3, 4, 0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 4:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("3_4Top"), transform.position + new Vector3(0, 5, 0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 5:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("3_4Bottom"), transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 6:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("3_4Left"), transform.position + new Vector3(-1, 4, 0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 7:
-                if (timerObs > nextObjTime)
-                {
-                    Instantiate(Resources.Load("3_4Right"), transform.position + new Vector3(1, 4, 0), Quaternion.identity);
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 8:
-                if (timerObs > nextObjTime)
-                {
-                    
-                    GameObject go = Instantiate(Resources.Load("Hexagon"))as GameObject;
-                    Quaternion qt = go.transform.rotation;
-                    go.transform.position = transform.position+ new Vector3(0,4,0);
-                    //Instantiate(Resources.Load("Hexagon"), transform.position + new Vector3(0, 4, 0), qt);
-                   
-                    timerObs = 0;
-                    nextObj = (int)Random.Range(invMin, invMax);
-                }
-                break;
-            case 9:
-                break;
-            case 10:
-                break;
-            case 11:
-                break;
-            case 12:
-                break;
-            case 13:
-                break;
-        }
-        
-       
-
+		obstacles [0] = obs.ObstaclesConstructor (0, transform);
+		obstacles [1] = obs.ObstaclesConstructor (1, transform);
+		obstacles [2] = obs.ObstaclesConstructor (2, transform);
+		obstacles [3] = obs.ObstaclesConstructor (3, transform);
+		obstacles [4] = obs.ObstaclesConstructor (4, transform);
     }
 }
