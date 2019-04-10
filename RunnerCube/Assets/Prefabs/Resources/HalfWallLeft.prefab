@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3276378902581825403}
+  - component: {fileID: 8610552882001843646}
   - component: {fileID: 8075269811682933293}
   - component: {fileID: 222044987915880755}
   - component: {fileID: 932501804025606226}
   - component: {fileID: 2249887137939593832}
-  - component: {fileID: 8610552882001843646}
   m_Layer: 0
   m_Name: HalfWallLeft
   m_TagString: Obstacle
@@ -35,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8610552882001843646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291882108090349467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LlegoDestino: 0
+  PuedeSalir: 0
+  posInicial: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!33 &8075269811682933293
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -109,19 +125,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8610552882001843646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5291882108090349467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LlegoDestino: 0
-  PuedeSalir: 0
-  posInicial: {fileID: 0}
-  rb: {fileID: 0}

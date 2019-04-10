@@ -4,19 +4,6 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    private Rigidbody rb2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb2 = transform.GetComponent<Rigidbody>();
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         Transform tr = other.GetComponent<Transform>();
