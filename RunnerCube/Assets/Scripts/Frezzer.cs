@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Frezzer : MonoBehaviour
 {
-    //Trigger
+    /*###############################################################################
+                                        Triggers
+     #################################################################################*/
     private void OnTriggerEnter(Collider other)
     {
         Transform tr = other.GetComponent<Transform>();
@@ -17,8 +19,8 @@ public class Frezzer : MonoBehaviour
         else
         {
             tr = other.GetComponentInParent<Transform>();
-                tr.GetComponent<Obstacles>().LlegoDestino = true;
-                tr.transform.parent.position = tr.GetComponent<Obstacles>().GetposInicial();
+            tr.GetComponent<Obstacles>().LlegoDestino = true;
+            tr.transform.parent.position = tr.GetComponent<Obstacles>().GetposInicial();
         }
     }
 }

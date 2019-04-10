@@ -3,37 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Invoker : MonoBehaviour
-{
-    public float minTime,maxTime;
+{   /*###############################################################################
+                                       Variables
+    #################################################################################*/
+    public GameObject[] obstacles;
+    public float minTime, maxTime;
     private int lastInvoked = 0;
     private int counter;
     private float time;
     private float timerObs;
     private int nextObj;
-  //  private int invMax = 9;
-   // private int invMin = 0;
-	public GameObject[] obstacles;
-    // Update is called once per frame
-    //private void Start()
-    //{
-    //    ObstacleGenerator();
-    //}
-    ////Update
-    //void Update()
-    //{
-    //    WallGenerator();
-    //    ObstacleLauncher();
-    //}
-    //Obstacle Launcher || este metodo calcula el tiempo de cuando va a salir un obstaculo detras de otro
-    public void ObstacleLauncher() {
+    // private int invMax = 9;
+    // private int invMin = 0;
+    /*###############################################################################
+                                       Metodos
+    #################################################################################*/
+    public void ObstacleLauncher()
+    {
         timerObs += Time.deltaTime;
-        if (timerObs > 0.5f) {
+        if (timerObs > 0.5f)
+        {
             obstacles[counter].GetComponent<Obstacles>().PuedeSalir = true;
             obstacles[counter].GetComponent<Obstacles>().LlegoDestino = false;
             timerObs = 0;
         }
         counter++;
-        if(counter == obstacles.Length) {
+        if (counter == obstacles.Length)
+        {
             counter = 0;
         }
     }
@@ -78,31 +74,37 @@ public class Invoker : MonoBehaviour
                 break;
         }
 
-        gO.GetComponent<Obstacles>().posInicial = gO.GetComponent<Transform>().position;
+        gO.GetComponent<Obstacles>().SetposInicial(gO.GetComponent<Transform>().position);
         gO.GetComponent<Obstacles>().SetForma(Obj);
         return gO;
     }
+
     //Creador de paredes no interactivas 
-    public void WallGenerator() {
+    public void WallGenerator()
+    {
         time += Time.deltaTime;
-        if (lastInvoked == 0&& time>0.31f){
+        if (lastInvoked == 0 && time > 0.31f)
+        {
             Instantiate(Resources.Load("WhiteWalls"), transform.position, Quaternion.identity);
             lastInvoked = 1;
             time = 0;
         }
-        else if(time>0.31f){
+        else if (time > 0.31f)
+        {
             Instantiate(Resources.Load("BlueWalls"), transform.position, Quaternion.identity);
             lastInvoked = 0;
             time = 0;
         }
-        
+
     }
+
     //Creador de obstaculos
-    public void ObstacleGenerator() {
-		obstacles [0] = ObstaclesGen(0, transform);
-		obstacles [1] = ObstaclesGen(1, transform);
-		obstacles [2] = ObstaclesGen(2, transform);
-		obstacles [3] = ObstaclesGen(3, transform);
-		obstacles [4] = ObstaclesGen(4, transform);
+    public void ObstacleGenerator()
+    {
+        obstacles[0] = ObstaclesGen(0, transform);
+        obstacles[1] = ObstaclesGen(1, transform);
+        obstacles[2] = ObstaclesGen(2, transform);
+        obstacles[3] = ObstaclesGen(3, transform);
+        obstacles[4] = ObstaclesGen(4, transform);
     }
 }
