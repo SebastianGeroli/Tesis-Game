@@ -4,58 +4,23 @@ using UnityEngine;
 
 public class WallGenerator : MonoBehaviour
 {
+    /*###############################################################################
+                                       Variables
+    #################################################################################*/
     public GameObject WallGenerators;
-    //public GameObject wallRight;
-    //public GameObject wallLeft;
-    //public GameObject floor;
-    //public GameObject roof;
-
-    public float minTime;
-    public float maxTime;
-    public float spawnTime = 1f;
-    //  private Rigidbody2D rb;
-
-    // Use this for initialization
-    void Start()
+    public Vector3 velocity = new Vector3(0, 0, -0.2f);
+    /*###############################################################################
+                                       Metodos
+    #################################################################################*/
+    //Fixed Update
+    private void FixedUpdate()
     {
-        StartCoroutine(GenerateBack());
-        // rb = new Rigidbody2D();
-        //Generator();
-        //wall = new GameObject[3];
-
-    }
-
-    //void Generator()
-    //{
-    //    //int currentLevel = Camera.main.GetComponent<LevelController>().currentLevel;
-    //    //if (currentLevel > 1)
-    //    //    return;
-    //    Instantiate(WallGenerators, transform.position, Quaternion.identity);
-
-    //    Invoke("Generator", Random.Range(minTime, maxTime));
-
-    //}
-    IEnumerator GenerateBack()
-    {
-        
-       
-        Instantiate(WallGenerators, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(spawnTime);
-        StartCoroutine(GenerateBack());
-        Debug.Log("CoRoutine");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
         MoveWallGenerator();
-
-
     }
 
+    //Move Walls        || mueve las paredes del escenario
     public void MoveWallGenerator()
     {
-        transform.Translate(0, 0, 0.5f);
+        transform.Translate(velocity);
     }
 }

@@ -10,6 +10,8 @@ TagManager:
   - Hole
   - Walls
   - Boundary
+  - Objeto
+  - Escenario
   layers:
   - Default
   - TransparentFX

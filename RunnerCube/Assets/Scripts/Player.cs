@@ -3,88 +3,277 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    //Jump
-    public void Jump() {
-        if (transform.position.y < 4) {
-            transform.Translate(0, 2, 0);
-        }
-        
-    }
-    //Doble Jump 
-    public void DobleJump() {
-        float posY = transform.position.y;
-        int i = (int)posY;
-        switch(i)
-        {
-            case 0:
-                transform.Translate(0, 4, 0);
-                break;
-            case 4:
-                transform.Translate(0, -4, 0);
-                break;
+    private float timer;
+    public int GravityPos = 0;
+    bool isJumping;
+    Transform obstacle;
+    //Swipe Up
+    public void SwipeUp() {
+		if (Input.GetKeyDown(KeyCode.W)) {
+			switch (GravityPos) {
+			//Gravedad  arriba -> abajo
+			case 0:
+				if (!isJumping && transform.position.y != 8)
+				{
+					transform.Translate(0, 4, 0);
+					isJumping = true;
+				}
+				else if (isJumping && transform.position.y != 8) {
+					transform.Translate(0, 4, 0);
+					isJumping = false;
+					GravityPos = 1;
+				}
+				break;
+			case 1:
+				if (isJumping) {
+					transform.Translate(0, 4, 0);
+					isJumping = false;
+				}
+				break;
+			case 2:
+				if (isJumping && transform.position.y == 7)
+				{
+					transform.Translate(0, 1, 0);
+					isJumping = false;
+					GravityPos = 1;
+				}
+				else if (transform.position.y != 7)
+				{
+					transform.Translate(0, 3, 0);
+				}
+				else {
+					transform.Translate(-1.5f, 1, 0);
+					GravityPos = 1;
+				}
 
+				break;
+			case 3:
+				if (isJumping && transform.position.y == 7)
+				{
+					transform.Translate(0, 1, 0);
+					isJumping = false;
+					GravityPos = 1;
+				}
+				else if (transform.position.y != 7)
+				{
+					transform.Translate(0, 3, 0);
+				}
+				else {
+					transform.Translate(1.5f, 1, 0);
+					GravityPos = 1;
+				}
 
-        }
+				break;
+			}
+		}
     }
-    //Move Left
-    public void MoveLeft() {
-        if (transform.position.x > -2) {
-            transform.Translate(-2, 0, 0);
-        }
-        else
-        {
-            transform.Translate(4, 0, 0);
-        }
+    //Swipe Down
+    public void SwipeDown()
+    {
+		if (Input.GetKeyDown (KeyCode.S)) {
+		
+			switch (GravityPos)
+			{
+			case 0:
+				if (isJumping) {
+					transform.Translate(0, -4, 0);
+					isJumping = false;
+				}
+				break;
+			case 1:
+				if (!isJumping && transform.position.y != 0)
+				{
 
+					transform.Translate(0, -4, 0);
+					isJumping = true;
+				}
+				else if (isJumping && transform.position.y != 0) {
+					transform.Translate(0, -4, 0);
+					isJumping = false;
+					GravityPos = 0;
+				}
+				break;
+			case 2:
+				if (isJumping && transform.position.y == 1)
+				{
+					transform.Translate(0f, -1, 0);
+					isJumping = false;
+					GravityPos = 0;
+				}
+				else if (transform.position.y > 1)
+				{
+					transform.Translate(0, -3, 0);
+				}else
+				{
+					transform.Translate(-1.5f, -1, 0);
+					GravityPos = 0;
+				}
+				break;
+			case 3:
+				if (isJumping && transform.position.y == 1)
+				{
+					transform.Translate(0f, -1, 0);
+					isJumping = false;
+					GravityPos = 0;
+				}
+				else if (transform.position.y > 1)
+				{
+					transform.Translate(0, -3, 0);
+				}else {
+					transform.Translate(1.5f, -1, 0);
+					GravityPos = 0;
+				}
+				break;
+			}
+		}
+       
     }
-    //Move Right
-    public void MoveRight() {
-        if (transform.position.x < 2)
-        {
-            transform.Translate(2, 0, 0);
-        }
-        else {
-            transform.Translate(-4, 0, 0);
-        }
-            
+    //Swipe Left
+    public void SwipeLeft() {
+		if (Input.GetKeyDown (KeyCode.A)) {
+			switch (GravityPos) {
+			case 0:
+				if (isJumping && transform.position.x == -3)
+				{
+					transform.Translate(-1.5f, 0, 0);
+					isJumping = false;
+					GravityPos = 3;
+				}
+				else if (transform.position.x != -3)
+				{
+					transform.Translate(-3, 0, 0);
+				}else {
+					transform.Translate(-1.5f, 1, 0);
+					GravityPos = 3;
+				}
+				break;
+
+			case 1:
+				if (isJumping && transform.position.x == -3)
+				{
+					transform.Translate(-1.5f, 0, 0);
+					isJumping = false;
+					GravityPos = 3;
+				}
+				else if (transform.position.x != -3)
+				{
+					transform.Translate(-3, 0, 0);
+				}
+				else
+				{
+					transform.Translate(-1.5f, -1, 0);
+					GravityPos = 3;
+				}
+				break;
+
+			case 2:
+				if (!isJumping && transform.position.x == 4.5f)
+				{
+
+					transform.Translate(-4.5f, 0, 0);
+					isJumping = true;
+				}
+				else if (isJumping && transform.position.x != -4.5f) {
+					transform.Translate(-4.5f, 0, 0);
+					isJumping = false;
+					GravityPos = 3;
+				}
+
+				break;
+			case 3:
+				if (isJumping) {
+					transform.Translate(-4.5f, 0, 0);
+					isJumping = false;
+				}
+				break;
+			}
+		}
+       
     }
-    //Stick to left
-    //Stick to right
-    //Duck
-    public void Duck() {
-        if (transform.position.y > 0) {
-            transform.Translate(0, -2, 0);
-        }
-        
+    //Swipe Right
+    public void SwipeRight() {
+		if (Input.GetKeyDown (KeyCode.D)) {
+			switch (GravityPos)
+			{
+			case 0:
+				if (isJumping && transform.position.x == 3)
+				{
+					transform.Translate(1.5f, 0, 0);
+					isJumping = false;
+					GravityPos = 2;
+
+				}
+
+				else if (transform.position.x < 3)
+				{
+					transform.Translate(3, 0, 0);
+				}
+				else
+				{
+					transform.Translate(1.5f, 1, 0);
+					GravityPos = 2;
+				}
+				break;
+			case 1:
+				if (isJumping && transform.position.x == 3)
+				{
+					transform.Translate(1.5f, 0, 0);
+					isJumping = false;
+					GravityPos = 2;
+
+				}
+				else if (transform.position.x < 3)
+				{
+					transform.Translate(3, 0, 0);
+				}
+				else
+				{
+					transform.Translate(1.5f, -1, 0);
+					GravityPos = 2;
+				}
+				break;
+
+			case 2:
+				if (isJumping)
+				{
+					transform.Translate(4.5f, 0, 0);
+					isJumping = false;
+				}
+				break;
+			case 3:
+				if (!isJumping && transform.position.x == -4.5f)
+				{
+
+					transform.Translate(4.5f, 0, 0);
+					isJumping = true;
+				}
+				else if (isJumping && transform.position.x != 4.5f) {
+					transform.Translate(4.5f, 0, 0);
+					isJumping = false;
+					GravityPos = 2;
+				}
+				break;
+			}
+		}      
     }
-    //Update Con detector de keypressed
+
     void Update()
-    {
-        MovePlayer();
-
-        if (Input.GetKeyDown(KeyCode.W)) {
-            Jump();
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            MoveLeft();
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            MoveRight();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-           Duck();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DobleJump();
-        }
+    {	// Debugs
+        //Debug.Log("Timer: " + timer);
+        //Debug.Log("Esta saltando: "+ isJumping);
+        //Debug.Log("Gravedad: "+GravityPos);
+        //Fin Debugs
+		SwipeUp ();
+		SwipeRight ();
+		SwipeLeft ();
+		SwipeDown ();
 
     }
-    public void MovePlayer()
+    private void OnTriggerEnter(Collider other)
     {
-        transform.Translate(0, 0, 0.25f);
+        obstacle = other.gameObject.GetComponent<Transform>();
+        if (obstacle.tag == "Objeto") {
+            Debug.Log("Choco");
+        }
     }
 }
