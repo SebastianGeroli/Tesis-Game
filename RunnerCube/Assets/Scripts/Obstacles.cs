@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacles : MonoBehaviour {
+    private int forma;
     public bool LlegoDestino = false;
     public bool PuedeSalir = false;
-    private Vector3 posInicial;
+    public Vector3 posInicial;
     public Rigidbody rb;
-
-
+    Obstacles obstaculo;
+    public int GetForma() {
+        return forma;
+    }
     //Devolucion Vector3 de posInicial
     public Vector3 GetposInicial() {
         return posInicial;
@@ -32,6 +35,7 @@ public class Obstacles : MonoBehaviour {
     }
     //Metodo que instancia los objetos al inicio del juego 
     public  Obstacles(int Obj,Transform invoker){
+        forma = Obj;
         GameObject gO;
         switch (Obj) {
 		case 0:
@@ -71,7 +75,8 @@ public class Obstacles : MonoBehaviour {
 			gO = Instantiate (Resources.Load ("HalfWallTop"), invoker.position + new Vector3 (0, 7, 0), Quaternion.identity) as GameObject;
                 break;
         }
-        posInicial = gO.transform.position;
+       
+        gO.GetComponent<Obstacles>().posInicial = gO.GetComponent<Transform>().position;
         Debug.Log(Obj);
         Debug.Log(gO.transform.position);
         Debug.Log(posInicial);
