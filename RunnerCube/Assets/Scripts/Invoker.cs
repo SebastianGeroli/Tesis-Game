@@ -14,21 +14,20 @@ public class Invoker : MonoBehaviour
    // private int invMin = 0;
 	public GameObject[] obstacles;
     // Update is called once per frame
-    private void Start()
-    {
-        ObstacleGenerator();
-    }
-    //Update
-    void Update()
-    {
-        WallGenerator();
-        ObstacleLauncher();
-    }
+    //private void Start()
+    //{
+    //    ObstacleGenerator();
+    //}
+    ////Update
+    //void Update()
+    //{
+    //    WallGenerator();
+    //    ObstacleLauncher();
+    //}
     //Obstacle Launcher || este metodo calcula el tiempo de cuando va a salir un obstaculo detras de otro
     public void ObstacleLauncher() {
         timerObs += Time.deltaTime;
         if (timerObs > 0.5f) {
-            print("entre");
             obstacles[counter].GetComponent<Obstacles>().PuedeSalir = true;
             obstacles[counter].GetComponent<Obstacles>().LlegoDestino = false;
             timerObs = 0;
