@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7813452440866193855}
+  - component: {fileID: 2187621223014421917}
   - component: {fileID: 5324427064855308144}
   - component: {fileID: 176981755786103536}
   - component: {fileID: 8432487709571848594}
-  - component: {fileID: 6805553894512256372}
   - component: {fileID: 487202022627001208}
   m_Layer: 0
   m_Name: 3_4Right
-  m_TagString: Objeto
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2187621223014421917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3454862067372533237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LlegoDestino: 0
+  PuedeSalir: 0
+  posInicial: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!33 &5324427064855308144
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -93,19 +109,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6805553894512256372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3454862067372533237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d2677b2500b4f43ad3908c71373213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!54 &487202022627001208
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1344138347997138397}
+  - component: {fileID: 9161159723512572621}
   - component: {fileID: 4944279890050893595}
   - component: {fileID: 2066490097107203302}
   - component: {fileID: 4699773333684214353}
   - component: {fileID: 2567258904689624756}
-  - component: {fileID: 640792367690415823}
   m_Layer: 0
   m_Name: HalfWallRight
-  m_TagString: Objeto
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9161159723512572621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5892291149685672316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LlegoDestino: 0
+  PuedeSalir: 0
+  posInicial: {x: 0, y: 0, z: 0}
+  rb: {fileID: 0}
 --- !u!33 &4944279890050893595
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -109,16 +125,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &640792367690415823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5892291149685672316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d2677b2500b4f43ad3908c71373213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
