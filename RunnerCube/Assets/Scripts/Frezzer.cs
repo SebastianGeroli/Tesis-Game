@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Frezzer : MonoBehaviour
 {
-    public Transform invoker;
-    public Walls wall;
-    public GameObject rb;
+    public Invoker invoker;
+    public Obstacles obstacles;
+    public GameObject gO;
     private Rigidbody rb2;
     // Start is called before the first frame update
     void Start()
@@ -23,21 +23,21 @@ public class Frezzer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        wall = other.GetComponentInParent<Walls>();
+        obstacles = other.GetComponentInParent<Obstacles>();
         Transform tr = other.GetComponent<Transform>();
         //  Debug.Log("Destroyer Entre");
         // Debug.Log(other.name);
         if (tr.parent == null)
         {
-                wall.LlegoDestino = true;
-                tr.position = invoker.position;
+            Debug.Log(obstacles.GetposInicial());
+            obstacles.LlegoDestino = true;
+            tr.transform.position = invoker.obstacles[0].GetposInicial();
         }
         else
         {
-                wall.LlegoDestino = true;
-                tr.position = invoker.position;
-           
-
+            Debug.Log(obstacles.GetposInicial());
+                obstacles.LlegoDestino = true;
+                tr.transform.parent.position = invoker.obstacles[0].GetposInicial();
         }
     }
 }

@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 222044987915880755}
   - component: {fileID: 932501804025606226}
   - component: {fileID: 2249887137939593832}
-  - component: {fileID: 597187578319054287}
+  - component: {fileID: 8610552882001843646}
   m_Layer: 0
   m_Name: HalfWallLeft
-  m_TagString: Objeto
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &597187578319054287
+--- !u!114 &8610552882001843646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5291882108090349467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11d2677b2500b4f43ad3908c71373213, type: 3}
+  m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LlegoDestino: 0
+  PuedeSalir: 0
+  posInicial: {fileID: 0}
   rb: {fileID: 0}

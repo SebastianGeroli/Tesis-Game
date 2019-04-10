@@ -3,42 +3,78 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacles : MonoBehaviour {
-	public bool LlegoDestino;
-	public Object ObstaclesConstructor(int Obj,Transform invoker){
-		Object gO;
-		switch (Obj) {
+    public bool LlegoDestino = false;
+    public bool PuedeSalir = false;
+    private Vector3 posInicial;
+    public Rigidbody rb;
+
+
+    //Devolucion Vector3 de posInicial
+    public Vector3 GetposInicial() {
+        return posInicial;
+    }
+    //Start
+    void Start()
+    {
+        rb = transform.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+    }
+    private void FixedUpdate()
+    {
+        MoveFloor();
+    }
+    public void MoveFloor()
+    {
+
+        if (!LlegoDestino && PuedeSalir)
+            rb.transform.Translate(0, 0, -0.5f);
+
+    }
+    //Metodo que instancia los objetos al inicio del juego 
+    public  Obstacles(int Obj,Transform invoker){
+        GameObject gO;
+        switch (Obj) {
 		case 0:
-			gO = Instantiate (Resources.Load ("HalfWallTop"), invoker.position + new Vector3 (0, 7, 0), Quaternion.identity) as Object;
-			return gO;
+			gO = Instantiate (Resources.Load ("HalfWallTop"), invoker.position + new Vector3 (0, 7, 0), Quaternion.identity) as GameObject;
+                break;
+                //posInicial = gO.GetComponent<Transform>();
+                //posInicial = gO.transform.position;
+   //             Debug.Log(posInicial);
+			//return gO;
 		case 1:
-			gO = Instantiate (Resources.Load ("HalfWallBottom"), invoker.position, Quaternion.identity) as Object;
-			return gO;
-		case 2:
-			gO = Instantiate (Resources.Load ("HalfWallLeft"), invoker.position + new Vector3 (-3, 4, 0), Quaternion.identity) as Object;
-			return gO;
-		case 3:
-			gO = Instantiate (Resources.Load ("HalfWallRight"), invoker.position + new Vector3 (3, 4, 0), Quaternion.identity)as Object;
-			return gO;
-		case 4:
-			gO = Instantiate (Resources.Load ("3_4Top"), invoker.position + new Vector3 (0, 5, 0), Quaternion.identity) as Object;
-			return gO;
-		case 5:
-			gO = Instantiate (Resources.Load ("3_4Bottom"), invoker.position + new Vector3 (0, 3, 0), Quaternion.identity) as Object;
-			return gO;
-		case 6:
-			gO = Instantiate (Resources.Load ("3_4Left"), invoker.position + new Vector3 (-1, 4, 0), Quaternion.identity) as Object;
-			return gO;
-		case 7:
-			gO = Instantiate (Resources.Load ("3_4Right"), invoker.position + new Vector3 (1, 4, 0), Quaternion.identity) as Object;
-			return gO;
-		//case 8:
-		//	gO = Instantiate (Resources.Load ("Hexagon"))as Object;
-		//	Quaternion qt = gO.transform.rotation;
-		//	gO.transform.position = invoker.position + new Vector3 (0, 4, 0);
-		//	return gO;
-		default: 
-			gO = Instantiate (Resources.Load ("HalfWallTop"), invoker.position + new Vector3 (0, 7, 0), Quaternion.identity) as Object;
-			return gO;
-		}
-	}
+			gO = Instantiate (Resources.Load ("HalfWallBottom"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+            case 2:
+			gO = Instantiate (Resources.Load ("HalfWallLeft"), invoker.position + new Vector3 (-3, 4, 0), Quaternion.identity) as GameObject;
+                break;
+            case 3:
+			gO = Instantiate (Resources.Load ("HalfWallRight"), invoker.position + new Vector3 (3, 4, 0), Quaternion.identity)as GameObject;
+                break;
+            case 4:
+			gO = Instantiate (Resources.Load ("3_4Top"), invoker.position + new Vector3 (0, 5, 0), Quaternion.identity) as GameObject;
+                break;
+            case 5:
+			gO = Instantiate (Resources.Load ("3_4Bottom"), invoker.position + new Vector3 (0, 3, 0), Quaternion.identity) as GameObject;
+                break;
+            case 6:
+			gO = Instantiate (Resources.Load ("3_4Left"), invoker.position + new Vector3 (-1, 4, 0), Quaternion.identity) as GameObject;
+                break;
+            case 7:
+			gO = Instantiate (Resources.Load ("3_4Right"), invoker.position + new Vector3 (1, 4, 0), Quaternion.identity) as GameObject;
+                break;
+            //case 8:
+            //	gO = Instantiate (Resources.Load ("Hexagon"))as Object;
+            //	Quaternion qt = gO.transform.rotation;
+            //	gO.transform.position = invoker.position + new Vector3 (0, 4, 0);
+            //	return gO;
+            default: 
+			gO = Instantiate (Resources.Load ("HalfWallTop"), invoker.position + new Vector3 (0, 7, 0), Quaternion.identity) as GameObject;
+                break;
+        }
+        posInicial = gO.transform.position;
+        Debug.Log(Obj);
+        Debug.Log(gO.transform.position);
+        Debug.Log(posInicial);
+    }
+    
 }

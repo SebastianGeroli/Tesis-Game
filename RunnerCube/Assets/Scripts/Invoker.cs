@@ -10,10 +10,9 @@ public class Invoker : MonoBehaviour
     private float timerObs;
     private int nextObj;
     private float nextObjTime = 1f;
-	private Obstacles obs = new Obstacles();
   //  private int invMax = 9;
    // private int invMin = 0;
-	private Object[] obstacles = new Object[5];
+	public Obstacles[] obstacles = new Obstacles[5];
     // Update is called once per frame
     private void Start()
     {
@@ -41,10 +40,10 @@ public class Invoker : MonoBehaviour
     }
     //Creador de obstaculos
     public void ObstacleGenerator() {
-		obstacles [0] = obs.ObstaclesConstructor (0, transform);
-		obstacles [1] = obs.ObstaclesConstructor (1, transform);
-		obstacles [2] = obs.ObstaclesConstructor (2, transform);
-		obstacles [3] = obs.ObstaclesConstructor (3, transform);
-		obstacles [4] = obs.ObstaclesConstructor (4, transform);
+		obstacles [0] = new Obstacles(0, transform);
+		obstacles [1] = new Obstacles(1, transform);
+		obstacles [2] = new Obstacles(2, transform);
+		obstacles [3] = new Obstacles(3, transform);
+		obstacles [4] = new Obstacles(4, transform);
     }
 }

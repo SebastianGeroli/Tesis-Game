@@ -22,10 +22,10 @@ public class MainGame : MonoBehaviour {
         }
         if (gameOver == false)
         {
-            Debug.Log("Playing");
+            //Debug.Log("Playing");
         }
         else {
-            Debug.Log("End");
+            //Debug.Log("End");
         }
     }
 }
