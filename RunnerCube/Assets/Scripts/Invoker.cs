@@ -13,12 +13,16 @@ public class Invoker : MonoBehaviour
 	private Obstacles obs = new Obstacles();
   //  private int invMax = 9;
    // private int invMin = 0;
-	private GameObject[] obstacles = new GameObject[5];
+	private Object[] obstacles = new Object[5];
     // Update is called once per frame
+    private void Start()
+    {
+        ObstacleGenerator();
+    }
     void Update()
     {
         WallGenerator();
-        ObstacleGenerator();
+      
     }
     //Creador de paredes no interactivas 
     public void WallGenerator() {
