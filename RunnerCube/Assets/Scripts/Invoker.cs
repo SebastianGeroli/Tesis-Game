@@ -6,7 +6,7 @@ public class Invoker : MonoBehaviour
 {   /*###############################################################################
                                        Variables
     #################################################################################*/
-    public GameObject[] obstacles;
+    private GameObject[] obstacles = new GameObject [16];
     public float minTime, maxTime;
     private int lastInvoked = 0;
     private int counter;
@@ -21,7 +21,7 @@ public class Invoker : MonoBehaviour
     public void ObstacleLauncher()
     {
         timerObs += Time.deltaTime;
-        if (timerObs > 0.5f)
+        if (timerObs > 0.7f)
         {
             obstacles[counter].GetComponent<Obstacles>().PuedeSalir = true;
             obstacles[counter].GetComponent<Obstacles>().LlegoDestino = false;
@@ -106,5 +106,17 @@ public class Invoker : MonoBehaviour
         obstacles[2] = ObstaclesGen(2, transform);
         obstacles[3] = ObstaclesGen(3, transform);
         obstacles[4] = ObstaclesGen(4, transform);
+        obstacles[5] = ObstaclesGen(5, transform);
+        obstacles[6] = ObstaclesGen(6, transform);
+        obstacles[7] = ObstaclesGen(7, transform);
+        obstacles[8] = ObstaclesGen(0, transform);
+        obstacles[9] = ObstaclesGen(1, transform);
+        obstacles[10] = ObstaclesGen(2, transform);
+        obstacles[11] = ObstaclesGen(3, transform);
+        obstacles[12] = ObstaclesGen(4, transform);
+        obstacles[13] = ObstaclesGen(5, transform);
+        obstacles[14] = ObstaclesGen(6, transform);
+        obstacles[15] = ObstaclesGen(7, transform);
+
     }
 }
