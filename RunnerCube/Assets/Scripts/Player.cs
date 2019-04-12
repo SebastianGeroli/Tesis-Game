@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     Transform obstacle;
     //Swipe Up
     public void SwipeUp() {
-		if (Input.GetKeyDown(KeyCode.W)) {
+		if (Input.GetKeyDown(KeyCode.W) || MobileInput.Instance.IsSwiping(SwipeDirection.Up) ) {
 			switch (GravityPos) {
 			//Gravedad  arriba -> abajo
 			case 0:
@@ -70,7 +70,8 @@ public class Player : MonoBehaviour {
     //Swipe Down
     public void SwipeDown()
     {
-		if (Input.GetKeyDown (KeyCode.S)) {
+		if (Input.GetKeyDown (KeyCode.S) || MobileInput.Instance.IsSwiping(SwipeDirection.Down))
+        {
 		
 			switch (GravityPos)
 			{
@@ -130,7 +131,8 @@ public class Player : MonoBehaviour {
     }
     //Swipe Left
     public void SwipeLeft() {
-		if (Input.GetKeyDown (KeyCode.A)) {
+		if (Input.GetKeyDown (KeyCode.A) || MobileInput.Instance.IsSwiping(SwipeDirection.Left))
+        {
 			switch (GravityPos) {
 			case 0:
 				if (isJumping && transform.position.x == -3)
@@ -192,7 +194,8 @@ public class Player : MonoBehaviour {
     }
     //Swipe Right
     public void SwipeRight() {
-		if (Input.GetKeyDown (KeyCode.D)) {
+		if (Input.GetKeyDown (KeyCode.D) || MobileInput.Instance.IsSwiping(SwipeDirection.Right))
+        {
 			switch (GravityPos)
 			{
 			case 0:

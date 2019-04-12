@@ -6,7 +6,7 @@ public class Invoker : MonoBehaviour
 {   /*###############################################################################
                                        Variables
     #################################################################################*/
-    private GameObject[] obstacles = new GameObject [16];
+    private GameObject[] obstacles = new GameObject[11];
     public float minTime, maxTime;
     private int lastInvoked = 0;
     private int counter;
@@ -112,11 +112,11 @@ public class Invoker : MonoBehaviour
         obstacles[8] = ObstaclesGen(0, transform);
         obstacles[9] = ObstaclesGen(1, transform);
         obstacles[10] = ObstaclesGen(2, transform);
-        obstacles[11] = ObstaclesGen(3, transform);
-        obstacles[12] = ObstaclesGen(4, transform);
-        obstacles[13] = ObstaclesGen(5, transform);
-        obstacles[14] = ObstaclesGen(6, transform);
-        obstacles[15] = ObstaclesGen(7, transform);
+        //obstacles[11] = ObstaclesGen(3, transform);
+        //obstacles[12] = ObstaclesGen(4, transform);
+        //obstacles[13] = ObstaclesGen(5, transform);
+        //obstacles[14] = ObstaclesGen(6, transform);
+        //obstacles[15] = ObstaclesGen(7, transform);
 
     }
 }
