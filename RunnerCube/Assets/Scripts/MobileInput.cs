@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum SwipeDirection {
+public enum SwipeDirection2 {
 None = 0,
 Left = 1,
 Right = 2,
@@ -12,7 +12,7 @@ public class MobileInput : MonoBehaviour
 {
     private static MobileInput instance;
     public static MobileInput Instance{get{return instance;}}
-    public SwipeDirection Direction { set; get; }
+    public SwipeDirection2 Direction { set; get; }
     private Vector3 touchPosition;
     private float swipeResistanceX = 100.0f;
     private float swipeResistanceY = 100.0f;
@@ -22,7 +22,7 @@ public class MobileInput : MonoBehaviour
     }
     private void Update()
     {
-        Direction = SwipeDirection.None;
+        Direction = SwipeDirection2.None;
         if (Input.GetMouseButtonDown(0))
         {
             touchPosition = Input.mousePosition;
@@ -31,14 +31,14 @@ public class MobileInput : MonoBehaviour
             Vector2 deltaSwipe = touchPosition - Input.mousePosition;
             if (Mathf.Abs(deltaSwipe.x) > swipeResistanceX) {
                 //Swipe en el eje X
-                Direction |= (deltaSwipe.x < 0) ? SwipeDirection.Right : SwipeDirection.Left; 
+                Direction |= (deltaSwipe.x < 0) ? SwipeDirection2.Right : SwipeDirection2.Left; 
             }
             if (Mathf.Abs(deltaSwipe.y) > swipeResistanceY)
             {
                 //Swipe en el eje Y
-                Direction |= (deltaSwipe.x < 0) ? SwipeDirection.Up : SwipeDirection.Down;
+                Direction |= (deltaSwipe.x < 0) ? SwipeDirection2.Up : SwipeDirection2.Down;
             }
         }
     }
-    public bool IsSwiping(SwipeDirection dir) { return (dir == Direction); }
+    public bool IsSwiping(SwipeDirection2 dir) { return (dir == Direction); }
 }
