@@ -14,7 +14,7 @@ public class MobileInput : MonoBehaviour
     public static MobileInput Instance{get{return instance;}}
     public SwipeDirection Direction { set; get; }
     private Vector3 touchPosition;
-    private float swipeResistanceX = 50.0f;
+    private float swipeResistanceX = 100.0f;
     private float swipeResistanceY = 100.0f;
     private void Start()
     {
