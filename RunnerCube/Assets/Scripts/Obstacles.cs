@@ -55,8 +55,14 @@ public class Obstacles : MonoBehaviour
     public void MoveFloor()
     {
 
-        if (!LlegoDestino && PuedeSalir)
-            rb.transform.Translate(0, 0, -0.5f);
+        if (!LlegoDestino && PuedeSalir && rb.tag == "Obstacle")
+        {
+            rb.transform.Translate(0, 0, -0.6f);
+        }
+        else if(!LlegoDestino && PuedeSalir && rb.tag == "Escenario") {
+            rb.transform.Translate(0, 0, -0.588f);
+        }
+            
 
     }
 }

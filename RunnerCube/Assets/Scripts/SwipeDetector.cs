@@ -32,11 +32,11 @@ public class SwipeDetector : MonoBehaviour
                 fingerDownPosition = touch.position;
             }
 
-            //if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
-            //{
-            //    fingerDownPosition = touch.position;
-            //    DetectSwipe();
-            //}
+            if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
+            {
+                fingerDownPosition = touch.position;
+                DetectSwipe();
+            }
 
             if (touch.phase == TouchPhase.Ended)
             {

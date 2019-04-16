@@ -6,34 +6,21 @@ public class Invoker : MonoBehaviour
 {   /*###############################################################################
                                        Variables
     #################################################################################*/
-    private GameObject[] obstacles = new GameObject[11];
-    public float minTime, maxTime;
+    public float minTime;
+    private float timeWallsInv = 0.27f;
     private int lastInvoked = 0;
-    private int counter;
-    private float time;
-    private float timerObs;
-    private int nextObj;
+    private GameObject[] obstacles = new GameObject[11];
+    private GameObject[] walls = new GameObject[12];
+   
+    private int counterObstacle, counterWalls,nextObj;
+    private float timerWalls, timerObs;
+
     // private int invMax = 9;
     // private int invMin = 0;
     /*###############################################################################
                                        Metodos
     #################################################################################*/
-    public void ObstacleLauncher()
-    {
-        timerObs += Time.deltaTime;
-        if (timerObs > 0.7f)
-        {
-            obstacles[counter].GetComponent<Obstacles>().PuedeSalir = true;
-            obstacles[counter].GetComponent<Obstacles>().LlegoDestino = false;
-            timerObs = 0;
-        }
-        counter++;
-        if (counter == obstacles.Length)
-        {
-            counter = 0;
-        }
-    }
-
+    
     //Obstacle Generator
     public GameObject ObstaclesGen(int Obj, Transform invoker)
     {
@@ -79,27 +66,8 @@ public class Invoker : MonoBehaviour
         return gO;
     }
 
-    //Creador de paredes no interactivas 
-    public void WallGenerator()
-    {
-        time += Time.deltaTime;
-        if (lastInvoked == 0 && time > 0.31f)
-        {
-            Instantiate(Resources.Load("WhiteWalls"), transform.position, Quaternion.identity);
-            lastInvoked = 1;
-            time = 0;
-        }
-        else if (time > 0.31f)
-        {
-            Instantiate(Resources.Load("BlueWalls"), transform.position, Quaternion.identity);
-            lastInvoked = 0;
-            time = 0;
-        }
-
-    }
-
-    //Creador de obstaculos
-    public void ObstacleGenerator()
+    //Instancite de obstaculos
+    public void ObstacleInstanciate()
     {
         obstacles[0] = ObstaclesGen(0, transform);
         obstacles[1] = ObstaclesGen(1, transform);
@@ -119,4 +87,81 @@ public class Invoker : MonoBehaviour
         //obstacles[15] = ObstaclesGen(7, transform);
 
     }
+
+    //Obstacle Launcher
+    public void ObstacleLauncher()
+    {
+        timerObs += Time.deltaTime;
+        if (timerObs > 1f)
+        {
+            obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
+            obstacles[counterObstacle].GetComponent<Obstacles>().LlegoDestino = false;
+            timerObs = 0;
+        }
+        counterObstacle++;
+        if (counterObstacle == obstacles.Length)
+        {
+            counterObstacle = 0;
+        }
+    }
+
+    //Walls Generator|| Escenario
+    public GameObject WallsGen(int Form, Transform invoker)
+    {
+        GameObject gO;
+        switch (Form)
+        {
+            case 0:
+                gO = Instantiate(Resources.Load("BlueWalls"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+            case 1:
+                gO = Instantiate(Resources.Load("WhiteWalls"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+            default:
+                gO = Instantiate(Resources.Load("BlueWalls"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+        }
+        gO.GetComponent<Obstacles>().SetposInicial(gO.GetComponent<Transform>().position);
+        gO.GetComponent<Obstacles>().SetForma(Form);
+        return gO;
+    }
+
+    //Instanciate de Walls || Instanciador de escenario
+    public void WallsInstanciate() {
+        walls[0] = WallsGen(0, transform);
+        walls[1] = WallsGen(1, transform);
+        walls[2] = WallsGen(0, transform);
+        walls[3] = WallsGen(1, transform);
+        walls[4] = WallsGen(0, transform);
+        walls[5] = WallsGen(1, transform);
+        walls[6] = WallsGen(0, transform);
+        walls[7] = WallsGen(1, transform);
+        walls[8] = WallsGen(0, transform);
+        walls[9] = WallsGen(1, transform);
+        walls[10] = WallsGen(0, transform);
+        walls[11] = WallsGen(1, transform);
+
+    }
+
+    //Creador de paredes no interactivas 
+    public void WallsLauncher()
+    {
+        timerWalls += Time.deltaTime;
+        if (timerWalls > timeWallsInv)
+        {
+            walls[counterWalls].GetComponent<Obstacles>().PuedeSalir = true;
+            walls[counterWalls].GetComponent<Obstacles>().LlegoDestino = false;
+            timerWalls = 0;
+        }
+        counterWalls++;
+        if (counterWalls == walls.Length)
+        {
+            counterWalls = 0;
+        }
+
+    }
+
 }
+
+
+

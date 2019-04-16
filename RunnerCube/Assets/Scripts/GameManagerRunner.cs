@@ -40,7 +40,8 @@ public class GameManagerRunner : MonoBehaviour
     //Start
     public void Start()
     {
-        invoker.ObstacleGenerator();
+        invoker.WallsInstanciate();
+        invoker.ObstacleInstanciate();
     }
     //Update
     public void Update()
@@ -49,16 +50,18 @@ public class GameManagerRunner : MonoBehaviour
         {
             Pause();
         }
+    }
+    private void FixedUpdate()
+    {
+        
         if (!gameOver)
         {
 
-            invoker.WallGenerator();
+            invoker.WallsLauncher();
             invoker.ObstacleLauncher();
-
-        }
-        else
-        {
 
         }
     }
 }
+//FixedUpdate
+
