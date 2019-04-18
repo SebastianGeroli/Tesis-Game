@@ -8,11 +8,13 @@ public class Invoker : MonoBehaviour
     private float timeWallsInv = 0.27f;
     private int lastInvoked = 0;
     private GameObject[] obstacles = new GameObject[11];
-    private GameObject[] walls = new GameObject[12];
-   
+    private GameObject[] walls = new GameObject[24];
+    private Vector3 correccionUP = new Vector3(0, 0.5f, 0);
+    private Vector3 correccionLeft = new Vector3(-0.5f, 0, 0);
+    private Vector3 correccionRight = new Vector3(0.5f, 0, 0);
+    private Vector3 correccionDown = new Vector3(0, -0.5f, 0);
     private int counterObstacle, counterWalls,nextObj;
     private float timerWalls, timerObs;
-
     // private int invMax = 9;
     // private int invMin = 0;
     /*################################  Metodos  ##################################*/
@@ -24,28 +26,28 @@ public class Invoker : MonoBehaviour
         switch (Obj)
         {
             case 0:
-                gO = Instantiate(Resources.Load("HalfWallTop"), invoker.position + new Vector3(0, 7, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BigLeft"), invoker.position + correccionUP*4+correccionLeft*2, Quaternion.identity) as GameObject;
                 break;
             case 1:
-                gO = Instantiate(Resources.Load("HalfWallBottom"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BigFloor"), invoker.position + correccionUP*2, Quaternion.identity) as GameObject;
                 break;
             case 2:
-                gO = Instantiate(Resources.Load("HalfWallLeft"), invoker.position + new Vector3(-3, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BigRight"), invoker.position + correccionUP*4 +correccionRight*2, Quaternion.identity) as GameObject;
                 break;
             case 3:
-                gO = Instantiate(Resources.Load("HalfWallRight"), invoker.position + new Vector3(3, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BigRoof"), invoker.position + correccionUP*2, Quaternion.identity) as GameObject;
                 break;
             case 4:
-                gO = Instantiate(Resources.Load("3_4Top"), invoker.position + new Vector3(0, 5, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Cruz"), invoker.position + correccionUP * 4, Quaternion.identity) as GameObject;
                 break;
             case 5:
-                gO = Instantiate(Resources.Load("3_4Bottom"), invoker.position + new Vector3(0, 3, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("LeftUpCorner"), invoker.position + correccionUP *2, Quaternion.identity) as GameObject;
                 break;
             case 6:
-                gO = Instantiate(Resources.Load("3_4Left"), invoker.position + new Vector3(-1, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("RightDownCorner"), invoker.position + correccionUP *6, Quaternion.identity) as GameObject;
                 break;
             case 7:
-                gO = Instantiate(Resources.Load("3_4Right"), invoker.position + new Vector3(1, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("RightUpCorner"), invoker.position + correccionUP *2, Quaternion.identity) as GameObject;
                 break;
             //case 8:
             //	gO = Instantiate (Resources.Load ("Hexagon"))as Object;
@@ -53,7 +55,7 @@ public class Invoker : MonoBehaviour
             //	gO.transform.position = invoker.position + new Vector3 (0, 4, 0);
             //	return gO;
             default:
-                gO = Instantiate(Resources.Load("HalfWallTop"), invoker.position + new Vector3(0, 7, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BigFloor"), invoker.position + correccionUP, Quaternion.identity) as GameObject;
                 break;
         }
 
@@ -108,13 +110,13 @@ public class Invoker : MonoBehaviour
         switch (Form)
         {
             case 0:
-                gO = Instantiate(Resources.Load("BlueWalls6x6"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BlueWalls6x5"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 1:
-                gO = Instantiate(Resources.Load("WhiteWalls6x6"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("WhiteWalls6x5"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             default:
-                gO = Instantiate(Resources.Load("BlueWalls6x6"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BlueWalls6x5"), invoker.position, Quaternion.identity) as GameObject;
                 break;
         }
         gO.GetComponent<Obstacles>().SetposInicial(gO.GetComponent<Transform>().position);
@@ -136,7 +138,18 @@ public class Invoker : MonoBehaviour
         walls[9] = WallsGen(1, transform);
         walls[10] = WallsGen(0, transform);
         walls[11] = WallsGen(1, transform);
-
+        walls[12] = WallsGen(0, transform);
+        walls[13] = WallsGen(1, transform);
+        walls[14] = WallsGen(0, transform);
+        walls[15] = WallsGen(1, transform);
+        walls[16] = WallsGen(0, transform);
+        walls[17] = WallsGen(1, transform);
+        walls[18] = WallsGen(0, transform);
+        walls[19] = WallsGen(1, transform);
+        walls[20] = WallsGen(0, transform);
+        walls[21] = WallsGen(1, transform);
+        walls[22] = WallsGen(0, transform);
+        walls[23] = WallsGen(1, transform);
     }
 
     //Creador de paredes no interactivas 
