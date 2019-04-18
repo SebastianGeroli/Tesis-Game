@@ -108,13 +108,13 @@ public class Invoker : MonoBehaviour
         switch (Form)
         {
             case 0:
-                gO = Instantiate(Resources.Load("BlueWalls"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BlueWalls6x6"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 1:
-                gO = Instantiate(Resources.Load("WhiteWalls"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("WhiteWalls6x6"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             default:
-                gO = Instantiate(Resources.Load("BlueWalls"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BlueWalls6x6"), invoker.position, Quaternion.identity) as GameObject;
                 break;
         }
         gO.GetComponent<Obstacles>().SetposInicial(gO.GetComponent<Transform>().position);
