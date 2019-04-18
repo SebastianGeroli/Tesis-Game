@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Invoker : MonoBehaviour
-{   /*###############################################################################
-                                       Variables
-    #################################################################################*/
+{  /*################################  Variables  ##################################*/
     public float minTime;
     private float timeWallsInv = 0.27f;
     private int lastInvoked = 0;
@@ -17,10 +15,8 @@ public class Invoker : MonoBehaviour
 
     // private int invMax = 9;
     // private int invMin = 0;
-    /*###############################################################################
-                                       Metodos
-    #################################################################################*/
-    
+    /*################################  Metodos  ##################################*/
+
     //Obstacle Generator
     public GameObject ObstaclesGen(int Obj, Transform invoker)
     {

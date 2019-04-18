@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SwipeDetector : MonoBehaviour
 {
+    /*################################  Variables  ##################################*/
     private static SwipeDetector instance;
     public static SwipeDetector Instance { get { return instance; } }
     private Vector2 fingerDownPosition;
@@ -16,6 +17,7 @@ public class SwipeDetector : MonoBehaviour
 
     public static event Action<SwipeData> OnSwipe = delegate { };
 
+    /*################################  Metodos  ##################################*/
     private void Start()
     {
         instance = this;
@@ -97,7 +99,7 @@ public class SwipeDetector : MonoBehaviour
 
     public bool IsSwiping(SwipeDirection dir) { return (dir == Direction); }
 }
-
+/*################################  Struct && Enum  ##################################*/
 public struct SwipeData
 {
     public Vector2 StartPosition;

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    /*################################  Variables  ##################################*/
     private float timer;
     public int GravityPos = 0;
     bool isJumping;
     Transform obstacle;
+    /*################################  Metodos  ##################################*/
     //Swipe Up
     public void SwipeUp() {
 		if (Input.GetKeyDown(KeyCode.W) || SwipeDetector.Instance.IsSwiping(SwipeDirection.Up)) {
@@ -259,7 +261,7 @@ public class Player : MonoBehaviour {
 			}
 		}      
     }
-
+    //Update
     void Update()
     {	// Debugs
         //Debug.Log("Timer: " + timer);
@@ -272,6 +274,7 @@ public class Player : MonoBehaviour {
 		SwipeDown ();
 
     }
+    //Trigger  || detecta si choca contra los obstaculos
     private void OnTriggerEnter(Collider other)
     {
         obstacle = other.gameObject.GetComponent<Transform>();

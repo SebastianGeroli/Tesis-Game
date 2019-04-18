@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroyer : MonoBehaviour
+public class ResetPosition : MonoBehaviour
 {
+    
+    /*################################  Metodos  ##################################*/
     //OnTrigger ResetPos
     private void OnTriggerEnter(Collider other)
     {
@@ -20,9 +22,19 @@ public class Destroyer : MonoBehaviour
             tr.parent.GetComponent<Obstacles>().LlegoDestino = true;
          
             tr.parent.transform.position = tr.parent.GetComponent<Obstacles>().GetposInicial();
+        }else if (tr.parent == null && tr.tag == "Obstacle")
+        {
+            tr = other.GetComponent<Transform>();
+            tr.GetComponent<Obstacles>().LlegoDestino = true;
+            tr.transform.position = tr.GetComponent<Obstacles>().GetposInicial();
+        }
+        else if (tr.parent != null && tr.parent.tag == "Obstacle")
+        {
+            tr = other.GetComponentInParent<Transform>();
+            tr.GetComponent<Obstacles>().LlegoDestino = true;
+            tr.transform.parent.position = tr.GetComponent<Obstacles>().GetposInicial();
         }
     }
-
     //OnTrigger Destroy
     //private void OnTriggerEnter(Collider other)
     //{
@@ -38,6 +50,4 @@ public class Destroyer : MonoBehaviour
     //        Destroy(tr.gameObject);
     //    }
     //}
-
-  
 }
