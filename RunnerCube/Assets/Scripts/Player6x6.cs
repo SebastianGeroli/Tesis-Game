@@ -9,12 +9,18 @@ public class Player6x6 : MonoBehaviour
     public int GravityPos = 0;
     bool isJumping;
     Transform obstacle;
-    private Vector3 up = new Vector3(0,2,0);
-    private Vector3 down = new Vector3(0, -2, 0);
+    private Vector3 up1 = new Vector3(0,2.5f,0);
+    private Vector3 up2 = new Vector3(0, 2.5f, 0);
+    private Vector3 down1 = new Vector3(0, -2.5f, 0);
+    private Vector3 down2 = new Vector3(0, -2.5f, 0);
+    private Vector3 upWall = new Vector3(0, 2, 0);
+    private Vector3 downWall = new Vector3(0, -2, 0);
     private Vector3 right = new Vector3(2, 0, 0);
     private Vector3 left = new Vector3(-2, 0, 0);
     private Vector3 shortRight = new Vector3(0.5f, 0, 0);
     private Vector3 shortLeft = new Vector3(-0.5f, 0, 0);
+    private Vector3 shortUp = new Vector3(0, 0.5f, 0);
+    private Vector3 shortDown = new Vector3(0, -0.5f, 0);
     private Vector3 LongRight = new Vector3(2.5f, 0, 0);
     private Vector3 LongLeft = new Vector3(-2.5f, 0, 0);
 
@@ -30,12 +36,12 @@ public class Player6x6 : MonoBehaviour
                 case 0:
                     if (!isJumping && transform.position.y !=2 )
                     {
-                        transform.Translate(up);
+                        transform.Translate(up1);
                         isJumping = true;
                     }
                     else if (isJumping && transform.position.y != 4)
                     {
-                        transform.Translate(up);
+                        transform.Translate(up2);
                         isJumping = false;
                         GravityPos = 1;
                     }
@@ -44,44 +50,44 @@ public class Player6x6 : MonoBehaviour
                 case 1:
                     if (isJumping)
                     {
-                        transform.Translate(up);
+                        transform.Translate(up2);
                         isJumping = false;
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
-                    if (isJumping && transform.position.y == 4f)
+                    if (isJumping && transform.position.y == 4.5f)
                     {
-                        //transform.Translate(-0.5f, 0, 0);
+                        transform.Translate(shortUp);
                         isJumping = false;
                         GravityPos = 1;
                     }
-                    else if (transform.position.y != 4)
+                    else if (transform.position.y != 4.5f)
                     {
-                        transform.Translate(up);
+                        transform.Translate(upWall);
                     }
-                    else if(!isJumping && transform.position.y == 4f)
+                    else if(!isJumping && transform.position.y == 4.5f)
                     {
-                        transform.Translate(shortLeft);
+                        transform.Translate(shortLeft+shortUp);
                         GravityPos = 1;
                     }
 
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
-                    if (isJumping && transform.position.y == 4f)
+                    if (isJumping && transform.position.y == 4.5f)
                     {
-                        //transform.Translate(0, 0.5f, 0);
+                        transform.Translate(shortUp);
                         isJumping = false;
                         GravityPos = 1;
                     }
-                    else if (transform.position.y != 4f)
+                    else if (transform.position.y != 4.5f)
                     {
-                        transform.Translate(up);
+                        transform.Translate(upWall);
                     }
-                    else if(!isJumping && transform.position.y == 4f)
+                    else if(!isJumping && transform.position.y == 4.5f)
                     {
-                        transform.Translate(shortRight);
+                        transform.Translate(shortRight+shortUp);
                         GravityPos = 1;
                     }
 
@@ -101,7 +107,7 @@ public class Player6x6 : MonoBehaviour
                 case 0:
                     if (isJumping)
                     {
-                        transform.Translate(down);
+                        transform.Translate(down1);
                         isJumping = false;
                     }
                     break;
@@ -110,50 +116,50 @@ public class Player6x6 : MonoBehaviour
                     if (!isJumping && transform.position.y != 0)
                     {
 
-                        transform.Translate(down);
+                        transform.Translate(down2);
                         isJumping = true;
                     }
                     else if (isJumping && transform.position.y != 0)
                     {
-                        transform.Translate(down);
+                        transform.Translate(down1);
                         isJumping = false;
                         GravityPos = 0;
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
-                    if (isJumping && transform.position.y == 0)
+                    if (isJumping && transform.position.y == 0.5f)
                     {
-                        //transform.Translate(shortLeft);
+                        transform.Translate(shortDown);
                         isJumping = false;
                         GravityPos = 0;
                     }
-                    else if (!isJumping && transform.position.y == 0)
+                    else if (!isJumping && transform.position.y == 0.5f)
                     {
-                        transform.Translate(shortLeft);
+                        transform.Translate(shortLeft+shortDown);
                         GravityPos = 0;
                     }
                     else
                     {
-                        transform.Translate(down);
+                        transform.Translate(downWall);
                     }
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
-                    if (isJumping && transform.position.y ==0)
+                    if (isJumping && transform.position.y ==0.5f)
                     {
-                        //transform.Translate(shortRight);
+                        transform.Translate(shortDown);
                         isJumping = false;
                         GravityPos = 0;
                     }
-                    else if (!isJumping && transform.position.y == 0)
+                    else if (!isJumping && transform.position.y == 0.5f)
                     {
-                        transform.Translate(shortRight);
+                        transform.Translate(shortRight+shortDown);
                         GravityPos = 0;
                     }
                     else
                     {
-                        transform.Translate(down);
+                        transform.Translate(downWall);
                     }
                     break;
             }
@@ -177,7 +183,7 @@ public class Player6x6 : MonoBehaviour
                     }
                     else if (!isJumping && transform.position.x == -2) 
                     {
-                        transform.Translate(shortLeft);
+                        transform.Translate(shortLeft+shortUp);
                         GravityPos = 3;
                         
                     }
@@ -196,7 +202,7 @@ public class Player6x6 : MonoBehaviour
                     }
                     else if (!isJumping && transform.position.x == -2)
                     {
-                        transform.Translate(shortLeft);
+                        transform.Translate(shortLeft+shortDown);
                         GravityPos = 3;
 
                     }
@@ -251,7 +257,7 @@ public class Player6x6 : MonoBehaviour
 
                     else if (!isJumping && transform.position.x == 2) 
                     {
-                        transform.Translate(shortRight);
+                        transform.Translate(shortRight+shortUp);
                         GravityPos = 2;
                         
                     }
@@ -272,7 +278,7 @@ public class Player6x6 : MonoBehaviour
 
                     else if (!isJumping && transform.position.x == 2)
                     {
-                        transform.Translate(shortRight);
+                        transform.Translate(shortRight+shortDown);
                         GravityPos = 2;
 
                     }

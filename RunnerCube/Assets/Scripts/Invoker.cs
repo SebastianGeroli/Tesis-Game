@@ -110,7 +110,7 @@ public class Invoker : MonoBehaviour
         switch (Form)
         {
             case 0:
-                gO = Instantiate(Resources.Load("BlueWalls6x5"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BlueWalls6x5Panels"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 1:
                 gO = Instantiate(Resources.Load("WhiteWalls6x5"), invoker.position, Quaternion.identity) as GameObject;
@@ -126,30 +126,56 @@ public class Invoker : MonoBehaviour
 
     //Instanciate de Walls || Instanciador de escenario
     public void WallsInstanciate() {
+        //Solo una
         walls[0] = WallsGen(0, transform);
-        walls[1] = WallsGen(1, transform);
+        walls[1] = WallsGen(0, transform);
         walls[2] = WallsGen(0, transform);
-        walls[3] = WallsGen(1, transform);
+        walls[3] = WallsGen(0, transform);
         walls[4] = WallsGen(0, transform);
-        walls[5] = WallsGen(1, transform);
+        walls[5] = WallsGen(0, transform);
         walls[6] = WallsGen(0, transform);
-        walls[7] = WallsGen(1, transform);
+        walls[7] = WallsGen(0, transform);
         walls[8] = WallsGen(0, transform);
-        walls[9] = WallsGen(1, transform);
+        walls[9] = WallsGen(0, transform);
         walls[10] = WallsGen(0, transform);
-        walls[11] = WallsGen(1, transform);
+        walls[11] = WallsGen(0, transform);
         walls[12] = WallsGen(0, transform);
-        walls[13] = WallsGen(1, transform);
+        walls[13] = WallsGen(0, transform);
         walls[14] = WallsGen(0, transform);
-        walls[15] = WallsGen(1, transform);
+        walls[15] = WallsGen(0, transform);
         walls[16] = WallsGen(0, transform);
-        walls[17] = WallsGen(1, transform);
+        walls[17] = WallsGen(0, transform);
         walls[18] = WallsGen(0, transform);
-        walls[19] = WallsGen(1, transform);
+        walls[19] = WallsGen(0, transform);
         walls[20] = WallsGen(0, transform);
-        walls[21] = WallsGen(1, transform);
+        walls[21] = WallsGen(0, transform);
         walls[22] = WallsGen(0, transform);
-        walls[23] = WallsGen(1, transform);
+        walls[23] = WallsGen(0, transform);
+        // una y una 
+        //walls[0] = WallsGen(0, transform);
+        //walls[1] = WallsGen(1, transform);
+        //walls[2] = WallsGen(0, transform);
+        //walls[3] = WallsGen(1, transform);
+        //walls[4] = WallsGen(0, transform);
+        //walls[5] = WallsGen(1, transform);
+        //walls[6] = WallsGen(0, transform);
+        //walls[7] = WallsGen(1, transform);
+        //walls[8] = WallsGen(0, transform);
+        //walls[9] = WallsGen(1, transform);
+        //walls[10] = WallsGen(0, transform);
+        //walls[11] = WallsGen(1, transform);
+        //walls[12] = WallsGen(0, transform);
+        //walls[13] = WallsGen(1, transform);
+        //walls[14] = WallsGen(0, transform);
+        //walls[15] = WallsGen(1, transform);
+        //walls[16] = WallsGen(0, transform);
+        //walls[17] = WallsGen(1, transform);
+        //walls[18] = WallsGen(0, transform);
+        //walls[19] = WallsGen(1, transform);
+        //walls[20] = WallsGen(0, transform);
+        //walls[21] = WallsGen(1, transform);
+        //walls[22] = WallsGen(0, transform);
+        //walls[23] = WallsGen(1, transform);
     }
 
     //Creador de paredes no interactivas 
