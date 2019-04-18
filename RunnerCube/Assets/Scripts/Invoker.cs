@@ -88,7 +88,7 @@ public class Invoker : MonoBehaviour
     public void ObstacleLauncher()
     {
         timerObs += Time.deltaTime;
-        if (timerObs > 1f)
+        if (timerObs > 1.5f)
         {
             obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
             obstacles[counterObstacle].GetComponent<Obstacles>().LlegoDestino = false;
