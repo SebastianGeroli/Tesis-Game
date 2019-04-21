@@ -7,6 +7,7 @@ public class GameManagerRunner : MonoBehaviour
     /*################################  Variables  ##################################*/
     public bool gameOver = false;
     public Invoker invoker;
+    public Player6x6 player;
 
     /*################################  Metodos  ##################################*/
     //GameOver Changer || este metodo cambia el gameover
@@ -55,7 +56,10 @@ public class GameManagerRunner : MonoBehaviour
 
             invoker.WallsLauncher();
             invoker.ObstacleLauncher();
-
+            if (player.GetVidas() <= 0) {
+                player.SetVidas(5);
+                player.VidasUpdate();
+            }
         }
     }
 }

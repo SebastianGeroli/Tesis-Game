@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player6x6 : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
+    public Text vidasText;
+    private int vidas = 5;
     private float timer;
     public int GravityPos = 0;
     bool isJumping;
@@ -23,8 +26,20 @@ public class Player6x6 : MonoBehaviour
     private Vector3 shortDown = new Vector3(0, -0.5f, 0);
     private Vector3 LongRight = new Vector3(2.5f, 0, 0);
     private Vector3 LongLeft = new Vector3(-2.5f, 0, 0);
-
+    /*################################  Getters && Setters  ##################################*/
+    public int GetVidas()
+    {
+        return vidas;
+    }
+    public void SetVidas(int a)
+    {
+        vidas = a;
+    }
     /*################################  Metodos  ##################################*/
+    //Update Vidas in Text
+    public void VidasUpdate() {
+        vidasText.text = GetVidas().ToString();
+    }
     //Swipe Up
     public void SwipeUp()
     {
@@ -313,6 +328,11 @@ public class Player6x6 : MonoBehaviour
             }
         }
     }
+    //Start 
+    private void Start()
+    {
+        VidasUpdate();
+    }
     //Update
     void Update()
     {   // Debugs
@@ -330,9 +350,19 @@ public class Player6x6 : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         obstacle = other.gameObject.GetComponent<Transform>();
-        if (obstacle.tag == "Objeto")
+        if (obstacle.tag == "Obstacle")
         {
+            int a = GetVidas();
+            SetVidas(a - 1);
             Debug.Log("Choco");
+            VidasUpdate();
         }
+        else if (obstacle.parent != null && obstacle.parent.tag == "Obstacle")
+        {
+            int a = GetVidas();
+            SetVidas(a - 1);
+            VidasUpdate();
+        }
+
     }
 }

@@ -12,15 +12,12 @@ public class ResetPosition : MonoBehaviour
         Transform tr = other.GetComponent<Transform>();
         if (tr.parent == null && tr.tag == "Escenario")
         {
-            tr = other.GetComponent<Transform>();
             tr.GetComponent<Obstacles>().LlegoDestino = true;
             tr.transform.position = tr.GetComponent<Obstacles>().GetposInicial();
         }
         else if (tr.parent != null && tr.parent.tag =="Escenario")
         {
-            tr = other.GetComponent<Transform>();
             tr.parent.GetComponent<Obstacles>().LlegoDestino = true;
-         
             tr.parent.transform.position = tr.parent.GetComponent<Obstacles>().GetposInicial();
         }else if (tr.parent == null && tr.tag == "Obstacle")
         {
@@ -30,9 +27,8 @@ public class ResetPosition : MonoBehaviour
         }
         else if (tr.parent != null && tr.parent.tag == "Obstacle")
         {
-            tr = other.GetComponentInParent<Transform>();
-            tr.GetComponent<Obstacles>().LlegoDestino = true;
-            tr.transform.parent.position = tr.GetComponent<Obstacles>().GetposInicial();
+            tr.GetComponentInParent<Obstacles>().LlegoDestino = true;
+            tr.transform.parent.position = tr.GetComponentInParent<Obstacles>().GetposInicial();
         }
     }
     //OnTrigger Destroy

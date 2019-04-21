@@ -28,18 +28,19 @@ public class SwipeDetector : MonoBehaviour
         Direction = SwipeDirection.None;
         foreach (Touch touch in Input.touches)
         {
+            //Inicio del toque
             if (touch.phase == TouchPhase.Began)
             {
                 fingerUpPosition = touch.position;
                 fingerDownPosition = touch.position;
             }
-
-            if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
-            {
-                fingerDownPosition = touch.position;
-                DetectSwipe();
-            }
-
+            //Toque Continuo
+            //if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
+            //{
+            //    fingerDownPosition = touch.position;
+            //    DetectSwipe();
+            //}
+            //Fin del toque
             if (touch.phase == TouchPhase.Ended)
             {
                 fingerDownPosition = touch.position;

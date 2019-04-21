@@ -6,7 +6,6 @@ public class Invoker : MonoBehaviour
 {  /*################################  Variables  ##################################*/
     public float minTime;
     private float timeWallsInv = 0.27f;
-    private int lastInvoked = 0;
     private GameObject[] obstacles = new GameObject[11];
     private GameObject[] walls = new GameObject[24];
     private Vector3 correccionUP = new Vector3(0, 0.5f, 0);
