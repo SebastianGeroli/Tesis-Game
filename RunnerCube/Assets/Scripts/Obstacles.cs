@@ -51,10 +51,10 @@ public class Obstacles : MonoBehaviour
 
         if (!LlegoDestino && PuedeSalir && rb.tag == "Obstacle")
         {
-            rb.transform.Translate(0, 0, -0.6f);
+            rb.transform.Translate(0, 0, -0.3f);
         }
         else if(!LlegoDestino && PuedeSalir && rb.tag == "Escenario") {
-            rb.transform.Translate(0, 0, -0.588f);
+            rb.transform.Translate(0, 0, -0.34f);
         }
             
 
