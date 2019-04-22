@@ -34,7 +34,7 @@ public class Invoker : MonoBehaviour
                 gO = Instantiate(Resources.Load("BigRight"), invoker.position + correccionUP*4 +correccionRight*2, Quaternion.identity) as GameObject;
                 break;
             case 3:
-                gO = Instantiate(Resources.Load("BigRoof"), invoker.position + correccionUP*2, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("BigRoof"), invoker.position + correccionUP*8, Quaternion.identity) as GameObject;
                 break;
             case 4:
                 gO = Instantiate(Resources.Load("Cruz"), invoker.position + correccionUP * 4, Quaternion.identity) as GameObject;

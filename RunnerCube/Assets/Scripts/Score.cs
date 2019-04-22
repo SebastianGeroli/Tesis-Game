@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,8 @@ public class Score : MonoBehaviour
             CheckScore();
             score = 0;
         }
-        score += Time.deltaTime * 10;
+        score += Time.deltaTime * 100;
+        score = (float)Math.Truncate(score);
         ScoreUpdate();
     }
     //Checkear si es mayor el score
