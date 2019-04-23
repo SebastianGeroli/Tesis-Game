@@ -215,8 +215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 539.979, y: 0.010192871}
-  m_SizeDelta: {x: 690.56, y: 0}
+  m_AnchoredPosition: {x: 253.7, y: 0.010192871}
+  m_SizeDelta: {x: 117.9, y: 0}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!114 &171545964
 MonoBehaviour:
@@ -305,15 +305,15 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.1
+    y: 0.05
     width: 1
-    height: 0.8
+    height: 0.9
   near clip plane: 0.1
   far clip plane: 300
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 279
@@ -445,8 +445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 539.98, y: 0}
-  m_SizeDelta: {x: 690.56, y: 0}
+  m_AnchoredPosition: {x: 280.5, y: 0}
+  m_SizeDelta: {x: 171.5, y: 0}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!114 &408330320
 MonoBehaviour:
@@ -660,7 +660,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -857,7 +857,6 @@ GameObject:
   - component: {fileID: 719672276}
   - component: {fileID: 719672275}
   - component: {fileID: 719672274}
-  - component: {fileID: 719672278}
   - component: {fileID: 719672279}
   - component: {fileID: 719672280}
   - component: {fileID: 719672281}
@@ -940,18 +939,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &719672278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719672273}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ae652174cbe864dad6cdafbfc6bc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &719672279
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1392,7 +1379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -442.59998, y: 832}
+  m_AnchoredPosition: {x: 128, y: 912}
   m_SizeDelta: {x: -885.3, y: -1827.9}
   m_Pivot: {x: 0.49999997, y: 0.5}
 --- !u!114 &2052756332
