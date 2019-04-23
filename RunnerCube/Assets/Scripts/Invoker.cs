@@ -43,41 +43,11 @@ public class Invoker : MonoBehaviour
                 gO = Instantiate(Resources.Load("MiddleUP"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 6:
-                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.Euler(0, 0, 90)) as GameObject;
                 break;
             case 7:
-                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.Euler(0, 0, -90)) as GameObject;
                 break;
-                //Case de objetos viejos
-            /* case 0:
-            gO = Instantiate(Resources.Load("Middle"), invoker.position + correccionUP*4+correccionLeft*2, Quaternion.identity) as GameObject;
-            break;
-        case 1:
-            gO = Instantiate(Resources.Load("MiddleFull"), invoker.position + correccionUP*2, Quaternion.identity) as GameObject;
-            break;
-        case 2:
-            gO = Instantiate(Resources.Load("MiddleUP"), invoker.position + correccionUP*4 +correccionRight*2, Quaternion.identity) as GameObject;
-            break;
-        case 3:
-            gO = Instantiate(Resources.Load("Short"), invoker.position + correccionUP*8, Quaternion.identity) as GameObject;
-            break;
-        case 4:
-            gO = Instantiate(Resources.Load("MiddleFull"), invoker.position + correccionUP * 4, Quaternion.identity) as GameObject;
-            break;
-        case 5:
-            gO = Instantiate(Resources.Load("MiddleUP"), invoker.position + correccionUP *2, Quaternion.identity) as GameObject;
-            break;
-        case 6:
-            gO = Instantiate(Resources.Load("Corner"), invoker.position + correccionUP *6, Quaternion.identity) as GameObject;
-            break;
-        case 7:
-            gO = Instantiate(Resources.Load("Corner"), invoker.position + correccionUP *2, Quaternion.identity) as GameObject;
-            break;*/
-            //case 8:
-            //	gO = Instantiate (Resources.Load ("Hexagon"))as Object;
-            //	Quaternion qt = gO.transform.rotation;
-            //	gO.transform.position = invoker.position + new Vector3 (0, 4, 0);
-            //	return gO;
             default:
                 gO = Instantiate(Resources.Load("Corner"), invoker.position + correccionUP, Quaternion.identity) as GameObject;
                 break;
