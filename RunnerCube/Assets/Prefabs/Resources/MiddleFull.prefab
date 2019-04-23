@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2937777636610082413}
   - component: {fileID: 5486101537196085588}
   m_Layer: 0
-  m_Name: RightMedium (2)
+  m_Name: upmiddle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,10 +28,10 @@ Transform:
   m_GameObject: {fileID: 495117031729412954}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.2}
   m_Children: []
-  m_Father: {fileID: 7756281251085480166}
-  m_RootOrder: 0
+  m_Father: {fileID: 5039274093689823551}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8121939663463753904
 MeshFilter:
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5017255c769c88d498bfd7dc0499acd3, type: 2}
+  - {fileID: 2100000, guid: 20358e47251a61c419830482dcb50099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3702499041030899320}
   - component: {fileID: 8716758088688689183}
   m_Layer: 0
-  m_Name: RightMedium (3)
+  m_Name: downleft
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,11 +119,10 @@ Transform:
   m_GameObject: {fileID: 1272014315659725363}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2, y: -2, z: 0}
-  m_LocalScale: {x: 0.2, y: 2, z: 0.2}
-  m_Children:
-  - {fileID: 2181795875169275578}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.2}
+  m_Children: []
   m_Father: {fileID: 5039274093689823551}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2069322878167316998
 MeshFilter:
@@ -150,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5017255c769c88d498bfd7dc0499acd3, type: 2}
+  - {fileID: 2100000, guid: 20358e47251a61c419830482dcb50099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -196,7 +195,7 @@ GameObject:
   - component: {fileID: 9082476868266872944}
   - component: {fileID: 8816634588919212990}
   m_Layer: 0
-  m_Name: RightMedium (1)
+  m_Name: downmiddle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,11 +210,10 @@ Transform:
   m_GameObject: {fileID: 4234579496771603660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 0.2, y: 2, z: 0.2}
-  m_Children:
-  - {fileID: 879723482022525724}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.2}
+  m_Children: []
   m_Father: {fileID: 5039274093689823551}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1682972092478816056
 MeshFilter:
@@ -242,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5017255c769c88d498bfd7dc0499acd3, type: 2}
+  - {fileID: 2100000, guid: 20358e47251a61c419830482dcb50099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -304,9 +302,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8934536026121828329}
   - {fileID: 7756281251085480166}
   - {fileID: 9085692980997258235}
-  - {fileID: 8934536026121828329}
+  - {fileID: 879723482022525724}
+  - {fileID: 2181795875169275578}
+  - {fileID: 1699604578102389218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -354,7 +355,7 @@ GameObject:
   - component: {fileID: 7852996986285067105}
   - component: {fileID: 3325688395778696638}
   m_Layer: 0
-  m_Name: RightMedium (2)
+  m_Name: downright
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,11 +370,10 @@ Transform:
   m_GameObject: {fileID: 7109973686918501803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2, y: -2, z: 0}
-  m_LocalScale: {x: 0.2, y: 2, z: 0.2}
-  m_Children:
-  - {fileID: 1699604578102389218}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.2}
+  m_Children: []
   m_Father: {fileID: 5039274093689823551}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8184810556881392066
 MeshFilter:
@@ -400,7 +400,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5017255c769c88d498bfd7dc0499acd3, type: 2}
+  - {fileID: 2100000, guid: 20358e47251a61c419830482dcb50099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 776418305789964009}
   - component: {fileID: 7908626571644457588}
   m_Layer: 0
-  m_Name: RightMedium (2)
+  m_Name: upleft
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,11 +460,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8876876430846634406}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2, y: 2, z: 0}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.2}
   m_Children: []
-  m_Father: {fileID: 8934536026121828329}
-  m_RootOrder: 0
+  m_Father: {fileID: 5039274093689823551}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2027194856211446592
 MeshFilter:
@@ -491,7 +491,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5017255c769c88d498bfd7dc0499acd3, type: 2}
+  - {fileID: 2100000, guid: 20358e47251a61c419830482dcb50099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 927357850341552077}
   - component: {fileID: 4079431503462731353}
   m_Layer: 0
-  m_Name: RightMedium (2)
+  m_Name: upleft
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -551,11 +551,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8916853813671947286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 2, y: 2, z: 0}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.2}
   m_Children: []
-  m_Father: {fileID: 9085692980997258235}
-  m_RootOrder: 0
+  m_Father: {fileID: 5039274093689823551}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7200507879269627891
 MeshFilter:
@@ -582,7 +582,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5017255c769c88d498bfd7dc0499acd3, type: 2}
+  - {fileID: 2100000, guid: 20358e47251a61c419830482dcb50099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

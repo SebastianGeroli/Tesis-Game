@@ -37,7 +37,7 @@ public class Invoker : MonoBehaviour
                 gO = Instantiate(Resources.Load("Short"), invoker.position , Quaternion.identity) as GameObject;
                 break;
             case 4:
-                gO = Instantiate(Resources.Load("MiddleFull"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleFull"), invoker.position, Quaternion.Euler(0,0,90)) as GameObject;
                 break;
             case 5:
                 gO = Instantiate(Resources.Load("MiddleUP"), invoker.position, Quaternion.identity) as GameObject;
