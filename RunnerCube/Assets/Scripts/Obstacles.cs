@@ -5,6 +5,8 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
+    [SerializeField]
+    private Vector3 velocity = new Vector3(0,0,-0.3f);
     private int forma;
     public bool LlegoDestino = false;
     public bool PuedeSalir = false;
@@ -51,7 +53,7 @@ public class Obstacles : MonoBehaviour
 
         if (!LlegoDestino && PuedeSalir && rb.tag == "Obstacle")
         {
-            rb.transform.Translate(0, 0, -0.3f);
+            rb.transform.Translate(velocity);
         }
         else if(!LlegoDestino && PuedeSalir && rb.tag == "Escenario") {
             rb.transform.Translate(0, 0, -0.34f);
