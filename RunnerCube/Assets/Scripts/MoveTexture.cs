@@ -20,5 +20,8 @@ public class MoveTexture : MonoBehaviour
     {
         float offset = Time.time * scrollSpeed;
         material.mainTextureOffset = new Vector2 (0,offset);
+        
+      
     }
+    
 }
