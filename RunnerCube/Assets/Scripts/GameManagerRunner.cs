@@ -50,8 +50,7 @@ public class GameManagerRunner : MonoBehaviour
         if (!gameOver)
         {
             timerObs += Time.deltaTime;
-            // invoker.WallsLauncher();
-            //invoker.ObstacleLauncher();
+            
            invoker.ObstacleLauncher();
             if (player.GetVidas() <= 0)
             {
@@ -61,17 +60,5 @@ public class GameManagerRunner : MonoBehaviour
         }
         
     }
-    private void FixedUpdate()
-    {
-        
-        if (!gameOver)
-        {
-
-           // invoker.WallsLauncher();
-            //invoker.ObstacleLauncher();
-            
-        }
-    }
 }
-//FixedUpdate
 
