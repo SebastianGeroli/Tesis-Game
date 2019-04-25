@@ -9,7 +9,6 @@ public class Obstacles : MonoBehaviour
     private Vector3 velocity = new Vector3(0,0,-0.3f);
     
     private int forma;
-    public bool LlegoDestino = false;
     public bool PuedeSalir = false;
     private Vector3 posInicial;
     public Rigidbody rb;
@@ -54,12 +53,9 @@ public class Obstacles : MonoBehaviour
     public void MoveFloor()
     {
 
-        if (!LlegoDestino && PuedeSalir && rb.tag == "Obstacle")
+        if (PuedeSalir && rb.tag == "Obstacle")
         {
             rb.transform.Translate(velocity);
-        }
-        else if(!LlegoDestino && PuedeSalir && rb.tag == "Escenario") {
-            rb.transform.Translate(0, 0, -0.34f);
         }
             
 

@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 3991138275200808592}
   m_Layer: 0
   m_Name: MiddleUP
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LlegoDestino: 0
+  velocity: {x: 0, y: 0, z: -0.3}
   PuedeSalir: 0
   rb: {fileID: 0}
 --- !u!54 &3991138275200808592

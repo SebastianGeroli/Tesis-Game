@@ -8,7 +8,7 @@ public class GameManagerRunner : MonoBehaviour
     public bool gameOver = false;
     public Invoker invoker;
     public Player6x6 player;
-
+    private float timerObs = 0;
     /*################################  Metodos  ##################################*/
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
@@ -47,6 +47,19 @@ public class GameManagerRunner : MonoBehaviour
         {
             Pause();
         }
+        if (!gameOver)
+        {
+            timerObs += Time.deltaTime;
+            // invoker.WallsLauncher();
+            //invoker.ObstacleLauncher();
+           invoker.ObstacleLauncher();
+            if (player.GetVidas() <= 0)
+            {
+                player.SetVidas(5);
+                player.VidasUpdate();
+            }
+        }
+        
     }
     private void FixedUpdate()
     {
@@ -55,11 +68,8 @@ public class GameManagerRunner : MonoBehaviour
         {
 
            // invoker.WallsLauncher();
-            invoker.ObstacleLauncher();
-            if (player.GetVidas() <= 0) {
-                player.SetVidas(5);
-                player.VidasUpdate();
-            }
+            //invoker.ObstacleLauncher();
+            
         }
     }
 }

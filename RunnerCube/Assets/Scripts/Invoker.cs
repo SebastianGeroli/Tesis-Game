@@ -5,15 +5,14 @@ using UnityEngine;
 public class Invoker : MonoBehaviour
 {  /*################################  Variables  ##################################*/
     public float minTime;
-    private float timeWallsInv = 0.27f;
+    [SerializeField]
     private GameObject[] obstacles = new GameObject[11];
-    private GameObject[] walls = new GameObject[24];
-    private Vector3 correccionUP = new Vector3(0, 0.5f, 0);
-    private Vector3 correccionLeft = new Vector3(-0.5f, 0, 0);
-    private Vector3 correccionRight = new Vector3(0.5f, 0, 0);
-    private Vector3 correccionDown = new Vector3(0, -0.5f, 0);
-    private int counterObstacle, counterWalls,nextObj;
-    private float timerWalls, timerObs;
+    //private Vector3 correccionUP = new Vector3(0, 0.5f, 0);
+    //private Vector3 correccionLeft = new Vector3(-0.5f, 0, 0);
+    //private Vector3 correccionRight = new Vector3(0.5f, 0, 0);
+    //private Vector3 correccionDown = new Vector3(0, -0.5f, 0);
+    private int counterObstacle = 0;
+    private float timerObs = 0;
     // private int invMax = 9;
     // private int invMin = 0;
     /*################################  Metodos  ##################################*/
@@ -48,8 +47,14 @@ public class Invoker : MonoBehaviour
             case 7:
                 gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.Euler(0, 0, -90)) as GameObject;
                 break;
+            case 8:
+                gO = Instantiate(Resources.Load("Corners"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+            case 9:
+                gO = Instantiate(Resources.Load("CornersMiddle"), invoker.position, Quaternion.identity) as GameObject;
+                break;
             default:
-                gO = Instantiate(Resources.Load("Corner"), invoker.position + correccionUP, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.identity) as GameObject;
                 break;
         }
 
@@ -69,8 +74,8 @@ public class Invoker : MonoBehaviour
         obstacles[5] = ObstaclesGen(5, transform);
         obstacles[6] = ObstaclesGen(6, transform);
         obstacles[7] = ObstaclesGen(7, transform);
-        obstacles[8] = ObstaclesGen(0, transform);
-        obstacles[9] = ObstaclesGen(1, transform);
+        obstacles[8] = ObstaclesGen(8, transform);
+        obstacles[9] = ObstaclesGen(9, transform);
         obstacles[10] = ObstaclesGen(2, transform);
         //obstacles[11] = ObstaclesGen(3, transform);
         //obstacles[12] = ObstaclesGen(4, transform);
@@ -81,115 +86,24 @@ public class Invoker : MonoBehaviour
     }
 
     //Obstacle Launcher
-    public void ObstacleLauncher()
+    public float ObstacleLauncher()
     {
         timerObs += Time.deltaTime;
-        if (timerObs > 1.5f)
-        {
-            obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
-            obstacles[counterObstacle].GetComponent<Obstacles>().LlegoDestino = false;
-            timerObs = 0;
-        }
-        counterObstacle++;
         if (counterObstacle == obstacles.Length)
         {
             counterObstacle = 0;
         }
-    }
-
-    //Walls Generator|| Escenario
-    public GameObject WallsGen(int Form, Transform invoker)
-    {
-        GameObject gO;
-        switch (Form)
+        
+        if (timerObs > 2f)
         {
-            case 0:
-                gO = Instantiate(Resources.Load("Walls6x6"), invoker.position, Quaternion.identity) as GameObject;
-                break;
-            case 1:
-                gO = Instantiate(Resources.Load("Walls6x6"), invoker.position, Quaternion.identity) as GameObject;
-                break;
-            default:
-                gO = Instantiate(Resources.Load("Walls6x6"), invoker.position, Quaternion.identity) as GameObject;
-                break;
+            obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
+            timerObs = 0;
+            counterObstacle += 1;
         }
-        gO.GetComponent<Obstacles>().SetposInicial(gO.GetComponent<Transform>().position);
-        gO.GetComponent<Obstacles>().SetForma(Form);
-        return gO;
+       
+        
+        return timerObs;
     }
-
-    //Instanciate de Walls || Instanciador de escenario
-    public void WallsInstanciate() {
-        //Solo una
-        walls[0] = WallsGen(0, transform);
-        walls[1] = WallsGen(0, transform);
-        walls[2] = WallsGen(0, transform);
-        walls[3] = WallsGen(0, transform);
-        walls[4] = WallsGen(0, transform);
-        walls[5] = WallsGen(0, transform);
-        walls[6] = WallsGen(0, transform);
-        walls[7] = WallsGen(0, transform);
-        walls[8] = WallsGen(0, transform);
-        walls[9] = WallsGen(0, transform);
-        walls[10] = WallsGen(0, transform);
-        walls[11] = WallsGen(0, transform);
-        walls[12] = WallsGen(0, transform);
-        walls[13] = WallsGen(0, transform);
-        walls[14] = WallsGen(0, transform);
-        walls[15] = WallsGen(0, transform);
-        walls[16] = WallsGen(0, transform);
-        walls[17] = WallsGen(0, transform);
-        walls[18] = WallsGen(0, transform);
-        walls[19] = WallsGen(0, transform);
-        walls[20] = WallsGen(0, transform);
-        walls[21] = WallsGen(0, transform);
-        walls[22] = WallsGen(0, transform);
-        walls[23] = WallsGen(0, transform);
-        // una y una 
-        //walls[0] = WallsGen(0, transform);
-        //walls[1] = WallsGen(1, transform);
-        //walls[2] = WallsGen(0, transform);
-        //walls[3] = WallsGen(1, transform);
-        //walls[4] = WallsGen(0, transform);
-        //walls[5] = WallsGen(1, transform);
-        //walls[6] = WallsGen(0, transform);
-        //walls[7] = WallsGen(1, transform);
-        //walls[8] = WallsGen(0, transform);
-        //walls[9] = WallsGen(1, transform);
-        //walls[10] = WallsGen(0, transform);
-        //walls[11] = WallsGen(1, transform);
-        //walls[12] = WallsGen(0, transform);
-        //walls[13] = WallsGen(1, transform);
-        //walls[14] = WallsGen(0, transform);
-        //walls[15] = WallsGen(1, transform);
-        //walls[16] = WallsGen(0, transform);
-        //walls[17] = WallsGen(1, transform);
-        //walls[18] = WallsGen(0, transform);
-        //walls[19] = WallsGen(1, transform);
-        //walls[20] = WallsGen(0, transform);
-        //walls[21] = WallsGen(1, transform);
-        //walls[22] = WallsGen(0, transform);
-        //walls[23] = WallsGen(1, transform);
-    }
-
-    //Creador de paredes no interactivas 
-    public void WallsLauncher()
-    {
-        timerWalls += Time.deltaTime;
-        if (timerWalls > timeWallsInv)
-        {
-            walls[counterWalls].GetComponent<Obstacles>().PuedeSalir = true;
-            walls[counterWalls].GetComponent<Obstacles>().LlegoDestino = false;
-            timerWalls = 0;
-        }
-        counterWalls++;
-        if (counterWalls == walls.Length)
-        {
-            counterWalls = 0;
-        }
-
-    }
-
 }
 
 

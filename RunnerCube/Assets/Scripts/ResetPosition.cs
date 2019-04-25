@@ -12,22 +12,22 @@ public class ResetPosition : MonoBehaviour
         Transform tr = other.GetComponent<Transform>();
         if (tr.parent == null && tr.tag == "Escenario")
         {
-            tr.GetComponent<Obstacles>().LlegoDestino = true;
+            tr.GetComponent<Obstacles>().PuedeSalir = false;
             tr.transform.position = tr.GetComponent<Obstacles>().GetposInicial();
         }
         else if (tr.parent != null && tr.parent.tag =="Escenario")
         {
-            tr.parent.GetComponent<Obstacles>().LlegoDestino = true;
+            tr.parent.GetComponent<Obstacles>().PuedeSalir = false;
             tr.parent.transform.position = tr.parent.GetComponent<Obstacles>().GetposInicial();
         }else if (tr.parent == null && tr.tag == "Obstacle")
         {
             tr = other.GetComponent<Transform>();
-            tr.GetComponent<Obstacles>().LlegoDestino = true;
+            tr.GetComponent<Obstacles>().PuedeSalir = false;
             tr.transform.position = tr.GetComponent<Obstacles>().GetposInicial();
         }
         else if (tr.parent != null && tr.parent.tag == "Obstacle")
         {
-            tr.GetComponentInParent<Obstacles>().LlegoDestino = true;
+            tr.GetComponentInParent<Obstacles>().PuedeSalir = false;
             tr.transform.parent.position = tr.GetComponentInParent<Obstacles>().GetposInicial();
         }
     }
