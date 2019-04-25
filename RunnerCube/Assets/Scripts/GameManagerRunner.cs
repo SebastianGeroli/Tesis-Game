@@ -37,7 +37,7 @@ public class GameManagerRunner : MonoBehaviour
     //Start
     public void Start()
     {
-        invoker.WallsInstanciate();
+       // invoker.WallsInstanciate();
         invoker.ObstacleInstanciate();
     }
     //Update
@@ -54,7 +54,7 @@ public class GameManagerRunner : MonoBehaviour
         if (!gameOver)
         {
 
-            invoker.WallsLauncher();
+           // invoker.WallsLauncher();
             invoker.ObstacleLauncher();
             if (player.GetVidas() <= 0) {
                 player.SetVidas(5);

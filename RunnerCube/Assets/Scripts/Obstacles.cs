@@ -7,12 +7,14 @@ public class Obstacles : MonoBehaviour
     /*################################  Variables  ##################################*/
     [SerializeField]
     private Vector3 velocity = new Vector3(0,0,-0.3f);
+    
     private int forma;
     public bool LlegoDestino = false;
     public bool PuedeSalir = false;
     private Vector3 posInicial;
     public Rigidbody rb;
     Obstacles obstaculo;
+ 
     /*################################  Getters && Setters  ##################################*/
     //Get & Set de Forma
     public int GetForma()
@@ -37,6 +39,7 @@ public class Obstacles : MonoBehaviour
     //Start
     void Start()
     {
+        
         rb = transform.GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }
@@ -61,4 +64,6 @@ public class Obstacles : MonoBehaviour
             
 
     }
+
+    
 }
