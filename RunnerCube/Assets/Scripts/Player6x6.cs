@@ -31,15 +31,18 @@ public class Player6x6 : MonoBehaviour
     {
         return vidas;
     }
+
     public void SetVidas(int a)
     {
         vidas = a;
     }
+
     /*################################  Metodos  ##################################*/
     //Update Vidas in Text
     public void VidasUpdate() {
         vidasText.text = GetVidas().ToString();
     }
+
     //Swipe Up
     public void SwipeUp()
     {
@@ -110,6 +113,7 @@ public class Player6x6 : MonoBehaviour
             }
         }
     }
+
     //Swipe Down
     public void SwipeDown()
     {
@@ -181,6 +185,7 @@ public class Player6x6 : MonoBehaviour
         }
 
     }
+
     //Swipe Left
     public void SwipeLeft()
     {
@@ -253,6 +258,7 @@ public class Player6x6 : MonoBehaviour
         }
 
     }
+
     //Swipe Right
     public void SwipeRight()
     {
@@ -328,11 +334,13 @@ public class Player6x6 : MonoBehaviour
             }
         }
     }
+
     //Start 
     private void Start()
     {
         VidasUpdate();
     }
+
     //Update
     void Update()
     {   // Debugs
@@ -346,6 +354,7 @@ public class Player6x6 : MonoBehaviour
         SwipeDown();
 
     }
+
     //Trigger  || detecta si choca contra los obstaculos
     private void OnTriggerEnter(Collider other)
     {
@@ -365,4 +374,5 @@ public class Player6x6 : MonoBehaviour
         }
 
     }
+
 }

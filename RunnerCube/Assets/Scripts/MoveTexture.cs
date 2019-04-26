@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MoveTexture : MonoBehaviour
 {
+    /*################################ Variables ##################################*/
     Material material;
     float scrollSpeed = 2f;
+    /*################################ Metodos  ##################################*/
+    //Start
     private void Start()
     {
         material = transform.GetComponent<Renderer>().material;

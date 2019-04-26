@@ -5,14 +5,11 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
-    [SerializeField]
     private Vector3 velocity = new Vector3(0,0,-0.3f);
-    
     private int forma;
     public bool PuedeSalir = false;
     private Vector3 posInicial;
     public Rigidbody rb;
-    Obstacles obstaculo;
  
     /*################################  Getters && Setters  ##################################*/
     //Get & Set de Forma
@@ -20,9 +17,15 @@ public class Obstacles : MonoBehaviour
     {
         return forma;
     }
+
     public int SetForma(int a)
     {
         return forma = a;
+    }
+
+    //SetVelocity
+    public void SetVelocity(Vector3 vec3) {
+        velocity = vec3;
     }
 
     //Get & Set de GetPosInicial
@@ -30,10 +33,12 @@ public class Obstacles : MonoBehaviour
     {
         return posInicial;
     }
+
     public void SetposInicial(Vector3 a)
     {
         posInicial = a;
     }
+
     /*################################  Metodos  ##################################*/
     //Start
     void Start()

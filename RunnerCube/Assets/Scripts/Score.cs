@@ -6,10 +6,19 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
+    /*################################  Variables ##################################*/
     public Player6x6 player;
     public Text ScoreText, BestText;
     float score;
-    // Start is called before the first frame update
+
+    /*################################  Getters && Setters  ##################################*/
+    public float GetScore()
+    {
+        return score;
+    }
+
+    /*################################  Metodos  ##################################*/
+    //Start
     void Start()
     {
         BestText.text = "0";
@@ -18,20 +27,19 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetVidas() <= 0) {
-            CheckScore();
-            score = 0;
-        }
         score += Time.deltaTime * 100;
         score = (float)Math.Truncate(score);
         ScoreUpdate();
     }
+
     //Checkear si es mayor el score
     public void CheckScore() {
         if (float.Parse(ScoreText.text)>float.Parse(BestText.text)) {
             BestText.text = ScoreText.text;
         }
+        score = 0;
     }
+
     //UpdateScore
     public void ScoreUpdate() {
         ScoreText.text = score.ToString();
