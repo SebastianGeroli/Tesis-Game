@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameManagerRunner : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
+    public bool isPc = false;
     public int etapa = 1;
     public Score score;
     public bool gameOver = false;
     public Invoker invoker;
     public Player6x6 player;
-    private float timerObs = 0;
+    //private float timerObs = 0;
     /*################################  Metodos  ##################################*/
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
@@ -54,8 +55,7 @@ public class GameManagerRunner : MonoBehaviour
         }
         if (!gameOver)
         {
-            SpeedUp();
-            timerObs += Time.deltaTime;
+            //timerObs += Time.deltaTime;
             
            invoker.ObstacleLauncher();
             if (player.GetVidas() <= 0)
@@ -67,35 +67,106 @@ public class GameManagerRunner : MonoBehaviour
         }
         
     }
+    private void FixedUpdate()
+    {
+        SpeedUp();
+    }
 
     //SpeedUp
     public void SpeedUp() {
-        if (score.GetScore() > 1000 && etapa == 1) {
-            for (int i = 0; i < invoker.obstacles.Length; i++)
-            {
-                Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                obs.SetVelocity(new Vector3(0, 0, -0.4f));
-                etapa = 2;
-            }
-        }
-        if (score.GetScore() > 2000 && etapa == 2)
+        if (!isPc)
         {
-            for (int i = 0; i < invoker.obstacles.Length; i++)
+            if (score.GetScore() > 1000 && etapa == 1)
             {
-                Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                obs.SetVelocity(new Vector3(0, 0, -0.5f));
-                etapa = 3;
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.4f));
+                    etapa = 2;
+                }
+            }
+            if (score.GetScore() > 2000 && etapa == 2)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.5f));
+                    etapa = 3;
+                }
+            }
+            if (score.GetScore() > 3000 && etapa == 3)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.6f));
+                    etapa = 3;
+                }
             }
         }
-        if (score.GetScore() > 3000 && etapa == 3)
-        {
-            for (int i = 0; i < invoker.obstacles.Length; i++)
+        else {
+            if (score.GetScore() > 1000 && etapa == 1)
             {
-                Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                obs.SetVelocity(new Vector3(0, 0, -0.6f));
-                etapa = 3;
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.4f));
+                    invoker.SetlaunchTime(1.8f);
+                    etapa = 2;
+                }
+            }
+            if (score.GetScore() > 2000 && etapa == 2)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.5f));
+                    invoker.SetlaunchTime(1.6f);
+                    etapa = 3;
+                }
+            }
+            if (score.GetScore() > 3000 && etapa == 3)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.6f));
+                    invoker.SetlaunchTime(1.4f);
+                    etapa = 4;
+                }
+            }
+            if (score.GetScore() > 4000 && etapa == 4)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.7f));
+                    invoker.SetlaunchTime(1.2f);
+                    etapa = 5;
+                }
+            }
+            if (score.GetScore() > 5000 && etapa == 5)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.8f));
+                    invoker.SetlaunchTime(1f);
+                    etapa = 6;
+                }
+            }
+            if (score.GetScore() > 6000 && etapa == 6)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.9f));
+                    invoker.SetlaunchTime(0.8f);
+                    etapa = 6;
+                }
             }
         }
+       
 
     }
 }

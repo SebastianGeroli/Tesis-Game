@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class Invoker : MonoBehaviour
 {  /*################################  Variables  ##################################*/
-    public float minTime;
+    [SerializeField]
+    private float launchTime = 2.0f;
     public GameObject[] obstacles = new GameObject[18];
     [SerializeField]
     private int counterObstacle = 0;
     private float timerObs = 0;
     // private int invMax = 9;
     // private int invMin = 0;
+    /*################################  Getters && Setters  ##################################*/
+    public void SetlaunchTime(float a) {
+        launchTime = a;
+    }
+    public float GetlaunchTime()
+    {
+        return launchTime;
+    }
     /*################################  Metodos  ##################################*/
     //Obstacle Generator
     public GameObject ObstaclesGen(int Obj, Transform invoker)
@@ -110,7 +119,7 @@ public class Invoker : MonoBehaviour
     public float ObstacleLauncher()
     {
         timerObs += Time.deltaTime;
-        if (timerObs > 2f && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false)
+        if (timerObs > launchTime && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false)
         {
             obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
             timerObs = 0;
