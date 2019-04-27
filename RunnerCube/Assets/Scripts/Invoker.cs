@@ -12,7 +12,6 @@ public class Invoker : MonoBehaviour
     // private int invMax = 9;
     // private int invMin = 0;
     /*################################  Metodos  ##################################*/
-
     //Obstacle Generator
     public GameObject ObstaclesGen(int Obj, Transform invoker)
     {
@@ -125,6 +124,7 @@ public class Invoker : MonoBehaviour
         return timerObs;
     }
 }
+
 
 
 
