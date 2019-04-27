@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Player6x6 : MonoBehaviour
 {
+    public GameManagerRunner gameManager;
     /*################################  Variables  ##################################*/
     public Text vidasText;
     private int vidas = 5;
@@ -348,10 +349,13 @@ public class Player6x6 : MonoBehaviour
         //Debug.Log("Esta saltando: "+ isJumping);
         //Debug.Log("Gravedad: "+GravityPos);
         //Fin Debugs
-        SwipeUp();
-        SwipeRight();
-        SwipeLeft();
-        SwipeDown();
+        if (!gameManager.pause) {
+            SwipeUp();
+            SwipeRight();
+            SwipeLeft();
+            SwipeDown();
+        }
+        
 
     }
 
