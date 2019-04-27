@@ -112,7 +112,7 @@ public class GameManagerRunner : MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.4f));
                     invoker.SetlaunchTime(1.8f);
-                    score.Multiplier = 1.2f;
+                    score.multiplier = 1.2f;
                     etapa = 2;
                 }
             }
@@ -123,7 +123,7 @@ public class GameManagerRunner : MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.5f));
                     invoker.SetlaunchTime(1.6f);
-                    score.Multiplier = 1.4f;
+                    score.multiplier = 1.4f;
                     etapa = 3;
                 }
             }
@@ -134,7 +134,7 @@ public class GameManagerRunner : MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.6f));
                     invoker.SetlaunchTime(1.4f);
-                    score.Multiplier = 1.6f;
+                    score.multiplier = 1.6f;
                     etapa = 4;
                 }
             }
@@ -145,7 +145,7 @@ public class GameManagerRunner : MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.7f));
                     invoker.SetlaunchTime(1.2f);
-                    score.Multiplier = 1.8f;
+                    score.multiplier = 1.8f;
                     etapa = 5;
                 }
             }
@@ -156,7 +156,7 @@ public class GameManagerRunner : MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.8f));
                     invoker.SetlaunchTime(1f);
-                    score.Multiplier = 2f;
+                    score.multiplier = 2f;
                     etapa = 6;
                 }
             }
@@ -167,7 +167,7 @@ public class GameManagerRunner : MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.9f));
                     invoker.SetlaunchTime(0.8f);
-                    score.Multiplier = 3f;
+                    score.multiplier = 3f;
                     etapa = 6;
                 }
             }
