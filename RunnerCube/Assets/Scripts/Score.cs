@@ -10,6 +10,7 @@ public class Score : MonoBehaviour
     public Player6x6 player;
     public Text ScoreText, BestText;
     float score;
+    public float Multiplier = 1;
 
     /*################################  Getters && Setters  ##################################*/
     public float GetScore()
@@ -27,7 +28,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score += Time.deltaTime * 100;
+        score += Time.deltaTime * 100 * Multiplier;
         score = (float)Math.Truncate(score);
         ScoreUpdate();
     }
