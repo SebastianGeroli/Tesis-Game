@@ -7,6 +7,7 @@ public class GameManagerRunner : MonoBehaviour
     /*################################  Variables  ##################################*/
     public Camera camera1;
     public Camera camera2;
+    public bool useSecondCamera = false;
     public bool pause = false;
     public bool isPc = false;
     public int etapa = 1;
@@ -50,6 +51,7 @@ public class GameManagerRunner : MonoBehaviour
     //Update
     public void Update()
     {
+        CameraChanger();
         if (pause)
         {
             Time.timeScale = 0;
@@ -236,7 +238,7 @@ public class GameManagerRunner : MonoBehaviour
 
     //Camera Changer
     public void CameraChanger() {
-        if (camera1.enabled == true)
+        if (useSecondCamera)
         {
             camera1.enabled = false;
             camera2.enabled = true;
