@@ -4,8 +4,6 @@ using UnityEngine;
 public class SwipeDetector : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
-    private static SwipeDetector instance;
-    public static SwipeDetector Instance { get { return instance; } }
     private Vector2 fingerDownPosition;
     private Vector2 fingerUpPosition;
     private SwipeDirection Direction { set; get; }
@@ -13,14 +11,14 @@ public class SwipeDetector : MonoBehaviour
     private bool detectSwipeOnlyAfterRelease = false;
 
     [SerializeField]
-    private float minDistanceForSwipe = 20f;
+    private float minDistanceForSwipe;
 
     public static event Action<SwipeData> OnSwipe = delegate { };
 
     /*################################  Metodos  ##################################*/
     private void Start()
     {
-        instance = this;
+        minDistanceForSwipe = Screen.width /5f ;
     }
 
     private void Update()
@@ -35,11 +33,11 @@ public class SwipeDetector : MonoBehaviour
                 fingerDownPosition = touch.position;
             }
             //Toque Continuo
-            //if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
-            //{
-            //    fingerDownPosition = touch.position;
-            //    DetectSwipe();
-            //}
+            if (!detectSwipeOnlyAfterRelease && touch.phase == TouchPhase.Moved)
+            {
+                fingerDownPosition = touch.position;
+                DetectSwipe();
+            }
             //Fin del toque
             if (touch.phase == TouchPhase.Ended)
             {
@@ -97,8 +95,6 @@ public class SwipeDetector : MonoBehaviour
         };
         OnSwipe(swipeData);
     }
-
-    public bool IsSwiping(SwipeDirection dir) { return (dir == Direction); }
 }
 /*################################  Struct && Enum  ##################################*/
 public struct SwipeData

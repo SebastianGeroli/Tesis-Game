@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player6x6 : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public GameManagerRunner gameManager;
     /*################################  Variables  ##################################*/
@@ -13,6 +13,8 @@ public class Player6x6 : MonoBehaviour
     public int GravityPos = 0;
     bool isJumping;
     Transform obstacle;
+    SwipeData data;
+    /*################################  Variables de movimiento || Vectors 3 ##################################*/
     private Vector3 up1 = new Vector3(0,2.5f,0);
     private Vector3 up2 = new Vector3(0, 2.5f, 0);
     private Vector3 down1 = new Vector3(0, -2.5f, 0);
@@ -39,6 +41,7 @@ public class Player6x6 : MonoBehaviour
     }
 
     /*################################  Metodos  ##################################*/
+    
     //Update Vidas in Text
     public void VidasUpdate() {
         vidasText.text = GetVidas().ToString();
@@ -47,8 +50,9 @@ public class Player6x6 : MonoBehaviour
     //Swipe Up
     public void SwipeUp()
     {
-        if (Input.GetKeyDown(KeyCode.W) || SwipeDetector.Instance.IsSwiping(SwipeDirection.Up))
+        if (Input.GetKeyDown(KeyCode.W) || data.Direction == SwipeDirection.Up)
         {
+            data.Direction = SwipeDirection.None;
             switch (GravityPos)
             {
                 //Gravedad  arriba -> abajo
@@ -118,9 +122,9 @@ public class Player6x6 : MonoBehaviour
     //Swipe Down
     public void SwipeDown()
     {
-        if (Input.GetKeyDown(KeyCode.S) || SwipeDetector.Instance.IsSwiping(SwipeDirection.Down))
+        if (Input.GetKeyDown(KeyCode.S) || data.Direction == SwipeDirection.Down)
         {
-
+            data.Direction = SwipeDirection.None;
             switch (GravityPos)
             {
                 //Gravedad abajo -> arriba
@@ -190,8 +194,9 @@ public class Player6x6 : MonoBehaviour
     //Swipe Left
     public void SwipeLeft()
     {
-        if (Input.GetKeyDown(KeyCode.A) || SwipeDetector.Instance.IsSwiping(SwipeDirection.Left))
+        if (Input.GetKeyDown(KeyCode.A) || data.Direction == SwipeDirection.Left)
         {
+            data.Direction = SwipeDirection.None;
             switch (GravityPos)
             {
                 //Gravedad abajo -> arriba
@@ -263,8 +268,9 @@ public class Player6x6 : MonoBehaviour
     //Swipe Right
     public void SwipeRight()
     {
-        if (Input.GetKeyDown(KeyCode.D) || SwipeDetector.Instance.IsSwiping(SwipeDirection.Right))
+        if (Input.GetKeyDown(KeyCode.D) || data.Direction == SwipeDirection.Right)
         {
+            data.Direction = SwipeDirection.None; 
             switch (GravityPos)
             {
                 //Gravedad abajo -> arriba
@@ -336,6 +342,17 @@ public class Player6x6 : MonoBehaviour
         }
     }
 
+    //SwipeLogger
+    private void SwipeDetector_OnSwipe(SwipeData dat)
+    {
+        data = dat;
+    }
+    //Awake
+    private void Awake()
+    {
+        SwipeDetector.OnSwipe += SwipeDetector_OnSwipe;
+    }
+    
     //Start 
     private void Start()
     {
@@ -365,15 +382,13 @@ public class Player6x6 : MonoBehaviour
         obstacle = other.gameObject.GetComponent<Transform>();
         if (obstacle.tag == "Obstacle")
         {
-            int a = GetVidas();
-            SetVidas(a - 1);
-            Debug.Log("Choco");
+            SetVidas(GetVidas()- 1);
             VidasUpdate();
         }
         else if (obstacle.parent != null && obstacle.parent.tag == "Obstacle")
         {
-            int a = GetVidas();
-            SetVidas(a - 1);
+         
+            SetVidas(GetVidas() - 1);
             VidasUpdate();
         }
 

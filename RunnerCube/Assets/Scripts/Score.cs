@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     /*################################  Variables ##################################*/
-    public Player6x6 player;
+    public Player player;
     public Text ScoreText, BestText,MultiplierText;
     float score;
     private float multiplier = 1;

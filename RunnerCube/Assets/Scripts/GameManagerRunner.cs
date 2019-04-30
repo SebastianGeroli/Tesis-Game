@@ -11,8 +11,7 @@ public class GameManagerRunner : MonoBehaviour
     public Score score;
     public bool gameOver = false;
     public Invoker invoker;
-    public Player6x6 player;
-    //private float timerObs = 0;
+    public Player player;
     /*################################  Metodos  ##################################*/
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
@@ -89,25 +88,53 @@ public class GameManagerRunner : MonoBehaviour
                 {
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.4f));
+                    invoker.SetlaunchTime(1.8f);
+                    score.SetMultipier(1.2f);
                     etapa = 2;
                 }
             }
-            if (score.GetScore() > 2000 && etapa == 2)
+            if (score.GetScore() > 3000 && etapa == 2)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.5f));
+                    invoker.SetlaunchTime(1.6f);
+                    score.SetMultipier(1.4f);
                     etapa = 3;
                 }
             }
-            if (score.GetScore() > 3000 && etapa == 3)
+            if (score.GetScore() > 6000 && etapa == 3)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(new Vector3(0, 0, -0.6f));
-                    etapa = 3;
+                    invoker.SetlaunchTime(1.4f);
+                    score.SetMultipier(1.6f);
+                    etapa = 4;
+                }
+            }
+            if (score.GetScore() > 12000 && etapa == 4)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.7f));
+                    invoker.SetlaunchTime(1.2f);
+                    score.SetMultipier(1.8f);
+                    etapa = 5;
+                }
+            }
+            if (score.GetScore() > 24000 && etapa == 5)
+            {
+                for (int i = 0; i < invoker.obstacles.Length; i++)
+                {
+                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
+                    obs.SetVelocity(new Vector3(0, 0, -0.8f));
+                    invoker.SetlaunchTime(1f);
+                    score.SetMultipier(2f);
+                    etapa = 6;
                 }
             }
         }
@@ -123,7 +150,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 2;
                 }
             }
-            if (score.GetScore() > 2000 && etapa == 2)
+            if (score.GetScore() > 3000 && etapa == 2)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
@@ -134,7 +161,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 3;
                 }
             }
-            if (score.GetScore() > 3000 && etapa == 3)
+            if (score.GetScore() > 6000 && etapa == 3)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
@@ -145,7 +172,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 4;
                 }
             }
-            if (score.GetScore() > 4000 && etapa == 4)
+            if (score.GetScore() > 12000 && etapa == 4)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
@@ -156,7 +183,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 5;
                 }
             }
-            if (score.GetScore() > 5000 && etapa == 5)
+            if (score.GetScore() > 24000 && etapa == 5)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
@@ -167,7 +194,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 6;
                 }
             }
-            if (score.GetScore() > 6000 && etapa == 6)
+            if (score.GetScore() > 48000 && etapa == 6)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
@@ -178,7 +205,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 7;
                 }
             }
-            if (score.GetScore() > 10000 && etapa == 7)
+            if (score.GetScore() > 96000 && etapa == 7)
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
@@ -189,7 +216,7 @@ public class GameManagerRunner : MonoBehaviour
                     etapa = 8;
                 }
             }
-            if (score.GetScore() > 25000 && etapa == 8 )
+            if (score.GetScore() > 150000 && etapa == 8 )
             {
                 for (int i = 0; i < invoker.obstacles.Length; i++)
                 {
