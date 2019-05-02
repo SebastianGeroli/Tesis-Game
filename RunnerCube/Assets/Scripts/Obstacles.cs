@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
-    /*################################  Variables  ##################################*/
-    [SerializeField]
-    private Vector3 velocity = new Vector3(0,0,-0.3f);
-    
+    /*###############################################################################
+                                       Variables
+    #################################################################################*/
     private int forma;
+    public bool LlegoDestino = false;
     public bool PuedeSalir = false;
     private Vector3 posInicial;
     public Rigidbody rb;
     Obstacles obstaculo;
- 
-    /*################################  Getters && Setters  ##################################*/
+    /*###############################################################################
+                                       Getters & Setters
+    #################################################################################*/
     //Get & Set de Forma
     public int GetForma()
     {
@@ -34,11 +35,12 @@ public class Obstacles : MonoBehaviour
     {
         posInicial = a;
     }
-    /*################################  Metodos  ##################################*/
+    /*###############################################################################
+                                       Metodos
+    #################################################################################*/
     //Start
     void Start()
     {
-        
         rb = transform.GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }
@@ -53,13 +55,8 @@ public class Obstacles : MonoBehaviour
     public void MoveFloor()
     {
 
-        if (PuedeSalir && rb.tag == "Obstacle")
-        {
-            rb.transform.Translate(velocity);
-        }
-            
+        if (!LlegoDestino && PuedeSalir)
+            rb.transform.Translate(0, 0, -0.5f);
 
     }
-
-    
 }

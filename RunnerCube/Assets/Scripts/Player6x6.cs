@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Player6x6 : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
+    public Rails rail;
     public Text vidasText;
     private int vidas = 5;
     private float timer;
@@ -205,6 +206,7 @@ public class Player6x6 : MonoBehaviour
                     else if (transform.position.x != -2)
                     {
                         transform.Translate(left);
+                        
                     }
                     break;
                 //Gravedad arriba -> abajo
@@ -363,6 +365,19 @@ public class Player6x6 : MonoBehaviour
             SetVidas(a - 1);
             VidasUpdate();
         }
+
+    }
+    public enum Rails
+    {
+        Rail1,
+        Rail2,
+        Rail3,
+        Rail4,
+        Rail5,
+        Rail6,
+        Rail7,
+        Rail8,
+        Rail9
 
     }
 }

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GameManagerRunner : MonoBehaviour
 {
-    /*################################  Variables  ##################################*/
+    /*###############################################################################
+                                   Variables
+    #################################################################################*/
     public bool gameOver = false;
     public Invoker invoker;
-    public Player6x6 player;
-    private float timerObs = 0;
-    /*################################  Metodos  ##################################*/
+
+    /*###############################################################################
+                                   Metodos
+    #################################################################################*/
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
     {
@@ -37,8 +40,7 @@ public class GameManagerRunner : MonoBehaviour
     //Start
     public void Start()
     {
-       // invoker.WallsInstanciate();
-        invoker.ObstacleInstanciate();
+        invoker.ObstacleGenerator();
     }
     //Update
     public void Update()
@@ -49,16 +51,14 @@ public class GameManagerRunner : MonoBehaviour
         }
         if (!gameOver)
         {
-            timerObs += Time.deltaTime;
-            
-           invoker.ObstacleLauncher();
-            if (player.GetVidas() <= 0)
-            {
-                player.SetVidas(5);
-                player.VidasUpdate();
-            }
+
+            invoker.WallGenerator();
+            invoker.ObstacleLauncher();
+
         }
-        
+        else
+        {
+
+        }
     }
 }
-
