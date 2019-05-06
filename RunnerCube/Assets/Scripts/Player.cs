@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
     public GameManagerRunner gameManager;
     /*################################  Variables  ##################################*/
+    public float velocidadDeMovimiento = 0.3f;
     public Text vidasText;
     private int vidas = 5;
     private float timer;
@@ -59,12 +61,12 @@ public class Player : MonoBehaviour
                 case 0:
                     if (!isJumping && transform.position.y !=2 )
                     {
-                        transform.Translate(up1);
+                        AnimatePosition(up1);
                         isJumping = true;
                     }
                     else if (isJumping && transform.position.y != 4)
                     {
-                        transform.Translate(up2);
+                        AnimatePosition(up2);
                         isJumping = false;
                         GravityPos = 1;
                     }
@@ -73,7 +75,7 @@ public class Player : MonoBehaviour
                 case 1:
                     if (isJumping)
                     {
-                        transform.Translate(up2);
+                        AnimatePosition(up2);
                         isJumping = false;
                     }
                     break;
@@ -81,17 +83,17 @@ public class Player : MonoBehaviour
                 case 2:
                     if (isJumping && transform.position.y == 4.5f)
                     {
-                        transform.Translate(shortUp);
+                        AnimatePosition(shortUp);
                         isJumping = false;
                         GravityPos = 1;
                     }
                     else if (transform.position.y != 4.5f)
                     {
-                        transform.Translate(upWall);
+                        AnimatePosition(upWall);
                     }
                     else if(!isJumping && transform.position.y == 4.5f)
                     {
-                        transform.Translate(shortLeft+shortUp);
+                        AnimatePosition(shortLeft+shortUp);
                         GravityPos = 1;
                     }
 
@@ -100,17 +102,17 @@ public class Player : MonoBehaviour
                 case 3:
                     if (isJumping && transform.position.y == 4.5f)
                     {
-                        transform.Translate(shortUp);
+                        AnimatePosition(shortUp);
                         isJumping = false;
                         GravityPos = 1;
                     }
                     else if (transform.position.y != 4.5f)
                     {
-                        transform.Translate(upWall);
+                        AnimatePosition(upWall);
                     }
                     else if(!isJumping && transform.position.y == 4.5f)
                     {
-                        transform.Translate(shortRight+shortUp);
+                        AnimatePosition(shortRight+shortUp);
                         GravityPos = 1;
                     }
 
@@ -131,7 +133,7 @@ public class Player : MonoBehaviour
                 case 0:
                     if (isJumping)
                     {
-                        transform.Translate(down1);
+                        AnimatePosition(down1);
                         isJumping = false;
                     }
                     break;
@@ -140,12 +142,12 @@ public class Player : MonoBehaviour
                     if (!isJumping && transform.position.y != 0)
                     {
 
-                        transform.Translate(down2);
+                        AnimatePosition(down2);
                         isJumping = true;
                     }
                     else if (isJumping && transform.position.y != 0)
                     {
-                        transform.Translate(down1);
+                        AnimatePosition(down1);
                         isJumping = false;
                         GravityPos = 0;
                     }
@@ -154,36 +156,36 @@ public class Player : MonoBehaviour
                 case 2:
                     if (isJumping && transform.position.y == 0.5f)
                     {
-                        transform.Translate(shortDown);
+                        AnimatePosition(shortDown);
                         isJumping = false;
                         GravityPos = 0;
                     }
                     else if (!isJumping && transform.position.y == 0.5f)
                     {
-                        transform.Translate(shortLeft+shortDown);
+                        AnimatePosition(shortLeft+shortDown);
                         GravityPos = 0;
                     }
                     else
                     {
-                        transform.Translate(downWall);
+                        AnimatePosition(downWall);
                     }
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
                     if (isJumping && transform.position.y ==0.5f)
                     {
-                        transform.Translate(shortDown);
+                        AnimatePosition(shortDown);
                         isJumping = false;
                         GravityPos = 0;
                     }
                     else if (!isJumping && transform.position.y == 0.5f)
                     {
-                        transform.Translate(shortRight+shortDown);
+                        AnimatePosition(shortRight+shortDown);
                         GravityPos = 0;
                     }
                     else
                     {
-                        transform.Translate(downWall);
+                        AnimatePosition(downWall);
                     }
                     break;
             }
@@ -203,50 +205,50 @@ public class Player : MonoBehaviour
                 case 0:
                     if (isJumping && transform.position.x == -2)
                     {
-                        transform.Translate(shortLeft);
+                        AnimatePosition(shortLeft);
                         isJumping = false;
                         GravityPos = 3;
                     }
                     else if (!isJumping && transform.position.x == -2) 
                     {
-                        transform.Translate(shortLeft+shortUp);
+                        AnimatePosition(shortLeft+shortUp);
                         GravityPos = 3;
                         
                     }
                     else if (transform.position.x != -2)
                     {
-                        transform.Translate(left);
+                        AnimatePosition(left);
                     }
                     break;
                 //Gravedad arriba -> abajo
                 case 1:
                     if (isJumping && transform.position.x == -2)
                     {
-                        transform.Translate(shortLeft);
+                        AnimatePosition(shortLeft);
                         isJumping = false;
                         GravityPos = 3;
                     }
                     else if (!isJumping && transform.position.x == -2)
                     {
-                        transform.Translate(shortLeft+shortDown);
+                        AnimatePosition(shortLeft+shortDown);
                         GravityPos = 3;
 
                     }
                     else if (transform.position.x != -2)
                     {
-                        transform.Translate(left);
+                        AnimatePosition(left);
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
                     if (!isJumping && transform.position.x == 2.5f)
                     {
-                        transform.Translate(LongLeft);
+                        AnimatePosition(LongLeft);
                         isJumping = true;
                     }
                     else if (isJumping && transform.position.x != -2.5f)
                     {
-                        transform.Translate(LongLeft);
+                        AnimatePosition(LongLeft);
                         isJumping = false;
                         GravityPos = 3;
                     }
@@ -256,7 +258,7 @@ public class Player : MonoBehaviour
                 case 3:
                     if (isJumping)
                     {
-                        transform.Translate(LongLeft);
+                        AnimatePosition(LongLeft);
                         isJumping = false;
                     }
                     break;
@@ -277,7 +279,7 @@ public class Player : MonoBehaviour
                 case 0:
                     if (isJumping && transform.position.x == 2)
                     {
-                        transform.Translate(shortRight);
+                        AnimatePosition(shortRight);
                         isJumping = false;
                         GravityPos = 2;
 
@@ -285,20 +287,20 @@ public class Player : MonoBehaviour
 
                     else if (!isJumping && transform.position.x == 2) 
                     {
-                        transform.Translate(shortRight+shortUp);
+                        AnimatePosition(shortRight+shortUp);
                         GravityPos = 2;
                         
                     }
                     else if(transform.position.x != 2)
                     {
-                        transform.Translate(right);
+                        AnimatePosition(right);
                     }
                     break;
                 //Gravedad arriba -> abajo
                 case 1:
                     if (isJumping && transform.position.x == 2)
                     {
-                        transform.Translate(shortRight);
+                        AnimatePosition(shortRight);
                         isJumping = false;
                         GravityPos = 2;
 
@@ -306,20 +308,20 @@ public class Player : MonoBehaviour
 
                     else if (!isJumping && transform.position.x == 2)
                     {
-                        transform.Translate(shortRight+shortDown);
+                        AnimatePosition(shortRight+shortDown);
                         GravityPos = 2;
 
                     }
                     else if (transform.position.x != 2)
                     {
-                        transform.Translate(right);
+                        AnimatePosition(right);
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
                     if (isJumping)
                     {
-                        transform.Translate(LongRight);
+                        AnimatePosition(LongRight);
                         isJumping = false;
                     }
                     break;
@@ -328,18 +330,24 @@ public class Player : MonoBehaviour
                     if (!isJumping && transform.position.x == -2.5f)
                     {
 
-                        transform.Translate(LongRight);
+                        AnimatePosition(LongRight);
                         isJumping = true;
                     }
                     else if (isJumping && transform.position.x != 2.5f)
                     {
-                        transform.Translate(LongRight);
+                        AnimatePosition(LongRight);
                         isJumping = false;
                         GravityPos = 2;
                     }
                     break;
             }
         }
+    }
+
+    void AnimatePosition(Vector3 translateVector)
+    {
+  
+            transform.DOMove(transform.position + translateVector, velocidadDeMovimiento);
     }
 
     //SwipeLogger
@@ -367,10 +375,13 @@ public class Player : MonoBehaviour
         //Debug.Log("Gravedad: "+GravityPos);
         //Fin Debugs
         if (!gameManager.pause) {
-            SwipeUp();
-            SwipeRight();
-            SwipeLeft();
-            SwipeDown();
+            if (!DOTween.IsTweening(transform)) {
+                SwipeUp();
+                SwipeRight();
+                SwipeLeft();
+                SwipeDown();
+            }
+            
         }
         
 
