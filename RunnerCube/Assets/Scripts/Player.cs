@@ -416,12 +416,12 @@ public class Player:MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         obstacle = other.gameObject.GetComponent<Transform>();
-        if ( obstacle.tag == "Obstacle" )
+        if ( obstacle.tag == "Obstacle" || obstacle.tag == "Corner" )
         {
             SetVidas(GetVidas() - 1);
             VidasUpdate();
         }
-        else if ( obstacle.parent != null && obstacle.parent.tag == "Obstacle" )
+        else if ( obstacle.parent != null && obstacle.parent.tag == "Obstacle" || obstacle.parent != null && obstacle.parent.tag == "Corner" )
         {
 
             SetVidas(GetVidas() - 1);

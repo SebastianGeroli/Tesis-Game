@@ -12,6 +12,7 @@ TagManager:
   - Boundary
   - Objeto
   - Escenario
+  - Corner
   layers:
   - Default
   - TransparentFX

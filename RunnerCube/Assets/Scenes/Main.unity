@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37312284, g: 0.38074222, b: 0.35872623, a: 1}
+  m_IndirectSpecularColor: {r: 0.37312242, g: 0.3807421, b: 0.35872674, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1453,6 +1453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 587824399}
+  aKeyWasPressed: 0
   velocidadDeMovimiento: 0.1
   vidasText: {fileID: 171791427}
   GravityPos: 0
@@ -2020,8 +2021,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1531546739}
-  - component: {fileID: 1531546740}
   - component: {fileID: 1531546741}
+  - component: {fileID: 1531546740}
   m_Layer: 0
   m_Name: Invoker
   m_TagString: Untagged
@@ -2055,26 +2056,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e557ae67ce5869429a462e03626e64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useRandom: 0
+  obstacles: []
   launchTime: 2
-  obstacles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   counterObstacle: 0
 --- !u!23 &1531546741
 MeshRenderer:

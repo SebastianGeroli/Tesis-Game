@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Invoker : MonoBehaviour
 {  /*################################  Variables  ##################################*/
+    public bool useRandom = true;
+    public List<GameObject> obstacles;
     [SerializeField]
     private float launchTime = 2.0f;
-    public GameObject[] obstacles = new GameObject[18];
     [SerializeField]
     private int counterObstacle = 0;
     private float timerObs = 0;
-    // private int invMax = 9;
-    // private int invMin = 0;
+    private int maxObj = 17;
+    private int lastObj;
     /*################################  Getters && Setters  ##################################*/
     public void SetlaunchTime(float a) {
         launchTime = a;
@@ -94,41 +95,44 @@ public class Invoker : MonoBehaviour
     //Instancite de obstaculos
     public void ObstacleInstanciate()
     {
-        obstacles[0] = ObstaclesGen(0, transform);
-        obstacles[1] = ObstaclesGen(1, transform);
-        obstacles[2] = ObstaclesGen(2, transform);
-        obstacles[3] = ObstaclesGen(3, transform);
-        obstacles[4] = ObstaclesGen(4, transform);
-        obstacles[5] = ObstaclesGen(5, transform);
-        obstacles[6] = ObstaclesGen(6, transform);
-        obstacles[7] = ObstaclesGen(7, transform);
-        obstacles[8] = ObstaclesGen(8, transform);
-        obstacles[9] = ObstaclesGen(9, transform);
-        obstacles[10] = ObstaclesGen(10, transform);
-        obstacles[11] = ObstaclesGen(11, transform);
-        obstacles[12] = ObstaclesGen(12, transform);
-        obstacles[13] = ObstaclesGen(13, transform);
-        obstacles[14] = ObstaclesGen(14, transform);
-        obstacles[15] = ObstaclesGen(15, transform);
-        obstacles[16] = ObstaclesGen(16, transform);
-        obstacles[17] = ObstaclesGen(17, transform);
-
+        for ( int a = 0 ; a <= maxObj ; a++ )
+        {
+            obstacles.Add(ObstaclesGen(a , transform));
+        }
     }
 
     //Obstacle Launcher
     public float ObstacleLauncher()
     {
         timerObs += Time.deltaTime;
-        if (timerObs > launchTime && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false)
-        {
-            obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
-            timerObs = 0;
-            counterObstacle =(int) Random.Range(0,17);
-        }else
-        {
-            counterObstacle =(int)Random.Range(0, 17);
-        }
        
+        if ( useRandom )
+        {
+            if ( timerObs > launchTime && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false )
+            {
+                obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
+                timerObs = 0;
+                lastObj = counterObstacle;
+                counterObstacle = (int) Random.Range(0 , obstacles.Count);
+            }
+            else if ( obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == true || obstacles[counterObstacle].tag == obstacles[lastObj].tag && obstacles[lastObj].tag == "Corner" )
+            {
+                counterObstacle = (int) Random.Range(0 , obstacles.Count);
+            }
+        }
+        else
+        {
+            if ( timerObs > launchTime && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false )
+            {
+                obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
+                timerObs = 0;
+                counterObstacle++;
+            }
+            if ( counterObstacle == obstacles.Count )
+            {
+                counterObstacle = 0;
+            }
+        }
         
         return timerObs;
     }

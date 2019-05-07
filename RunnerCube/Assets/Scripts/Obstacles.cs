@@ -58,7 +58,7 @@ public class Obstacles : MonoBehaviour
     public void MoveFloor()
     {
 
-        if (PuedeSalir && rb.tag == "Obstacle")
+        if (PuedeSalir)
         {
             rb.transform.Translate(velocity);
         }
