@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class Player : MonoBehaviour
+public class Player:MonoBehaviour
 {
     public GameManagerRunner gameManager;
     /*################################  Variables  ##################################*/
+    public bool aKeyWasPressed;
     public float velocidadDeMovimiento = 0.3f;
     public Text vidasText;
     private int vidas = 5;
@@ -17,20 +18,20 @@ public class Player : MonoBehaviour
     Transform obstacle;
     SwipeData data;
     /*################################  Variables de movimiento || Vectors 3 ##################################*/
-    private Vector3 up1 = new Vector3(0,2.5f,0);
-    private Vector3 up2 = new Vector3(0, 2.5f, 0);
-    private Vector3 down1 = new Vector3(0, -2.5f, 0);
-    private Vector3 down2 = new Vector3(0, -2.5f, 0);
-    private Vector3 upWall = new Vector3(0, 2, 0);
-    private Vector3 downWall = new Vector3(0, -2, 0);
-    private Vector3 right = new Vector3(2, 0, 0);
-    private Vector3 left = new Vector3(-2, 0, 0);
-    private Vector3 shortRight = new Vector3(0.5f, 0, 0);
-    private Vector3 shortLeft = new Vector3(-0.5f, 0, 0);
-    private Vector3 shortUp = new Vector3(0, 0.5f, 0);
-    private Vector3 shortDown = new Vector3(0, -0.5f, 0);
-    private Vector3 LongRight = new Vector3(2.5f, 0, 0);
-    private Vector3 LongLeft = new Vector3(-2.5f, 0, 0);
+    private Vector3 up1 = new Vector3(0 , 2.5f , 0);
+    private Vector3 up2 = new Vector3(0 , 2.5f , 0);
+    private Vector3 down1 = new Vector3(0 , -2.5f , 0);
+    private Vector3 down2 = new Vector3(0 , -2.5f , 0);
+    private Vector3 upWall = new Vector3(0 , 2 , 0);
+    private Vector3 downWall = new Vector3(0 , -2 , 0);
+    private Vector3 right = new Vector3(2 , 0 , 0);
+    private Vector3 left = new Vector3(-2 , 0 , 0);
+    private Vector3 shortRight = new Vector3(0.5f , 0 , 0);
+    private Vector3 shortLeft = new Vector3(-0.5f , 0 , 0);
+    private Vector3 shortUp = new Vector3(0 , 0.5f , 0);
+    private Vector3 shortDown = new Vector3(0 , -0.5f , 0);
+    private Vector3 LongRight = new Vector3(2.5f , 0 , 0);
+    private Vector3 LongLeft = new Vector3(-2.5f , 0 , 0);
     /*################################  Getters && Setters  ##################################*/
     public int GetVidas()
     {
@@ -43,38 +44,39 @@ public class Player : MonoBehaviour
     }
 
     /*################################  Metodos  ##################################*/
-    
+
     //Update Vidas in Text
-    public void VidasUpdate() {
+    public void VidasUpdate()
+    {
         vidasText.text = GetVidas().ToString();
     }
 
     //Swipe Up
     public void SwipeUp()
     {
-        if (Input.GetKeyDown(KeyCode.W) || data.Direction == SwipeDirection.Up)
+        if ( Input.GetKeyDown(KeyCode.W) || data.Direction == SwipeDirection.Up )
         {
             data.Direction = SwipeDirection.None;
-            switch (GravityPos)
+            switch ( GravityPos )
             {
                 //Gravedad  arriba -> abajo
                 case 0:
-                    if (!isJumping && transform.position.y !=2 )
+                    if ( !isJumping && transform.position.y != 2 )
                     {
                         AnimatePosition(up1);
                         isJumping = true;
                     }
-                    else if (isJumping && transform.position.y != 4)
+                    else if ( isJumping && transform.position.y != 4 )
                     {
                         AnimatePosition(up2);
                         isJumping = false;
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 180));
                         GravityPos = 1;
                     }
                     break;
                 //Gravedad abajo -> arriba
                 case 1:
-                    if (isJumping)
+                    if ( isJumping )
                     {
                         AnimatePosition(up2);
                         isJumping = false;
@@ -82,42 +84,42 @@ public class Player : MonoBehaviour
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
-                    if (isJumping && transform.position.y == 4.5f)
+                    if ( isJumping && transform.position.y == 4.5f )
                     {
                         AnimatePosition(shortUp);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 180));
                         isJumping = false;
                         GravityPos = 1;
                     }
-                    else if (transform.position.y != 4.5f)
+                    else if ( transform.position.y != 4.5f )
                     {
                         AnimatePosition(upWall);
                     }
-                    else if(!isJumping && transform.position.y == 4.5f)
+                    else if ( !isJumping && transform.position.y == 4.5f )
                     {
-                        AnimatePosition(shortLeft+shortUp);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
+                        AnimatePosition(shortLeft + shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 180));
                         GravityPos = 1;
                     }
 
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
-                    if (isJumping && transform.position.y == 4.5f)
+                    if ( isJumping && transform.position.y == 4.5f )
                     {
                         AnimatePosition(shortUp);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 180));
                         isJumping = false;
                         GravityPos = 1;
                     }
-                    else if (transform.position.y != 4.5f)
+                    else if ( transform.position.y != 4.5f )
                     {
                         AnimatePosition(upWall);
                     }
-                    else if(!isJumping && transform.position.y == 4.5f)
+                    else if ( !isJumping && transform.position.y == 4.5f )
                     {
-                        AnimatePosition(shortRight+shortUp);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
+                        AnimatePosition(shortRight + shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 180));
                         GravityPos = 1;
                     }
 
@@ -129,14 +131,14 @@ public class Player : MonoBehaviour
     //Swipe Down
     public void SwipeDown()
     {
-        if (Input.GetKeyDown(KeyCode.S) || data.Direction == SwipeDirection.Down)
+        if ( Input.GetKeyDown(KeyCode.S) || data.Direction == SwipeDirection.Down )
         {
             data.Direction = SwipeDirection.None;
-            switch (GravityPos)
+            switch ( GravityPos )
             {
                 //Gravedad abajo -> arriba
                 case 0:
-                    if (isJumping)
+                    if ( isJumping )
                     {
                         AnimatePosition(down1);
                         isJumping = false;
@@ -144,33 +146,33 @@ public class Player : MonoBehaviour
                     break;
                 //Gravedad arriba -> abajo
                 case 1:
-                    if (!isJumping && transform.position.y != 0)
+                    if ( !isJumping && transform.position.y != 0 )
                     {
 
                         AnimatePosition(down2);
                         isJumping = true;
                     }
-                    else if (isJumping && transform.position.y != 0)
+                    else if ( isJumping && transform.position.y != 0 )
                     {
                         AnimatePosition(down1);
                         isJumping = false;
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 0));
                         GravityPos = 0;
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
-                    if (isJumping && transform.position.y == 0.5f)
+                    if ( isJumping && transform.position.y == 0.5f )
                     {
                         AnimatePosition(shortDown);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 0));
                         isJumping = false;
                         GravityPos = 0;
                     }
-                    else if (!isJumping && transform.position.y == 0.5f)
+                    else if ( !isJumping && transform.position.y == 0.5f )
                     {
-                        AnimatePosition(shortLeft+shortDown);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                        AnimatePosition(shortLeft + shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 0));
                         GravityPos = 0;
                     }
                     else
@@ -180,17 +182,17 @@ public class Player : MonoBehaviour
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
-                    if (isJumping && transform.position.y ==0.5f)
+                    if ( isJumping && transform.position.y == 0.5f )
                     {
                         AnimatePosition(shortDown);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 0));
                         isJumping = false;
                         GravityPos = 0;
                     }
-                    else if (!isJumping && transform.position.y == 0.5f)
+                    else if ( !isJumping && transform.position.y == 0.5f )
                     {
-                        AnimatePosition(shortRight+shortDown);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                        AnimatePosition(shortRight + shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 0));
                         GravityPos = 0;
                     }
                     else
@@ -206,64 +208,64 @@ public class Player : MonoBehaviour
     //Swipe Left
     public void SwipeLeft()
     {
-        if (Input.GetKeyDown(KeyCode.A) || data.Direction == SwipeDirection.Left)
+        if ( Input.GetKeyDown(KeyCode.A) || data.Direction == SwipeDirection.Left )
         {
             data.Direction = SwipeDirection.None;
-            switch (GravityPos)
+            switch ( GravityPos )
             {
                 //Gravedad abajo -> arriba
                 case 0:
-                    if (isJumping && transform.position.x == -2)
+                    if ( isJumping && transform.position.x == -2 )
                     {
                         AnimatePosition(shortLeft);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 90));
                         isJumping = false;
                         GravityPos = 3;
                     }
-                    else if (!isJumping && transform.position.x == -2) 
+                    else if ( !isJumping && transform.position.x == -2 )
                     {
-                        AnimatePosition(shortLeft+shortUp);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
+                        AnimatePosition(shortLeft + shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 90));
                         GravityPos = 3;
-                        
+
                     }
-                    else if (transform.position.x != -2)
+                    else if ( transform.position.x != -2 )
                     {
                         AnimatePosition(left);
                     }
                     break;
                 //Gravedad arriba -> abajo
                 case 1:
-                    if (isJumping && transform.position.x == -2)
+                    if ( isJumping && transform.position.x == -2 )
                     {
                         AnimatePosition(shortLeft);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 90));
                         isJumping = false;
                         GravityPos = 3;
                     }
-                    else if (!isJumping && transform.position.x == -2)
+                    else if ( !isJumping && transform.position.x == -2 )
                     {
-                        AnimatePosition(shortLeft+shortDown);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
+                        AnimatePosition(shortLeft + shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 90));
                         GravityPos = 3;
 
                     }
-                    else if (transform.position.x != -2)
+                    else if ( transform.position.x != -2 )
                     {
                         AnimatePosition(left);
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
-                    if (!isJumping && transform.position.x == 2.5f)
+                    if ( !isJumping && transform.position.x == 2.5f )
                     {
                         AnimatePosition(LongLeft);
                         isJumping = true;
                     }
-                    else if (isJumping && transform.position.x != -2.5f)
+                    else if ( isJumping && transform.position.x != -2.5f )
                     {
                         AnimatePosition(LongLeft);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , 90));
                         isJumping = false;
                         GravityPos = 3;
                     }
@@ -271,7 +273,7 @@ public class Player : MonoBehaviour
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
-                    if (isJumping)
+                    if ( isJumping )
                     {
                         AnimatePosition(LongLeft);
                         isJumping = false;
@@ -285,60 +287,60 @@ public class Player : MonoBehaviour
     //Swipe Right
     public void SwipeRight()
     {
-        if (Input.GetKeyDown(KeyCode.D) || data.Direction == SwipeDirection.Right)
+        if ( Input.GetKeyDown(KeyCode.D) || data.Direction == SwipeDirection.Right )
         {
-            data.Direction = SwipeDirection.None; 
-            switch (GravityPos)
+            data.Direction = SwipeDirection.None;
+            switch ( GravityPos )
             {
                 //Gravedad abajo -> arriba
                 case 0:
-                    if (isJumping && transform.position.x == 2)
+                    if ( isJumping && transform.position.x == 2 )
                     {
                         AnimatePosition(shortRight);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , -90));
                         isJumping = false;
                         GravityPos = 2;
 
                     }
 
-                    else if (!isJumping && transform.position.x == 2) 
+                    else if ( !isJumping && transform.position.x == 2 )
                     {
-                        AnimatePosition(shortRight+shortUp);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
+                        AnimatePosition(shortRight + shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , -90));
                         GravityPos = 2;
-                        
+
                     }
-                    else if(transform.position.x != 2)
+                    else if ( transform.position.x != 2 )
                     {
                         AnimatePosition(right);
                     }
                     break;
                 //Gravedad arriba -> abajo
                 case 1:
-                    if (isJumping && transform.position.x == 2)
+                    if ( isJumping && transform.position.x == 2 )
                     {
                         AnimatePosition(shortRight);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , -90));
                         isJumping = false;
                         GravityPos = 2;
 
                     }
 
-                    else if (!isJumping && transform.position.x == 2)
+                    else if ( !isJumping && transform.position.x == 2 )
                     {
-                        AnimatePosition(shortRight+shortDown);
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
+                        AnimatePosition(shortRight + shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , -90));
                         GravityPos = 2;
 
                     }
-                    else if (transform.position.x != 2)
+                    else if ( transform.position.x != 2 )
                     {
                         AnimatePosition(right);
                     }
                     break;
                 //Gravedad derecha -> izquierda
                 case 2:
-                    if (isJumping)
+                    if ( isJumping )
                     {
                         AnimatePosition(LongRight);
                         isJumping = false;
@@ -346,17 +348,17 @@ public class Player : MonoBehaviour
                     break;
                 //Gravedad izquierda -> derecha
                 case 3:
-                    if (!isJumping && transform.position.x == -2.5f)
+                    if ( !isJumping && transform.position.x == -2.5f )
                     {
 
                         AnimatePosition(LongRight);
                         isJumping = true;
                     }
-                    else if (isJumping && transform.position.x != 2.5f)
+                    else if ( isJumping && transform.position.x != 2.5f )
                     {
                         AnimatePosition(LongRight);
                         isJumping = false;
-                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
+                        transform.rotation = Quaternion.Euler(new Vector3(0 , 180 , -90));
                         GravityPos = 2;
                     }
                     break;
@@ -366,8 +368,8 @@ public class Player : MonoBehaviour
 
     void AnimatePosition(Vector3 translateVector)
     {
-  
-            transform.DOMove(transform.position + translateVector, velocidadDeMovimiento);
+
+        transform.DOMove(transform.position + translateVector , velocidadDeMovimiento);
     }
 
     //SwipeLogger
@@ -380,7 +382,7 @@ public class Player : MonoBehaviour
     {
         SwipeDetector.OnSwipe += SwipeDetector_OnSwipe;
     }
-    
+
     //Start 
     private void Start()
     {
@@ -395,16 +397,18 @@ public class Player : MonoBehaviour
         //Debug.Log("Esta saltando: "+ isJumping);
         //Debug.Log("Gravedad: "+GravityPos);
         //Fin Debugs
-        if (!gameManager.pause) {
-            if (!DOTween.IsTweening(transform)) {
+        if ( !gameManager.pause )
+        {
+            if ( !DOTween.IsTweening(transform) )
+            {
                 SwipeUp();
                 SwipeRight();
                 SwipeLeft();
                 SwipeDown();
             }
-            
+
         }
-        
+
 
     }
 
@@ -412,14 +416,14 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         obstacle = other.gameObject.GetComponent<Transform>();
-        if (obstacle.tag == "Obstacle")
+        if ( obstacle.tag == "Obstacle" )
         {
-            SetVidas(GetVidas()- 1);
+            SetVidas(GetVidas() - 1);
             VidasUpdate();
         }
-        else if (obstacle.parent != null && obstacle.parent.tag == "Obstacle")
+        else if ( obstacle.parent != null && obstacle.parent.tag == "Obstacle" )
         {
-         
+
             SetVidas(GetVidas() - 1);
             VidasUpdate();
         }
