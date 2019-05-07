@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
                     {
                         AnimatePosition(up2);
                         isJumping = false;
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
                         GravityPos = 1;
                     }
                     break;
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.y == 4.5f)
                     {
                         AnimatePosition(shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
                         isJumping = false;
                         GravityPos = 1;
                     }
@@ -94,6 +96,7 @@ public class Player : MonoBehaviour
                     else if(!isJumping && transform.position.y == 4.5f)
                     {
                         AnimatePosition(shortLeft+shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
                         GravityPos = 1;
                     }
 
@@ -103,6 +106,7 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.y == 4.5f)
                     {
                         AnimatePosition(shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
                         isJumping = false;
                         GravityPos = 1;
                     }
@@ -113,6 +117,7 @@ public class Player : MonoBehaviour
                     else if(!isJumping && transform.position.y == 4.5f)
                     {
                         AnimatePosition(shortRight+shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 180));
                         GravityPos = 1;
                     }
 
@@ -149,6 +154,7 @@ public class Player : MonoBehaviour
                     {
                         AnimatePosition(down1);
                         isJumping = false;
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                         GravityPos = 0;
                     }
                     break;
@@ -157,12 +163,14 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.y == 0.5f)
                     {
                         AnimatePosition(shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                         isJumping = false;
                         GravityPos = 0;
                     }
                     else if (!isJumping && transform.position.y == 0.5f)
                     {
                         AnimatePosition(shortLeft+shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                         GravityPos = 0;
                     }
                     else
@@ -175,12 +183,14 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.y ==0.5f)
                     {
                         AnimatePosition(shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                         isJumping = false;
                         GravityPos = 0;
                     }
                     else if (!isJumping && transform.position.y == 0.5f)
                     {
                         AnimatePosition(shortRight+shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                         GravityPos = 0;
                     }
                     else
@@ -206,12 +216,14 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.x == -2)
                     {
                         AnimatePosition(shortLeft);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
                         isJumping = false;
                         GravityPos = 3;
                     }
                     else if (!isJumping && transform.position.x == -2) 
                     {
                         AnimatePosition(shortLeft+shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
                         GravityPos = 3;
                         
                     }
@@ -225,12 +237,14 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.x == -2)
                     {
                         AnimatePosition(shortLeft);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
                         isJumping = false;
                         GravityPos = 3;
                     }
                     else if (!isJumping && transform.position.x == -2)
                     {
                         AnimatePosition(shortLeft+shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
                         GravityPos = 3;
 
                     }
@@ -249,6 +263,7 @@ public class Player : MonoBehaviour
                     else if (isJumping && transform.position.x != -2.5f)
                     {
                         AnimatePosition(LongLeft);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, 90));
                         isJumping = false;
                         GravityPos = 3;
                     }
@@ -280,6 +295,7 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.x == 2)
                     {
                         AnimatePosition(shortRight);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
                         isJumping = false;
                         GravityPos = 2;
 
@@ -288,6 +304,7 @@ public class Player : MonoBehaviour
                     else if (!isJumping && transform.position.x == 2) 
                     {
                         AnimatePosition(shortRight+shortUp);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
                         GravityPos = 2;
                         
                     }
@@ -301,6 +318,7 @@ public class Player : MonoBehaviour
                     if (isJumping && transform.position.x == 2)
                     {
                         AnimatePosition(shortRight);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
                         isJumping = false;
                         GravityPos = 2;
 
@@ -309,6 +327,7 @@ public class Player : MonoBehaviour
                     else if (!isJumping && transform.position.x == 2)
                     {
                         AnimatePosition(shortRight+shortDown);
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
                         GravityPos = 2;
 
                     }
@@ -337,6 +356,7 @@ public class Player : MonoBehaviour
                     {
                         AnimatePosition(LongRight);
                         isJumping = false;
+                        transform.rotation = Quaternion.Euler(new Vector3(0, 180, -90));
                         GravityPos = 2;
                     }
                     break;
