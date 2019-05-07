@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwipeDetector : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
+   public  Dropdown dropdown;
+    float division = 4;
     private Vector2 fingerDownPosition;
     private Vector2 fingerUpPosition;
     private SwipeDirection Direction { set; get; }
@@ -18,11 +21,12 @@ public class SwipeDetector : MonoBehaviour
     /*################################  Metodos  ##################################*/
     private void Start()
     {
-        minDistanceForSwipe = Screen.width /5f ;
+        minDistanceForSwipe = Screen.width /division ;
     }
 
     private void Update()
     {
+        OnDropDown();
         Direction = SwipeDirection.None;
         foreach (Touch touch in Input.touches)
         {
@@ -94,6 +98,10 @@ public class SwipeDetector : MonoBehaviour
             EndPosition = fingerUpPosition
         };
         OnSwipe(swipeData);
+    }
+    public void OnDropDown() {
+       division = float.Parse(dropdown.options[dropdown.value].text);
+        minDistanceForSwipe = Screen.width / division;
     }
 }
 /*################################  Struct && Enum  ##################################*/

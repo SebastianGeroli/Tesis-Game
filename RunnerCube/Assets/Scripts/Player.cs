@@ -364,6 +364,7 @@ public class Player : MonoBehaviour
     //Start 
     private void Start()
     {
+
         VidasUpdate();
     }
 
@@ -404,5 +405,4 @@ public class Player : MonoBehaviour
         }
 
     }
-
 }
