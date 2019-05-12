@@ -6,13 +6,20 @@ using UnityEngine.UI;
 public class Player6x6 : MonoBehaviour
 {
     /*################################  Variables  ##################################*/
-    public Rails rail;
+    //public Rails rail;
     public Text vidasText;
-    private int vidas = 5;
+    public int vidas = 5;
     private float timer;
     public int GravityPos = 0;
     bool isJumping;
     Transform obstacle;
+
+    
+    public Transform positionRail;
+    public  Vector3 rail;
+    public Vector3 rails;
+    
+
     private Vector3 up1 = new Vector3(0,2.5f,0);
     private Vector3 up2 = new Vector3(0, 2.5f, 0);
     private Vector3 down1 = new Vector3(0, -2.5f, 0);
@@ -334,6 +341,7 @@ public class Player6x6 : MonoBehaviour
     private void Start()
     {
         VidasUpdate();
+        
     }
     //Update
     void Update()
@@ -346,7 +354,7 @@ public class Player6x6 : MonoBehaviour
         SwipeRight();
         SwipeLeft();
         SwipeDown();
-
+        GetPositionPlayer();
     }
     //Trigger  || detecta si choca contra los obstaculos
     private void OnTriggerEnter(Collider other)
@@ -367,6 +375,23 @@ public class Player6x6 : MonoBehaviour
         }
 
     }
+    void GetPositionPlayer ()
+    {
+
+        //rb = transform.GetComponent<Rigidbody>();
+        //rb.position = rail;
+        positionRail = GetComponent<Transform>();
+        //positionRail.position = rail;
+        
+    }
+    //public int GetRails()
+    //{
+    //    //return rails;
+    //}
+    //public void SetRails (Vector3 b)
+    //{
+    //    rails = new Vector3(positionRail.position.x, positionRail.position.y, positionRail.position.z);
+    //}
     public enum Rails
     {
         Rail1,

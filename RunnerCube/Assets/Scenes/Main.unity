@@ -981,9 +981,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61883569e94ed5c4086885e2f850052f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rail: {fileID: 0}
   vidasText: {fileID: 1982956335}
+  vidas: 5
   GravityPos: 0
+  RailPos: 0
+  positionRail: {fileID: 719672277}
+  rail: {x: 0, y: 0, z: 0}
+  rails: {x: 0, y: 0, z: 0}
 --- !u!1 &1004090833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,8 +1133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e557ae67ce5869429a462e03626e64d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTime: 0
   obstacles:
+  - {fileID: 8663013496022202798, guid: 871917a83f01fc44ca739a69ed4ab0be, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1141,7 +1145,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  minTime: 0
+  maxTime: 0
 --- !u!23 &1531546741
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2086,7 +2091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7484d5c288d5b84f93c48eeadb16d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: -0.3}
+  LlegoDestino: 0
   PuedeSalir: 0
   rb: {fileID: 0}
 --- !u!1 &9185452790782677212

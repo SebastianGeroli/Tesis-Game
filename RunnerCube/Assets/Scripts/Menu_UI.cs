@@ -48,7 +48,7 @@ public class Menu_UI : MonoBehaviour
         {           
             btn.interactable = true;
             btn.image.overrideSprite = luz;
-            btn.image.DOFade(0.8f, 1f);
+            btn.image.DOFade(0.6f, 0.5f);
             encender = true;
          }
        

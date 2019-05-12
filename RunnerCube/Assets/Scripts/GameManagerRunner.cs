@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerRunner : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManagerRunner : MonoBehaviour
     #################################################################################*/
     public bool gameOver = false;
     public Invoker invoker;
+    public Player6x6 player;
 
     /*###############################################################################
                                    Metodos
@@ -16,9 +18,11 @@ public class GameManagerRunner : MonoBehaviour
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
     {
-        if (gameOver == false)
+        if (gameOver == false && player.vidas == 0)
         {
             gameOver = true;
+            SceneManager.LoadScene(2);
+            Debug.Log("Deberia cargar la escena");
         }
         else
         {
@@ -45,6 +49,7 @@ public class GameManagerRunner : MonoBehaviour
     //Update
     public void Update()
     {
+        GameOverChanger();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
@@ -60,5 +65,7 @@ public class GameManagerRunner : MonoBehaviour
         {
 
         }
+        
     }
+    
 }
