@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerRunner : MonoBehaviour
 {
+<<<<<<< HEAD
     /*################################  Variables  ##################################*/
     public Camera camera1;
     public Camera camera2;
@@ -16,12 +18,25 @@ public class GameManagerRunner : MonoBehaviour
     public Invoker invoker;
     public Player player;
     /*################################  Metodos  ##################################*/
+=======
+    /*###############################################################################
+                                   Variables
+    #################################################################################*/
+    public bool gameOver = false;
+    public Invoker invoker;
+    public Player6x6 player;
+
+    /*###############################################################################
+                                   Metodos
+    #################################################################################*/
+>>>>>>> UIDevelop
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
     {
         if (gameOver == false)
         {
             gameOver = true;
+            Debug.Log("Deberia cargar la escena");
         }
         else
         {
@@ -46,11 +61,13 @@ public class GameManagerRunner : MonoBehaviour
     {
        // invoker.WallsInstanciate();
         invoker.ObstacleInstanciate();
+        invoker.ObstacleGenerator();
     }
 
     //Update
     public void Update()
     {
+<<<<<<< HEAD
         CameraChanger();
         if (pause)
         {
@@ -59,12 +76,16 @@ public class GameManagerRunner : MonoBehaviour
         else {
             Time.timeScale = 1;
         }
+=======
+        GameOverChanger();
+>>>>>>> UIDevelop
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
         }
         if (!gameOver)
         {
+<<<<<<< HEAD
             //timerObs += Time.deltaTime;
             
            invoker.ObstacleLauncher();
@@ -248,5 +269,18 @@ public class GameManagerRunner : MonoBehaviour
             camera2.enabled = false;
         }
     }
-}
+=======
 
+            invoker.WallGenerator();
+            invoker.ObstacleLauncher();
+
+        }
+        else
+        {
+
+        }
+        
+    }
+    
+>>>>>>> UIDevelop
+}
