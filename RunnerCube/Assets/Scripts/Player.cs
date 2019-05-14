@@ -11,7 +11,7 @@ public class Player:MonoBehaviour
     public bool aKeyWasPressed;
     public float velocidadDeMovimiento = 0.3f;
     public Text vidasText;
-    public int vidas = 5;
+    private int vidas = 5;
     private float timer;
     public int GravityPos = 0;
     bool isJumping;
@@ -420,12 +420,14 @@ public class Player:MonoBehaviour
         {
             SetVidas(GetVidas() - 1);
             VidasUpdate();
+            //Debug.Log(string.Format("{0} vidas restantes" , vidas));
         }
         else if ( obstacle.parent != null && obstacle.parent.tag == "Obstacle" || obstacle.parent != null && obstacle.parent.tag == "Corner" )
         {
 
             SetVidas(GetVidas() - 1);
             VidasUpdate();
+            //Debug.Log(string.Format("{0} vidas restantes",vidas));
         }
 
     }

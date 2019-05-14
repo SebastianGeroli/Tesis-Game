@@ -19,13 +19,13 @@ public class ResetPosition : MonoBehaviour
         {
             tr.parent.GetComponent<Obstacles>().PuedeSalir = false;
             tr.parent.transform.position = tr.parent.GetComponent<Obstacles>().GetposInicial();
-        }else if (tr.parent == null && tr.tag == "Obstacle")
+        }else if (tr.parent == null && tr.tag == "Obstacle" || tr.parent == null && tr.tag == "Corner" )
         {
             tr = other.GetComponent<Transform>();
             tr.GetComponent<Obstacles>().PuedeSalir = false;
             tr.transform.position = tr.GetComponent<Obstacles>().GetposInicial();
         }
-        else if (tr.parent != null && tr.parent.tag == "Obstacle")
+        else if (tr.parent != null && tr.parent.tag == "Obstacle" || tr.parent != null && tr.parent.tag == "Corner")
         {
             tr.GetComponentInParent<Obstacles>().PuedeSalir = false;
             tr.transform.parent.position = tr.GetComponentInParent<Obstacles>().GetposInicial();

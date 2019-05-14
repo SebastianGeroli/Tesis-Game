@@ -128,7 +128,7 @@ public class Invoker : MonoBehaviour
                 timerObs = 0;
                 counterObstacle++;
             }
-            if ( counterObstacle == obstacles.Count )
+            if ( counterObstacle >= obstacles.Count )
             {
                 counterObstacle = 0;
             }

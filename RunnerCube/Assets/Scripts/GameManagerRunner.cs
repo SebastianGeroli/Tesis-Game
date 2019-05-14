@@ -24,7 +24,7 @@ public class GameManagerRunner : MonoBehaviour
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
     {
-        if (gameOver == false && player.vidas == 0)
+        if (gameOver == false && player.GetVidas() == 0)
         {
 
             gameOver = true;
