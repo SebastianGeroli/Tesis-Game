@@ -1449,12 +1449,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 881229278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61883569e94ed5c4086885e2f850052f, type: 3}
+  m_Script: {fileID: 11500000, guid: 90ae652174cbe864dad6cdafbfc6bc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 587824399}
   aKeyWasPressed: 0
-  velocidadDeMovimiento: 0.1
+  velocidadDeMovimiento: 0.3
   vidasText: {fileID: 171791427}
   GravityPos: 0
 --- !u!114 &881229282

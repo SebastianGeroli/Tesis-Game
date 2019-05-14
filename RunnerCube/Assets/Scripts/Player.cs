@@ -11,7 +11,7 @@ public class Player:MonoBehaviour
     public bool aKeyWasPressed;
     public float velocidadDeMovimiento = 0.3f;
     public Text vidasText;
-    private int vidas = 5;
+    public int vidas = 5;
     private float timer;
     public int GravityPos = 0;
     bool isJumping;

@@ -11,7 +11,7 @@ public class Menu_UI : MonoBehaviour
     public Button btn;
     public Sprite luz;
     public Sprite sinLuz;
-    Image myImage; 
+    //Image myImage; 
     public bool encender = false;
     //Sequence seq = DOTween.Sequence();
 
@@ -32,7 +32,7 @@ public class Menu_UI : MonoBehaviour
         entry2.callback.AddListener((data) => { OnPointerExit((PointerEventData)data); });
         trigger2.triggers.Add(entry2);
 
-        myImage = GetComponent<Image>();
+       // myImage = GetComponent<Image>();
 
     }
 
