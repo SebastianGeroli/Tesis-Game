@@ -27,6 +27,11 @@ public class Obstacles : MonoBehaviour
     public void SetVelocity(Vector3 vec3) {
         velocity = vec3;
     }
+    //SetVelocity
+    public Vector3 GetVelocity()
+    {
+        return velocity;
+    }
 
     //Get & Set de GetPosInicial
     public Vector3 GetposInicial()

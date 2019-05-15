@@ -5,12 +5,14 @@ using UnityEngine;
 public class MoveTexture : MonoBehaviour
 {
     /*################################ Variables ##################################*/
+    public GameManagerRunner gameManager;
     Material material;
     float scrollSpeed = 2f;
     /*################################ Metodos  ##################################*/
     //Start
     private void Start()
     {
+        gameManager = FindObjectOfType<GameManagerRunner>();
         material = transform.GetComponent<Renderer>().material;
     }
     //fixed update
@@ -21,7 +23,7 @@ public class MoveTexture : MonoBehaviour
     //Mover Offset material\
     public void MoveOffSet()
     {
-        float offset = Time.time * scrollSpeed;
+        float offset = Time.time * scrollSpeed * gameManager.speeTexture;
         material.mainTextureOffset = new Vector2 (0,offset);
         
       

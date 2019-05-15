@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3855885858099701879}
   - component: {fileID: 4303738252037151145}
   - component: {fileID: 8435458143868974392}
-  - component: {fileID: 5956215220348552130}
   m_Layer: 0
   m_Name: RightMedium (5)
   m_TagString: Obstacle
@@ -78,19 +77,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5956215220348552130
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099091109865119483}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3941571203871631929
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +88,6 @@ GameObject:
   - component: {fileID: 1818916835353250860}
   - component: {fileID: 3142273032331711300}
   - component: {fileID: 5658103672337137311}
-  - component: {fileID: 1501181592525952153}
   m_Layer: 0
   m_Name: RightMedium (4)
   m_TagString: Obstacle
@@ -169,19 +154,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1501181592525952153
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941571203871631929}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4589377888993371675
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +165,9 @@ GameObject:
   - component: {fileID: 3167301664035035592}
   - component: {fileID: 2263248172794002684}
   - component: {fileID: 5498640424025263795}
+  - component: {fileID: 3112441609792432387}
+  - component: {fileID: 1548083215776217554}
+  - component: {fileID: 7524191770830455331}
   m_Layer: 0
   m_Name: CornersMiddle
   m_TagString: Obstacle
@@ -249,6 +224,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuedeSalir: 0
   rb: {fileID: 0}
+--- !u!65 &3112441609792432387
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589377888993371675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69, y: 0.76, z: 0.33}
+  m_Center: {x: 2.77, y: 0.02, z: 0}
+--- !u!65 &1548083215776217554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589377888993371675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.69, y: 0.76, z: 0.33}
+  m_Center: {x: -2.78, y: 0.02, z: 0}
+--- !u!65 &7524191770830455331
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589377888993371675}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.97, y: 6.41, z: 0.33}
+  m_Center: {x: -0.01, y: -0.05, z: 0}
 --- !u!1 &5918644493743910233
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +274,6 @@ GameObject:
   - component: {fileID: 8873903788521413176}
   - component: {fileID: 8883839817242095068}
   - component: {fileID: 8165682209131131851}
-  - component: {fileID: 6123463313562092041}
   m_Layer: 0
   m_Name: RightMedium (1)
   m_TagString: Obstacle
@@ -327,19 +340,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6123463313562092041
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5918644493743910233}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6150521318235122050
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +351,6 @@ GameObject:
   - component: {fileID: 5137212028413678604}
   - component: {fileID: 2662890499757228776}
   - component: {fileID: 1605009062356423565}
-  - component: {fileID: 584505558231337692}
   m_Layer: 0
   m_Name: RightMedium (2)
   m_TagString: Obstacle
@@ -418,19 +417,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &584505558231337692
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6150521318235122050}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8099254273871717539
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +428,6 @@ GameObject:
   - component: {fileID: 6910130813305380438}
   - component: {fileID: 4363457808267064268}
   - component: {fileID: 8936472082135786810}
-  - component: {fileID: 3227485446682322287}
   m_Layer: 0
   m_Name: RightMedium (3)
   m_TagString: Obstacle
@@ -509,16 +494,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3227485446682322287
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8099254273871717539}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

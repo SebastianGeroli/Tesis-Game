@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManagerRunner : MonoBehaviour
+public class GameManagerRunner:MonoBehaviour
 {
     /*################################  Variables  ##################################*/
+
+    public float speeTexture = 1f;
+    public Light topLight, bottomLight, leftLight, rightLight;
     public Camera camera1;
     public Camera camera2;
     public bool useSecondCamera = false;
@@ -15,7 +19,9 @@ public class GameManagerRunner : MonoBehaviour
     public Score score;
     public bool gameOver = false;
     public Invoker invoker;
-    public Player player;   
+    public Player player;
+    [SerializeField]
+    private float score2 = 1000f;
     //public Player6x6 player;
 
     /*###############################################################################
@@ -24,7 +30,7 @@ public class GameManagerRunner : MonoBehaviour
     //GameOver Changer || este metodo cambia el gameover
     public void GameOverChanger()
     {
-        if (gameOver == false && player.GetVidas() == 0)
+        if (gameOver == false && player.GetVidas() <= 0)
         {
 
             gameOver = true;
@@ -76,7 +82,7 @@ public class GameManagerRunner : MonoBehaviour
         if (!gameOver)
         {
             //timerObs += Time.deltaTime;
-            
+            LightsChanger();
            invoker.ObstacleLauncher();
             if (player.GetVidas() <= 0)
             {
@@ -91,161 +97,45 @@ public class GameManagerRunner : MonoBehaviour
     {
         SpeedUp();
     }
-
-    //SpeedUp
+    //SpeedUp Mejorado
     public void SpeedUp() {
-        if (!isPc)
+      
+        if ( isPc )
         {
-            if (score.GetScore() > 1000 && etapa == 1)
+            if ( score.GetScore() > score2)
             {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
+                for ( int i = 0 ; i < invoker.obstacles.Count ; i++ )
                 {
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.4f));
-                    invoker.SetlaunchTime(1.8f);
-                    score.SetMultipier(1.2f);
-                    etapa = 2;
+                    obs.SetVelocity(obs.GetVelocity() - new Vector3(0 , 0 , 0.15f));
                 }
-            }
-            if (score.GetScore() > 3000 && etapa == 2)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.5f));
-                    invoker.SetlaunchTime(1.6f);
-                    score.SetMultipier(1.4f);
-                    etapa = 3;
-                }
-            }
-            if (score.GetScore() > 6000 && etapa == 3)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.6f));
-                    invoker.SetlaunchTime(1.4f);
-                    score.SetMultipier(1.6f);
-                    etapa = 4;
-                }
-            }
-            if (score.GetScore() > 12000 && etapa == 4)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.7f));
-                    invoker.SetlaunchTime(1.2f);
-                    score.SetMultipier(1.8f);
-                    etapa = 5;
-                }
-            }
-            if (score.GetScore() > 24000 && etapa == 5)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.8f));
-                    invoker.SetlaunchTime(1f);
-                    score.SetMultipier(2f);
-                    etapa = 6;
-                }
+                speeTexture = Mathf.Lerp(speeTexture , speeTexture + 0.2f , Time.deltaTime * 2f);
+                invoker.SetlaunchTime(invoker.GetlaunchTime() - 0.1f);
+                etapa++;
             }
         }
-        else {
-            if (score.GetScore() > 1000 && etapa == 1)
+        else
+        {
+            if ( score.GetScore() > score2 && etapa < 8 )
             {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
+                for ( int i = 0 ; i < invoker.obstacles.Count ; i++ )
                 {
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.4f));
-                    invoker.SetlaunchTime(1.8f);
-                    score.SetMultipier(1.2f);
-                    etapa = 2;
+                    obs.SetVelocity(obs.GetVelocity() - new Vector3(0 , 0 , 0.15f));
                 }
-            }
-            if (score.GetScore() > 3000 && etapa == 2)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.5f));
-                    invoker.SetlaunchTime(1.6f);
-                    score.SetMultipier(1.4f);
-                    etapa = 3;
-                }
-            }
-            if (score.GetScore() > 6000 && etapa == 3)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.6f));
-                    invoker.SetlaunchTime(1.4f);
-                    score.SetMultipier(1.6f);
-                    etapa = 4;
-                }
-            }
-            if (score.GetScore() > 12000 && etapa == 4)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.7f));
-                    invoker.SetlaunchTime(1.2f);
-                    score.SetMultipier(1.8f);
-                    etapa = 5;
-                }
-            }
-            if (score.GetScore() > 24000 && etapa == 5)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.8f));
-                    invoker.SetlaunchTime(1f);
-                    score.SetMultipier(2f);
-                    etapa = 6;
-                }
-            }
-            if (score.GetScore() > 48000 && etapa == 6)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -0.9f));
-                    invoker.SetlaunchTime(0.8f);
-                    score.SetMultipier(3f);
-                    etapa = 7;
-                }
-            }
-            if (score.GetScore() > 96000 && etapa == 7)
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -1.1f));
-                    invoker.SetlaunchTime(0.7f);
-                    score.SetMultipier(5f);
-                    etapa = 8;
-                }
-            }
-            if (score.GetScore() > 150000 && etapa == 8 )
-            {
-                for (int i = 0; i < invoker.obstacles.Count; i++)
-                {
-                    Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
-                    obs.SetVelocity(new Vector3(0, 0, -1.3f));
-                    invoker.SetlaunchTime(0.6f);
-                    score.SetMultipier(10f);
-                    etapa = 8;
-                }
+                speeTexture = Mathf.Lerp(speeTexture , speeTexture + 0.2f , Time.deltaTime * 2f);
+                invoker.SetlaunchTime(invoker.GetlaunchTime() - 0.1f);
+                etapa++;
             }
         }
-       
+        if ( score.GetScore() > score2 )
+        {
+            score.SetMultipier(score.GetMulplier() * 1.5f);
+            score2 = score.GetScore() * 2f;
+        }
+
 
     }
-
     //Camera Changer
     public void CameraChanger() {
         if (useSecondCamera)
@@ -259,15 +149,39 @@ public class GameManagerRunner : MonoBehaviour
         }
     }
 
-    //        invoker.WallGenerator();
-    //        invoker.ObstacleLauncher();
+    //Light changer
+    public void LightsChanger() {
+        switch ( player.GravityPos )
+        {
+            case 0:
+                bottomLight.enabled = true;
+                topLight.enabled = false;
+                leftLight.enabled = false;
+                rightLight.enabled = false;
+                break;
 
-    //    }
-    //    else
-    //    {
+            case 1:
+                bottomLight.enabled = false;
+                topLight.enabled = true;
+                leftLight.enabled = false;
+                rightLight.enabled = false;
+                break;
 
-    //    }
-        
-    //}
+            case 2:
+                bottomLight.enabled = false;
+                topLight.enabled = false;
+                leftLight.enabled = false;
+                rightLight.enabled = true;
+                break;
+
+            case 3:
+                bottomLight.enabled = false;
+                topLight.enabled = false;
+                leftLight.enabled = true;
+                rightLight.enabled = false;
+                break;
+        }
+    }
+
     
 }
