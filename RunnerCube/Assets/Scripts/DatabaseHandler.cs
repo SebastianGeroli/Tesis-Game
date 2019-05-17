@@ -174,6 +174,8 @@ namespace Firebase.Sample.Database {
     }
 
     public void AddScore() {
+            score = Int32.Parse(scoreText.text);
+            email = nameText.text;
       if (score == 0 || string.IsNullOrEmpty(email)) {
         DebugLog("invalid score or email.");
         return;
