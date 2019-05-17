@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://runnercube-dgs.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">320108550929</string>
+  <string name="google_storage_bucket" translatable="false">runnercube-dgs.appspot.com</string>
+  <string name="project_id" translatable="false">runnercube-dgs</string>
+  <string name="google_api_key" translatable="false">AIzaSyCWw43F2F2sn4K9ypJouwb9WfXTGc0fx88</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCWw43F2F2sn4K9ypJouwb9WfXTGc0fx88</string>
+  <string name="google_app_id" translatable="false">1:320108550929:android:573bd9b06f40ffff</string>
+  <string name="default_web_client_id" translatable="false">320108550929-uvkvduc56pdf41lm6erpaks8spp8ji8k.apps.googleusercontent.com</string>
+</resources>

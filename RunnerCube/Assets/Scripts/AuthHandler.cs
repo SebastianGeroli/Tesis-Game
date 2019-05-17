@@ -243,7 +243,7 @@ namespace Firebase.Sample.Auth {
           EnableUI();
           if (LogTaskCompletion(task, "User Creation")) {
             var user = task.Result;
-                user.SendEmailVerificationAsync();
+                //user.SendEmailVerificationAsync();
             DisplayDetailedUserInfo(user, 1);
             return UpdateUserProfileAsync(newDisplayName: newDisplayName);
           }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "320108550929",
+    "firebase_url": "https://runnercube-dgs.firebaseio.com",
+    "project_id": "runnercube-dgs",
+    "storage_bucket": "runnercube-dgs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320108550929:android:573bd9b06f40ffff",
+        "android_client_info": {
+          "package_name": "com.dgs.runnercube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320108550929-uvkvduc56pdf41lm6erpaks8spp8ji8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWw43F2F2sn4K9ypJouwb9WfXTGc0fx88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320108550929-uvkvduc56pdf41lm6erpaks8spp8ji8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
