@@ -93,7 +93,7 @@ public class GameManagerRunner:MonoBehaviour
         }
         
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         SpeedUp();
     }
@@ -109,7 +109,7 @@ public class GameManagerRunner:MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(obs.GetVelocity() - new Vector3(0 , 0 , 0.15f));
                 }
-                speeTexture = Mathf.Lerp(speeTexture , speeTexture + 0.2f , Time.deltaTime * 2f);
+                speeTexture = Mathf.Lerp(speeTexture , speeTexture + 0.2f , Time.time * 2f);
                 invoker.SetlaunchTime(invoker.GetlaunchTime() - 0.1f);
                 etapa++;
             }
@@ -123,7 +123,7 @@ public class GameManagerRunner:MonoBehaviour
                     Obstacles obs = invoker.obstacles[i].GetComponent<Obstacles>();
                     obs.SetVelocity(obs.GetVelocity() - new Vector3(0 , 0 , 0.15f));
                 }
-                speeTexture = Mathf.Lerp(speeTexture , speeTexture + 0.2f , Time.deltaTime * 2f);
+                speeTexture = Mathf.Lerp(speeTexture , speeTexture + 0.2f , Time.time * 2f);
                 invoker.SetlaunchTime(invoker.GetlaunchTime() - 0.1f);
                 etapa++;
             }
