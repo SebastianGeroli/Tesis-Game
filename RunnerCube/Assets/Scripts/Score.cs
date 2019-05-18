@@ -28,14 +28,25 @@ public class Score : MonoBehaviour
     //Start
     void Start()
     {
-        if ( DataController.control.bestScore != null )
+        if ( DataController.control.bestScore != null || DataController.control.bestScore !="")
         {
             BestText.text = DataController.control.bestScore;
-            bestScore = float.Parse(BestText.text);
+            float x;
+
+            if ( float.TryParse(DataController.control.bestScore , out x) )
+            {
+                bestScore = x;
+            }
+            else
+            {
+                BestText.text = "0";
+                bestScore = 0;
+            }
+
         }
         else
         {
-            BestText.text = null;
+            BestText.text = "0";
             bestScore = 0;
         }
         score = 0;
