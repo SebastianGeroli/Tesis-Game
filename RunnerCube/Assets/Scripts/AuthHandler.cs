@@ -246,8 +246,9 @@ namespace Firebase.Sample.Auth {
           EnableUI();
           if (LogTaskCompletion(task, "User Creation")) {
             var user = task.Result;
-                PlayerPrefs.SetString("Email" , email);
-                PlayerPrefs.SetString("Name" , displayName);
+                DataController.control.email = email;
+                DataController.control.password = password;
+                DataController.control.displayName = displayName;
                 //user.SendEmailVerificationAsync();
             DisplayDetailedUserInfo(user, 1);
             return UpdateUserProfileAsync(newDisplayName: newDisplayName);
@@ -358,8 +359,9 @@ namespace Firebase.Sample.Auth {
       EnableUI();
       if (LogTaskCompletion(task, "Sign-in")) {
         DisplaySignInResult(task.Result, 1);
-                PlayerPrefs.SetString("Email" , email);
-                PlayerPrefs.SetString("Name" , displayName);
+                DataController.control.email = email;
+                DataController.control.password = password;
+                DataController.control.displayName = displayName;
             }
     }
 

@@ -6,16 +6,9 @@ using UnityEngine.UI;
 public class ScoreGameOver : MonoBehaviour
 {
     public Text Score;
-    void Update()
+    void Start()
     {
-        if ( PlayerPrefs.GetString("BestScore") != null )
-        {
-            Score.text = PlayerPrefs.GetString("BestScore");
-        }
-        else
-        {
-            Score.text = "0";
-        }
+        Score.text = DataController.control.bestScore;
        
     }
 

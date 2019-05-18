@@ -9,11 +9,11 @@ public class Score : MonoBehaviour
     /*################################  Variables ##################################*/
     public Player player;
     public Text ScoreText, BestText,MultiplierText;
-    double score;
+    float score,bestScore;
     private float multiplier = 1;
 
     /*################################  Getters && Setters  ##################################*/
-    public double GetScore()
+    public float GetScore()
     {
         return score;
     }
@@ -28,22 +28,29 @@ public class Score : MonoBehaviour
     //Start
     void Start()
     {
-        if ( PlayerPrefs.GetString("BestScore") != null )
+        if ( DataController.control.bestScore != null )
         {
-            BestText.text = PlayerPrefs.GetString("BestScore");
+            BestText.text = DataController.control.bestScore;
+            bestScore = float.Parse(BestText.text);
         }
         else
         {
-            BestText.text = "0";
+            BestText.text = null;
+            bestScore = 0;
         }
         score = 0;
-    }
 
+    }
+    //Updatea el score
+    void UpdateScore() {
+       
+       
+    }
     // Update is called once per frame
     void Update()
     {
         score += Time.deltaTime * 100 * multiplier;
-        score = (double) Math.Truncate(score);
+        score = (float) Math.Truncate(score);
         ScoreUpdate();
     }
     //
@@ -54,24 +61,12 @@ public class Score : MonoBehaviour
 
     //Checkear si es mayor el score
     public void CheckScore() {
-        double i, x;
-        if ( double.TryParse(BestText.text , out i) && double.TryParse(ScoreText.text , out x) )
+        if ( score > bestScore )
         {
-            if ( i < x )
-            {
-                BestText.text = ScoreText.text;
-                PlayerPrefs.SetString("BestScore" , BestText.text);
-            }
+            BestText.text = score.ToString();
+            DataController.control.bestScore = BestText.text;
         }
-        else
-        {
-            System.Diagnostics.Debug.WriteLine("Parse Failed");
-            System.Diagnostics.Debug.WriteLine(BestText.text.Length);
-            System.Diagnostics.Debug.WriteLine(ScoreText.text.Length);
-            Debug.Log("Parse Failed");
-            Debug.Log(BestText.text.Length);
-            Debug.Log(ScoreText.text.Length);
-        }
+      
     }
 
     //UpdateScore

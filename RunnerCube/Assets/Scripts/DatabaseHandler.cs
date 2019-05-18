@@ -48,8 +48,8 @@ namespace Firebase.Sample.Database
         // add them if possible.
         protected virtual void Start()
         {
-            scoreText.text = PlayerPrefs.GetString("BestScore");
-            nameText.text = PlayerPrefs.GetString("Name");
+            scoreText.text = DataController.control.bestScore;
+            nameText.text = DataController.control.displayName;
             leaderBoard.Clear();
             leaderBoard.Add("Firebase Top " + MaxScores.ToString() + " Scores");
 
