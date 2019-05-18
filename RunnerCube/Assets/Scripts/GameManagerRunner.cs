@@ -21,7 +21,7 @@ public class GameManagerRunner:MonoBehaviour
     public Invoker invoker;
     public Player player;
     [SerializeField]
-    private float score2 = 1000f;
+    private double score2 = 1000f;
     //public Player6x6 player;
 
     /*###############################################################################
@@ -32,10 +32,9 @@ public class GameManagerRunner:MonoBehaviour
     {
         if (gameOver == false && player.GetVidas() <= 0)
         {
-
+            
             gameOver = true;
-            SceneManager.LoadScene(2);
-            Debug.Log("Deberia cargar la escena");
+            
         }
         else
         {
@@ -84,12 +83,11 @@ public class GameManagerRunner:MonoBehaviour
             //timerObs += Time.deltaTime;
             LightsChanger();
            invoker.ObstacleLauncher();
-            if (player.GetVidas() <= 0)
-            {
-                score.CheckScore();
-                player.SetVidas(5);
-                player.VidasUpdate();
-            }
+        }else{
+
+            score.CheckScore();
+            SceneManager.LoadScene(2);
+            Debug.Log("Deberia cargar la escena");
         }
         
     }

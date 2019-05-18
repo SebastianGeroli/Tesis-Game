@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class MenuCtrl : MonoBehaviour
 {
+
     public AudioSource audio;
     private bool muted = false;
-
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

@@ -21,7 +21,8 @@ namespace Firebase.Sample.Auth {
   using System.Collections.Generic;
   using System.Threading.Tasks;
   using UnityEngine;
-    using UnityEngine.UI;
+  using UnityEngine.SceneManagement;
+  using UnityEngine.UI;
 
     // Handler for UI buttons on the scene.  Also performs some
     // necessary setup (initializing the firebase app, etc) on
@@ -29,6 +30,7 @@ namespace Firebase.Sample.Auth {
     public class AuthHandler : MonoBehaviour {
         public Text emailText;
         public Text passwordText;
+        public Text displayNameText;
     protected Firebase.Auth.FirebaseAuth auth;
     protected Dictionary<string, Firebase.Auth.FirebaseUser> userByAuth =
       new Dictionary<string, Firebase.Auth.FirebaseUser>();
@@ -231,25 +233,29 @@ namespace Firebase.Sample.Auth {
     public void CreateUserWithEmailAsync() {
             email = emailText.text;
             password = passwordText.text;
+            displayName = displayNameText.text;
       DebugLog(String.Format("Attempting to create user {0}...", email));
       DisableUI();
 
       // This passes the current displayName through to HandleCreateUserAsync
       // so that it can be passed to UpdateUserProfile().  displayName will be
       // reset by AuthStateChanged() when the new user is created and signed in.
-      string newDisplayName = displayName;
+      string newDisplayName = displayNameText.text;
       auth.CreateUserWithEmailAndPasswordAsync(email, password)
         .ContinueWith((task) => {
           EnableUI();
           if (LogTaskCompletion(task, "User Creation")) {
             var user = task.Result;
+                PlayerPrefs.SetString("Email" , email);
+                PlayerPrefs.SetString("Name" , displayName);
                 //user.SendEmailVerificationAsync();
             DisplayDetailedUserInfo(user, 1);
             return UpdateUserProfileAsync(newDisplayName: newDisplayName);
           }
           return task;
         }).Unwrap();
-    }
+            SceneManager.LoadScene("Menu");
+        }
 
     // Update the user's display name with the currently selected display name.
     public Task UpdateUserProfileAsync(string newDisplayName = null) {
@@ -352,7 +358,9 @@ namespace Firebase.Sample.Auth {
       EnableUI();
       if (LogTaskCompletion(task, "Sign-in")) {
         DisplaySignInResult(task.Result, 1);
-      }
+                PlayerPrefs.SetString("Email" , email);
+                PlayerPrefs.SetString("Name" , displayName);
+            }
     }
 
     // Link the current user with an email / password credential.
@@ -495,5 +503,14 @@ namespace Firebase.Sample.Auth {
         }
       });
     }
-  }
+        // Cancel and go back to menu
+        public void Cancel(String sceneName)
+        {
+            
+                SceneManager.LoadScene(sceneName);
+         
+        }
+    }
+
+    
 }

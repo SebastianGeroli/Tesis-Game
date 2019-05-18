@@ -22,6 +22,7 @@ namespace Firebase.Sample.Database
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
 
     // Handler for UI buttons on the scene.  Also performs some
     // necessary setup (initializing the firebase app, etc) on
@@ -47,6 +48,8 @@ namespace Firebase.Sample.Database
         // add them if possible.
         protected virtual void Start()
         {
+            scoreText.text = PlayerPrefs.GetString("BestScore");
+            nameText.text = PlayerPrefs.GetString("Name");
             leaderBoard.Clear();
             leaderBoard.Add("Firebase Top " + MaxScores.ToString() + " Scores");
 
@@ -221,6 +224,11 @@ namespace Firebase.Sample.Database
                       DebugLog("Transaction complete.");
                   }
               });
+        }
+        //Load Scenes
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

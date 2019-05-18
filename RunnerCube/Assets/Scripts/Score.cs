@@ -9,11 +9,11 @@ public class Score : MonoBehaviour
     /*################################  Variables ##################################*/
     public Player player;
     public Text ScoreText, BestText,MultiplierText;
-    float score;
+    double score;
     private float multiplier = 1;
 
     /*################################  Getters && Setters  ##################################*/
-    public float GetScore()
+    public double GetScore()
     {
         return score;
     }
@@ -28,28 +28,50 @@ public class Score : MonoBehaviour
     //Start
     void Start()
     {
-        BestText.text = "0";
+        if ( PlayerPrefs.GetString("BestScore") != null )
+        {
+            BestText.text = PlayerPrefs.GetString("BestScore");
+        }
+        else
+        {
+            BestText.text = "0";
+        }
+        score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        score += Time.deltaTime * 100 * multiplier;
+        score = (double) Math.Truncate(score);
+        ScoreUpdate();
     }
     //
     private void FixedUpdate()
     {
-        score += Time.deltaTime * 100 * multiplier;
-        score = (float)Math.Truncate(score);
-        ScoreUpdate();
+        
     }
 
     //Checkear si es mayor el score
     public void CheckScore() {
-        if (float.Parse(ScoreText.text)>float.Parse(BestText.text)) {
-            BestText.text = ScoreText.text;
+        double i, x;
+        if ( double.TryParse(BestText.text , out i) && double.TryParse(ScoreText.text , out x) )
+        {
+            if ( i < x )
+            {
+                BestText.text = ScoreText.text;
+                PlayerPrefs.SetString("BestScore" , BestText.text);
+            }
         }
-        score = 0;
+        else
+        {
+            System.Diagnostics.Debug.WriteLine("Parse Failed");
+            System.Diagnostics.Debug.WriteLine(BestText.text.Length);
+            System.Diagnostics.Debug.WriteLine(ScoreText.text.Length);
+            Debug.Log("Parse Failed");
+            Debug.Log(BestText.text.Length);
+            Debug.Log(ScoreText.text.Length);
+        }
     }
 
     //UpdateScore
