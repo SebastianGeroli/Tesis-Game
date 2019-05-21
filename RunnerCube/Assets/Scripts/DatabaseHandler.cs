@@ -51,7 +51,7 @@ namespace Firebase.Sample.Database
             scoreText.text = DataController.control.bestScore;
             nameText.text = DataController.control.displayName;
             leaderBoard.Clear();
-            leaderBoard.Add("Firebase Top " + MaxScores.ToString() + " Scores");
+            leaderBoard.Add("");
 
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
             {
