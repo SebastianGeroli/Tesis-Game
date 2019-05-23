@@ -3,37 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Invoker : MonoBehaviour
-{   /*###############################################################################
-                                       Variables
-    #################################################################################*/
-    public GameObject[] obstacles;
-    public float minTime, maxTime;
-    private int lastInvoked = 0;
-    private int counter;
-    private float time;
-    private float timerObs;
-    private int nextObj;
-    // private int invMax = 9;
-    // private int invMin = 0;
-    /*###############################################################################
-                                       Metodos
-    #################################################################################*/
-    public void ObstacleLauncher()
-    {
-        timerObs += Time.deltaTime;
-        if (timerObs > 0.5f)
-        {
-            obstacles[counter].GetComponent<Obstacles>().PuedeSalir = true;
-            obstacles[counter].GetComponent<Obstacles>().LlegoDestino = false;
-            timerObs = 0;
-        }
-        counter++;
-        if (counter == obstacles.Length)
-        {
-            counter = 0;
-        }
+{  /*################################  Variables  ##################################*/
+    public bool useRandom = true;
+    public List<GameObject> obstacles;
+    [SerializeField]
+    private float launchTime = 2.0f;
+    [SerializeField]
+    private int counterObstacle = 0;
+    private float timerObs = 0;
+    private int maxObj = 17;
+    private int lastObj;
+    /*################################  Getters && Setters  ##################################*/
+    public void SetlaunchTime(float a) {
+        launchTime = a;
     }
-
+    public float GetlaunchTime()
+    {
+        return launchTime;
+    }
+    /*################################  Metodos  ##################################*/
     //Obstacle Generator
     public GameObject ObstaclesGen(int Obj, Transform invoker)
     {
@@ -41,36 +29,61 @@ public class Invoker : MonoBehaviour
         switch (Obj)
         {
             case 0:
-                gO = Instantiate(Resources.Load("HalfWallTop"), invoker.position + new Vector3(0, 7, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Middle"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 1:
-                gO = Instantiate(Resources.Load("HalfWallBottom"), invoker.position, Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Middle"), invoker.position, Quaternion.Euler(0, 0, 90)) as GameObject;
                 break;
             case 2:
-                gO = Instantiate(Resources.Load("HalfWallLeft"), invoker.position + new Vector3(-3, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleFull"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 3:
-                gO = Instantiate(Resources.Load("HalfWallRight"), invoker.position + new Vector3(3, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleFull"), invoker.position, Quaternion.Euler(0, 0, 90)) as GameObject;
                 break;
             case 4:
-                gO = Instantiate(Resources.Load("3_4Top"), invoker.position + new Vector3(0, 5, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleUP"), invoker.position, Quaternion.identity) as GameObject;
                 break;
             case 5:
-                gO = Instantiate(Resources.Load("3_4Bottom"), invoker.position + new Vector3(0, 3, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleUP"), invoker.position, Quaternion.Euler(0, 0, 90)) as GameObject;
                 break;
             case 6:
-                gO = Instantiate(Resources.Load("3_4Left"), invoker.position + new Vector3(-1, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleUP"), invoker.position, Quaternion.Euler(0, 0, -90)) as GameObject;
                 break;
             case 7:
-                gO = Instantiate(Resources.Load("3_4Right"), invoker.position + new Vector3(1, 4, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("MiddleUP"), invoker.position, Quaternion.Euler(0, 0, 180)) as GameObject;
                 break;
-            //case 8:
-            //	gO = Instantiate (Resources.Load ("Hexagon"))as Object;
-            //	Quaternion qt = gO.transform.rotation;
-            //	gO.transform.position = invoker.position + new Vector3 (0, 4, 0);
-            //	return gO;
+            case 8:
+                gO = Instantiate(Resources.Load("Short"), invoker.position , Quaternion.identity) as GameObject;
+                break;
+            case 9:
+                gO = Instantiate(Resources.Load("Short"), invoker.position, Quaternion.Euler(0, 0, 90)) as GameObject;
+                break;
+            case 10:
+                gO = Instantiate(Resources.Load("Short"), invoker.position, Quaternion.Euler(0, 0, -90)) as GameObject;
+                break;
+            case 11:
+                gO = Instantiate(Resources.Load("Short"), invoker.position, Quaternion.Euler(0, 0, 180)) as GameObject;
+                break;
+            case 12:
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+            case 13:
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.Euler(0, 0, 90)) as GameObject;
+                break;
+            case 14:
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.Euler(0, 0, -90)) as GameObject;
+                break;
+            case 15:
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.Euler(0, 0, 180)) as GameObject;
+                break;
+            case 16:
+                gO = Instantiate(Resources.Load("Corners"), invoker.position, Quaternion.identity) as GameObject;
+                break;
+            case 17:
+                gO = Instantiate(Resources.Load("CornersMiddle"), invoker.position, Quaternion.identity) as GameObject;
+                break;
             default:
-                gO = Instantiate(Resources.Load("HalfWallTop"), invoker.position + new Vector3(0, 7, 0), Quaternion.identity) as GameObject;
+                gO = Instantiate(Resources.Load("Corner"), invoker.position, Quaternion.identity) as GameObject;
                 break;
         }
 
@@ -79,32 +92,52 @@ public class Invoker : MonoBehaviour
         return gO;
     }
 
-    //Creador de paredes no interactivas 
-    public void WallGenerator()
+    //Instancite de obstaculos
+    public void ObstacleInstanciate()
     {
-        time += Time.deltaTime;
-        if (lastInvoked == 0 && time > 0.31f)
+        for ( int a = 0 ; a <= maxObj ; a++ )
         {
-            Instantiate(Resources.Load("WhiteWalls"), transform.position, Quaternion.identity);
-            lastInvoked = 1;
-            time = 0;
+            obstacles.Add(ObstaclesGen(a , transform));
         }
-        else if (time > 0.31f)
-        {
-            Instantiate(Resources.Load("BlueWalls"), transform.position, Quaternion.identity);
-            lastInvoked = 0;
-            time = 0;
-        }
-
     }
 
-    //Creador de obstaculos
-    public void ObstacleGenerator()
+    //Obstacle Launcher
+    public float ObstacleLauncher()
     {
-        obstacles[0] = ObstaclesGen(0, transform);
-        obstacles[1] = ObstaclesGen(1, transform);
-        obstacles[2] = ObstaclesGen(2, transform);
-        obstacles[3] = ObstaclesGen(3, transform);
-        obstacles[4] = ObstaclesGen(4, transform);
+        timerObs += Time.deltaTime;
+       
+        if ( useRandom )
+        {
+            if ( timerObs > launchTime && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false )
+            {
+                obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
+                timerObs = 0;
+                lastObj = counterObstacle;
+                counterObstacle = (int) Random.Range(0 , obstacles.Count);
+            }
+            else if ( obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == true || obstacles[counterObstacle].tag == obstacles[lastObj].tag && obstacles[lastObj].tag == "Corner" )
+            {
+                counterObstacle = (int) Random.Range(0 , obstacles.Count);
+            }
+        }
+        else
+        {
+            if ( timerObs > launchTime && obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir == false )
+            {
+                obstacles[counterObstacle].GetComponent<Obstacles>().PuedeSalir = true;
+                timerObs = 0;
+                counterObstacle++;
+            }
+            if ( counterObstacle >= obstacles.Count )
+            {
+                counterObstacle = 0;
+            }
+        }
+        
+        return timerObs;
     }
 }
+
+
+
+

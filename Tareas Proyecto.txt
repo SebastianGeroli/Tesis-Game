@@ -1,0 +1,36 @@
+boton pausa
+
+interfases:
+pausa
+retry
+game over
+menu inicial
+opciones:
+barra de sensibilidad
+uso de camaras
+guardar la config perfil
+
+puntaciones
+level selector
+
+
+level desing
+
+grafica
+UI en gameplay
+
+sonido
+
+implementar usarios
+google
+facebook
+instagram
+
+guardar los scores
+
+documentacion
+
+
+
+
+

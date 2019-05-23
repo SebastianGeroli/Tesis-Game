@@ -4,26 +4,33 @@ using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
-    /*###############################################################################
-                                       Variables
-    #################################################################################*/
+    /*################################  Variables  ##################################*/
+    private Vector3 velocity = new Vector3(0,0,-0.3f);
     private int forma;
-    public bool LlegoDestino = false;
     public bool PuedeSalir = false;
     private Vector3 posInicial;
     public Rigidbody rb;
-    Obstacles obstaculo;
-    /*###############################################################################
-                                       Getters & Setters
-    #################################################################################*/
+ 
+    /*################################  Getters && Setters  ##################################*/
     //Get & Set de Forma
     public int GetForma()
     {
         return forma;
     }
+
     public int SetForma(int a)
     {
         return forma = a;
+    }
+
+    //SetVelocity
+    public void SetVelocity(Vector3 vec3) {
+        velocity = vec3;
+    }
+    //SetVelocity
+    public Vector3 GetVelocity()
+    {
+        return velocity;
     }
 
     //Get & Set de GetPosInicial
@@ -31,16 +38,17 @@ public class Obstacles : MonoBehaviour
     {
         return posInicial;
     }
+
     public void SetposInicial(Vector3 a)
     {
         posInicial = a;
     }
-    /*###############################################################################
-                                       Metodos
-    #################################################################################*/
+
+    /*################################  Metodos  ##################################*/
     //Start
     void Start()
     {
+        
         rb = transform.GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }
@@ -55,8 +63,13 @@ public class Obstacles : MonoBehaviour
     public void MoveFloor()
     {
 
-        if (!LlegoDestino && PuedeSalir)
-            rb.transform.Translate(0, 0, -0.5f);
+        if (PuedeSalir)
+        {
+            rb.transform.Translate(velocity);
+        }
+            
 
     }
+
+    
 }
