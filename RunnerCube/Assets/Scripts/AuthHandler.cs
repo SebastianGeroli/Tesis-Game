@@ -23,14 +23,15 @@ namespace Firebase.Sample.Auth {
   using UnityEngine;
   using UnityEngine.SceneManagement;
   using UnityEngine.UI;
+    using ToastPlugin;
 
     // Handler for UI buttons on the scene.  Also performs some
     // necessary setup (initializing the firebase app, etc) on
     // startup.
     public class AuthHandler : MonoBehaviour {
-        public Text emailText;
-        public Text passwordText;
-        public Text displayNameText;
+        public InputField emailText;
+        public InputField passwordText;
+        public InputField displayNameText;
     protected Firebase.Auth.FirebaseAuth auth;
     protected Dictionary<string, Firebase.Auth.FirebaseUser> userByAuth =
       new Dictionary<string, Firebase.Auth.FirebaseUser>();
@@ -163,6 +164,8 @@ namespace Firebase.Sample.Auth {
     protected void DisplayDetailedUserInfo(Firebase.Auth.FirebaseUser user, int indentLevel) {
       string indent = new String(' ', indentLevel * 2);
       DisplayUserInfo(user, indentLevel);
+            DataController.control.displayName = user.DisplayName;
+            DataController.control.email = user.Email;
       DebugLog(String.Format("{0}Anonymous: {1}", indent, user.IsAnonymous));
       DebugLog(String.Format("{0}Email Verified: {1}", indent, user.IsEmailVerified));
       DebugLog(String.Format("{0}Phone Number: {1}", indent, user.PhoneNumber));
@@ -248,13 +251,14 @@ namespace Firebase.Sample.Auth {
             var user = task.Result;
                 DataController.control.email = email;
                 DataController.control.password = password;
-                DataController.control.displayName = displayName;
                 //user.SendEmailVerificationAsync();
             DisplayDetailedUserInfo(user, 1);
             return UpdateUserProfileAsync(newDisplayName: newDisplayName);
           }
           return task;
         }).Unwrap();
+
+            ToastHelper.ShowToast("User Created");
             SceneManager.LoadScene("Menu");
         }
 
@@ -273,7 +277,8 @@ namespace Firebase.Sample.Auth {
       }).ContinueWith(task => {
         EnableUI();
         if (LogTaskCompletion(task, "User profile")) {
-          DisplayDetailedUserInfo(auth.CurrentUser, 1);
+              DataController.control.displayName = auth.CurrentUser.DisplayName;
+              DisplayDetailedUserInfo(auth.CurrentUser, 1);
         }
       });
     }
@@ -298,6 +303,8 @@ namespace Firebase.Sample.Auth {
     // illustrates the use of Credentials, which can be aquired from many
     // different sources of authentication.
     public void SigninWithEmailCredentialAsync() {
+            email = emailText.text;
+            password = passwordText.text;
       DebugLog(String.Format("Attempting to sign in as {0}...", email));
       DisableUI();
       if (signInAndFetchProfile) {
@@ -309,7 +316,11 @@ namespace Firebase.Sample.Auth {
           Firebase.Auth.EmailAuthProvider.GetCredential(email, password)).ContinueWith(
             HandleSignInWithUser);
       }
-    }
+            GetUserInfo();
+            ToastHelper.ShowToast("Singed in as "+ DataController.control.displayName);
+            DataController.control.password = password;
+            SceneManager.LoadScene("Menu");
+        }
 
     // Attempt to sign in anonymously.
     public void SigninAnonymouslyAsync() {
@@ -350,8 +361,8 @@ namespace Firebase.Sample.Auth {
     void HandleSignInWithUser(Task<Firebase.Auth.FirebaseUser> task) {
       EnableUI();
       if (LogTaskCompletion(task, "Sign-in")) {
-        DebugLog(String.Format("{0} signed in", task.Result.DisplayName));
-      }
+       DebugLog(String.Format("{0} signed in", task.Result.DisplayName));
+            }
     }
 
     // Called when a sign-in with profile data completes.
@@ -359,9 +370,6 @@ namespace Firebase.Sample.Auth {
       EnableUI();
       if (LogTaskCompletion(task, "Sign-in")) {
         DisplaySignInResult(task.Result, 1);
-                DataController.control.email = email;
-                DataController.control.password = password;
-                DataController.control.displayName = displayName;
             }
     }
 

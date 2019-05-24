@@ -52,7 +52,7 @@ public class Menu_UI : MonoBehaviour
             encender = true;
          }
        
-        Debug.Log("OnPointerEnter called.");
+       // Debug.Log("OnPointerEnter called.");
        
     }
     public void OnPointerExit(PointerEventData data)
@@ -63,7 +63,7 @@ public class Menu_UI : MonoBehaviour
             btn.image.overrideSprite = sinLuz;
             encender = false;
         }
-        Debug.Log("OnPointerExit called.");
+        //Debug.Log("OnPointerExit called.");
     }
 
 }

@@ -459,13 +459,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 110207775}
   m_TextComponent: {fileID: 1572869263}
   m_Placeholder: {fileID: 64620452}
-  m_ContentType: 0
+  m_ContentType: 6
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 7
   m_LineType: 0
-  m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_HideMobileInput: 1
+  m_CharacterValidation: 5
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1515,7 +1515,7 @@ GameObject:
   - component: {fileID: 805689020}
   - component: {fileID: 805689019}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: PasswordTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,12 +1809,12 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1074715321}
   m_TextComponent: {fileID: 602718009}
   m_Placeholder: {fileID: 106958031}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_CharacterValidation: 0
   m_CharacterLimit: 0
   m_OnEndEdit:
@@ -2326,9 +2326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1635a6566d9faff4bb393054dc2f649e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emailText: {fileID: 1572869263}
-  passwordText: {fileID: 602718009}
-  displayNameText: {fileID: 1001819621}
+  emailText: {fileID: 110207774}
+  passwordText: {fileID: 1074715320}
+  displayNameText: {fileID: 604214816}
 --- !u!1 &1462697415
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2341,7 @@ GameObject:
   - component: {fileID: 1462697418}
   - component: {fileID: 1462697417}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: DisplayTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2420,7 +2420,7 @@ GameObject:
   - component: {fileID: 1529962915}
   - component: {fileID: 1529962914}
   m_Layer: 5
-  m_Name: Text
+  m_Name: EmailTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
