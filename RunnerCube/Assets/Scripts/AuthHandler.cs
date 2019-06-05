@@ -30,6 +30,7 @@ namespace Firebase.Sample.Auth {
 	// necessary setup (initializing the firebase app, etc) on
 	// startup.
 	public class AuthHandler:MonoBehaviour {
+		bool userCreated;
 		public InputField emailText;
 		public InputField passwordText;
 		public InputField displayNameText;
@@ -58,6 +59,11 @@ namespace Firebase.Sample.Auth {
 		// When the app starts, check to make sure that we have
 		// the required dependencies to use Firebase, and if not,
 		// add them if possible.
+		//Awake
+		private void Awake() {
+			userCreated = false;
+		}
+		//Virtual Start
 		public virtual void Start() {
 			Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith( task => {
 				dependencyStatus = task.Result;
@@ -99,7 +105,13 @@ namespace Firebase.Sample.Auth {
 		void EnableUI() {
 			UIEnabled = true;
 		}
-
+		//FixedUpdate
+		private void FixedUpdate() {
+			if( userCreated ) {
+				SceneManager.LoadScene("Menu");
+				userCreated = false;
+			}
+		}
 		// Output text to the debug log text field, as well as the console.
 		public void DebugLog( string s ) {
 			Debug.Log( s );
@@ -144,7 +156,7 @@ namespace Firebase.Sample.Auth {
 			}
 		}
 
-		// Display user information.
+		// Display user information
 		protected void DisplayUserInfo( Firebase.Auth.IUserInfo userInfo , int indentLevel ) {
 			string indent = new String( ' ' , indentLevel * 2 );
 			var userProperties = new Dictionary<string , string> {
@@ -233,9 +245,18 @@ namespace Firebase.Sample.Auth {
 			}
 			return complete;
 		}
+		//Create User
+		public void CreateUser() {
+			CreateUserWithEmailAsync().ContinueWith( ( task ) => {
+				if( LogTaskCompletion( task , "User Created" ) ) {
+					userCreated = true;
+				}
 
+
+			});
+		}
 		// Create a user with the email and password.
-		public void CreateUserWithEmailAsync() {
+		public Task CreateUserWithEmailAsync() {
 			email = emailText.text;
 			password = passwordText.text;
 			displayName = displayNameText.text;
@@ -246,7 +267,7 @@ namespace Firebase.Sample.Auth {
 			// so that it can be passed to UpdateUserProfile().  displayName will be
 			// reset by AuthStateChanged() when the new user is created and signed in.
 			string newDisplayName = displayNameText.text;
-			auth.CreateUserWithEmailAndPasswordAsync( email , password )
+			return auth.CreateUserWithEmailAndPasswordAsync( email , password )
 			.ContinueWith( ( task ) => {
 				EnableUI();
 				if( LogTaskCompletion( task , "User Creation" ) ) {
@@ -261,7 +282,6 @@ namespace Firebase.Sample.Auth {
 			} ).Unwrap();
 			/*Cargar escena luego de que termine la seccion de arriba */
 			/*Arreglo con corrutina de espera larga pero no es lo ideal*/
-			StartCoroutine("ChangeScene");
 		}
 
 		// Update the user's display name with the currently selected display name.
