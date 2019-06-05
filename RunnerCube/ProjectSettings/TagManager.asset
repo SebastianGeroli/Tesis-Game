@@ -13,6 +13,8 @@ TagManager:
   - Objeto
   - Escenario
   - Corner
+  - Layer2
+  - Layer1
   layers:
   - Default
   - TransparentFX

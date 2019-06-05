@@ -22,6 +22,9 @@ public class GameManagerRunner:MonoBehaviour
     public Player player;
     [SerializeField]
     private double score2 = 1000f;
+
+    //public Sprite multi;
+
     //public Player6x6 player;
 
     /*###############################################################################
@@ -129,6 +132,7 @@ public class GameManagerRunner:MonoBehaviour
         if ( score.GetScore() > score2 )
         {
             score.SetMultipier(score.GetMulplier() * 1.5f);
+           
             score2 = score.GetScore() * 2f;
         }
 

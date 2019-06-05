@@ -61,7 +61,7 @@ public class Score : MonoBehaviour
     void Update()
     {
         score += Time.deltaTime * 100 * multiplier;
-        score = (float) Math.Truncate(score);
+        score = (float)Math.Truncate(score);
         ScoreUpdate();
     }
     //
