@@ -23,7 +23,7 @@ public class GameManagerRunner:MonoBehaviour
     [SerializeField]
     private double score2 = 1000f;
 
-    //public Sprite multi;
+    public GameObject multi;
 
     //public Player6x6 player;
 
@@ -60,6 +60,8 @@ public class GameManagerRunner:MonoBehaviour
     //Start
     public void Start()
     {
+
+        multi = GetComponent<GameObject>();
        // invoker.WallsInstanciate();
         invoker.ObstacleInstanciate();
        // invoker.ObstacleGenerator();
@@ -132,7 +134,7 @@ public class GameManagerRunner:MonoBehaviour
         if ( score.GetScore() > score2 )
         {
             score.SetMultipier(score.GetMulplier() * 1.5f);
-           
+            multi.SetActive(true);
             score2 = score.GetScore() * 2f;
         }
 
