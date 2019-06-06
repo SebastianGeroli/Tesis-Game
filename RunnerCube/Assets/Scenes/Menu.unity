@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -300,8 +300,6 @@ GameObject:
   - component: {fileID: 318765251}
   - component: {fileID: 318765250}
   - component: {fileID: 318765249}
-  - component: {fileID: 318765252}
-  - component: {fileID: 318765253}
   m_Layer: 5
   m_Name: Btn_Score
   m_TagString: Untagged
@@ -421,41 +419,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318765247}
   m_CullTransparentMesh: 0
---- !u!114 &318765252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318765247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &318765253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318765247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 318765249}
-  luz: {fileID: 21300000, guid: 85108e91d02b1e641b41d5e6036aed6d, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
 --- !u!1 &557128087
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,8 +946,6 @@ GameObject:
   - component: {fileID: 1363491014}
   - component: {fileID: 1363491013}
   - component: {fileID: 1363491012}
-  - component: {fileID: 1363491011}
-  - component: {fileID: 1363491010}
   m_Layer: 5
   m_Name: Btn_LogIn
   m_TagString: Untagged
@@ -1011,41 +972,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1363491010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363491008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 1363491012}
-  luz: {fileID: 21300000, guid: aef33964d997d7a47b5d4c3acdce4b07, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
---- !u!114 &1363491011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363491008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &1363491012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,8 +1077,6 @@ GameObject:
   - component: {fileID: 1546437111}
   - component: {fileID: 1546437110}
   - component: {fileID: 1546437109}
-  - component: {fileID: 1546437112}
-  - component: {fileID: 1546437113}
   m_Layer: 5
   m_Name: Btn_Quit
   m_TagString: Untagged
@@ -1264,7 +1188,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
 --- !u!222 &1546437111
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1273,41 +1197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546437107}
   m_CullTransparentMesh: 0
---- !u!114 &1546437112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546437107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &1546437113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1546437107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 1546437109}
-  luz: {fileID: 21300000, guid: d3ff86c23dfb86e4f97a640c64bb3b6a, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
 --- !u!1 &1721055604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,8 +1707,6 @@ GameObject:
   - component: {fileID: 2046082231}
   - component: {fileID: 2046082230}
   - component: {fileID: 2046082229}
-  - component: {fileID: 2046082232}
-  - component: {fileID: 2046082233}
   m_Layer: 5
   m_Name: Btn_Play
   m_TagString: Untagged
@@ -1939,52 +1826,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046082227}
   m_CullTransparentMesh: 0
---- !u!114 &2046082232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046082227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2046082227}
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 0
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &2046082233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046082227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 2046082229}
-  luz: {fileID: 21300000, guid: efb9e41e90e8ec44795ee3f512c5cd21, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
 --- !u!1 &2104859465
 GameObject:
   m_ObjectHideFlags: 0

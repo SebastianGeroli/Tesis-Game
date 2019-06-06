@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,8 +132,6 @@ GameObject:
   - component: {fileID: 20710838}
   - component: {fileID: 20710837}
   - component: {fileID: 20710836}
-  - component: {fileID: 20710835}
-  - component: {fileID: 20710834}
   m_Layer: 5
   m_Name: UploadScore
   m_TagString: Untagged
@@ -160,41 +158,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &20710834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20710832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &20710835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20710832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 20710836}
-  luz: {fileID: 21300000, guid: 9230b76c989b6144ba42b4efd70541a4, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
 --- !u!114 &20710836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,8 +263,6 @@ GameObject:
   - component: {fileID: 142149760}
   - component: {fileID: 142149759}
   - component: {fileID: 142149758}
-  - component: {fileID: 142149761}
-  - component: {fileID: 142149762}
   m_Layer: 5
   m_Name: Btn_Menu
   m_TagString: Untagged
@@ -421,41 +382,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142149756}
   m_CullTransparentMesh: 0
---- !u!114 &142149761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142149756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 142149758}
-  luz: {fileID: 21300000, guid: 052e77b3c37ab70449428ff583da9f5f, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
---- !u!114 &142149762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142149756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &166944239
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,7 +527,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1070, y: 1920}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -1153,7 +1079,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1980, y: 1080}
+  m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
@@ -1320,8 +1246,6 @@ GameObject:
   - component: {fileID: 1135516470}
   - component: {fileID: 1135516469}
   - component: {fileID: 1135516468}
-  - component: {fileID: 1135516471}
-  - component: {fileID: 1135516472}
   m_Layer: 5
   m_Name: Btn_Retry
   m_TagString: Untagged
@@ -1441,41 +1365,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135516466}
   m_CullTransparentMesh: 0
---- !u!114 &1135516471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135516466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b771136a43b1b4b9ea1b7b92ebe421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btn: {fileID: 1135516468}
-  luz: {fileID: 21300000, guid: fe04353fc3c80b54e90b53b63d7e8bb1, type: 3}
-  sinLuz: {fileID: 0}
-  encender: 0
---- !u!114 &1135516472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135516466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1241690891
 GameObject:
   m_ObjectHideFlags: 0
