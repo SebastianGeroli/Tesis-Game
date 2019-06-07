@@ -15,8 +15,8 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
-  m_FogMode: 1
+  m_FogColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
+  m_FogMode: 2
   m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 120
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 476900450}
   - component: {fileID: 476900449}
   m_Layer: 0
-  m_Name: Escenario (2)
+  m_Name: BackgroundFarLine
   m_TagString: Escenario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1031,7 +1031,7 @@ Transform:
   - {fileID: 1333552530}
   - {fileID: 1133938080}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &506298286
 PrefabInstance:
@@ -3133,9 +3133,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7802c8e28c11ff545b8233ae4abaa4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary:
+    xMin: -2.5
+    xMax: 2.5
+    yMin: 0
+    yMax: 5
+    zMin: -1
+    zMax: 1
   gameManagerRunner: {fileID: 587824399}
   joystick: {fileID: 891524038}
   sentivity: 3
+  rb: {fileID: 1933178949}
+  tiltz: 1
+  tiltx: 3
+--- !u!54 &1933178949
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933178940}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1941803025
 GameObject:
   m_ObjectHideFlags: 0
@@ -3788,7 +3814,7 @@ Transform:
   - {fileID: 7813602277212959944}
   - {fileID: 1156672404898189430}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &842009008524158097
 MeshRenderer:
@@ -3970,7 +3996,7 @@ PrefabInstance:
     - target: {fileID: 6789048399830844792, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
       propertyPath: m_Name
-      value: Escenario
+      value: BackgroundColor
       objectReference: {fileID: 0}
     - target: {fileID: 6789048399830844792, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
@@ -4035,12 +4061,12 @@ PrefabInstance:
     - target: {fileID: 3611243207796214958, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3611243207796214958, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3770015696106539791, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
@@ -4267,7 +4293,7 @@ GameObject:
   - component: {fileID: 6672899321761432855}
   - component: {fileID: 7653692912263554456}
   m_Layer: 0
-  m_Name: Escenario (1)
+  m_Name: BackgroundNearLine
   m_TagString: Escenario
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
