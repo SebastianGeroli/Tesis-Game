@@ -32,6 +32,8 @@ public class Player:MonoBehaviour
     private Vector3 shortDown = new Vector3(0 , -0.5f , 0);
     private Vector3 LongRight = new Vector3(2.5f , 0 , 0);
     private Vector3 LongLeft = new Vector3(-2.5f , 0 , 0);
+
+    private Vector3 rotPlayer = new Vector3(0, 0, 45);
     /*################################  Getters && Setters  ##################################*/
     public int GetVidas()
     {
@@ -370,6 +372,9 @@ public class Player:MonoBehaviour
     {
 
         transform.DOMove(transform.position + translateVector , velocidadDeMovimiento);
+        //transform.DORotateQuaternion(transform.rotation + rotPlayer, 1f);
+        //transform.rotation = Quaternion.Euler(transform.position.x, transform.position.y, 45);
+        transform.rotation = Quaternion.LookRotation(translateVector);
     }
 
     //SwipeLogger
