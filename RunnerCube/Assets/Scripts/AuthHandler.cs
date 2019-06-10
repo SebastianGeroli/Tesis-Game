@@ -62,6 +62,7 @@ namespace Firebase.Sample.Auth {
 		//Awake
 		private void Awake() {
 			userCreated = false;
+			DontDestroyOnLoad( this.gameObject );
 		}
 		//Virtual Start
 		public virtual void Start() {

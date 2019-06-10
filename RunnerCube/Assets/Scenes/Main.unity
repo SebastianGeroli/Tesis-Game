@@ -1010,8 +1010,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1024,7 +1024,7 @@ Transform:
   m_GameObject: {fileID: 476900448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 0.99, y: 0.99, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children:
   - {fileID: 1304508443}
   - {fileID: 297887622}
@@ -3142,7 +3142,7 @@ MonoBehaviour:
     zMax: 1
   gameManagerRunner: {fileID: 587824399}
   joystick: {fileID: 891524038}
-  sentivity: 3
+  sentivity: 12
   rb: {fileID: 1933178949}
   tiltz: 1
   tiltx: 3
@@ -3807,7 +3807,7 @@ Transform:
   m_GameObject: {fileID: 7630045076065464729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 0.98, y: 0.98, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children:
   - {fileID: 253643397738299374}
   - {fileID: 2857578032302921217}
@@ -4061,12 +4061,12 @@ PrefabInstance:
     - target: {fileID: 3611243207796214958, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3611243207796214958, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3770015696106539791, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
         type: 3}
@@ -4102,6 +4102,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Layer2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732170981892600310, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732170981892600310, guid: 1412b62a4b56c6c42a58c5e4cf2c485f,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1412b62a4b56c6c42a58c5e4cf2c485f, type: 3}
@@ -4217,8 +4227,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0

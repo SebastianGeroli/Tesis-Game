@@ -15,6 +15,7 @@ TagManager:
   - Corner
   - Layer2
   - Layer1
+  - GameManager
   layers:
   - Default
   - TransparentFX

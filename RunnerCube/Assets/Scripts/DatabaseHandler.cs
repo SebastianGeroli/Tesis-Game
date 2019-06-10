@@ -33,8 +33,7 @@ namespace Firebase.Sample.Database
         public Text nameText;
         public Text leaderBoardText;
         ArrayList leaderBoard = new ArrayList();
-
-        private const int MaxScores = 10;
+		private const int MaxScores = 10;
         private string logText = "";
         private string email = "";
         private int score = 100;
