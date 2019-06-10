@@ -151,43 +151,24 @@ namespace Firebase.Sample.Database
         // modified data or TransactionResult.Abort() which stops the transaction with no changes.
         TransactionResult AddScoreTransaction(MutableData mutableData)
         {
-            List<object> leaders = mutableData.Value as List<object>;
+            Dictionary<string,object> leaders = mutableData.Value as Dictionary<string,object>;
 
             if ( leaders == null )
             {
-                leaders = new List<object>();
+                leaders = new Dictionary<string, object>();
             }
-            else if ( mutableData.ChildrenCount >= MaxScores )
-            {
-                // If the current list of scores is greater or equal to our maximum allowed number,
-                // we see if the new score should be added and remove the lowest existing score.
-                long minScore = long.MaxValue;
-                object minVal = null;
-                foreach ( var child in leaders )
-                {
-                    if ( !( child is Dictionary<string , object> ) )
-                        continue;
-                    long childScore = (long) ( (Dictionary<string , object>) child )["score"];
-                    if ( childScore < minScore )
-                    {
-                        minScore = childScore;
-                        minVal = child;
-                    }
-                }
-                // If the new score is lower than the current minimum, we abort.
-                if ( minScore > score )
-                {
-                    return TransactionResult.Abort();
-                }
-                // Otherwise, we remove the current lowest to be replaced with the new score.
-                leaders.Remove(minVal);
-            }
+			if( leaders.ContainsKey( email ) ) {
+				Dictionary<string , object> ExistScoreMap = leaders[email] as Dictionary<string,object> ;
+				ExistScoreMap["score"] = score;
+				leaders[email] = ExistScoreMap;
+			} else {
 
-            // Now we add the new score as a new entry that contains the email address and score.
-            Dictionary<string , object> newScoreMap = new Dictionary<string , object>();
-            newScoreMap["score"] = score;
-            newScoreMap["email"] = email;
-            leaders.Add(newScoreMap);
+				// Now we add the new score as a new entry that contains the email address and score.
+				Dictionary<string , object> newScoreMap = new Dictionary<string , object>();
+				newScoreMap["score"] = score;
+				leaders.Add( email , newScoreMap );
+			}
+          
 
             // You must set the Value to indicate data at that location has changed.
             mutableData.Value = leaders;
