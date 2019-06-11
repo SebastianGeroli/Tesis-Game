@@ -113,6 +113,7 @@ namespace Firebase.Sample.Database {
 					  }
 				  }
 			  };
+		
 		}
 
 		// Exit if escape (or back, on mobile) is pressed.
@@ -194,25 +195,14 @@ namespace Firebase.Sample.Database {
 			SceneManager.LoadScene( sceneName );
 		}
 		public void RetriveUserScore() {
-			FirebaseDatabase.DefaultInstance.GetReference( auth.CurrentUser.UserId ).GetValueAsync().ContinueWith( ( task ) => {
+		FirebaseDatabase.DefaultInstance.GetReference("Leaders").Child(auth.CurrentUser.UserId)
+				.Child( "score" ).GetValueAsync().ContinueWith( task => {
 				if( task.IsFaulted ) {
-					// Handle the error...
-					Debug.LogWarning( "Error en la tarea retrieve user score" );
-				} else if( task.IsCompleted ) {
-
+					Debug.LogWarning( "Error de GetValue" );
+				}
+				if( task.IsCompleted ) {
 					DataSnapshot snapshot = task.Result;
-					// Do something with snapshot...
-					if( snapshot != null && snapshot.ChildrenCount > 0 ) {
-						foreach( var childSnapshot in snapshot.Children ) {
-							if( childSnapshot.Child( "score" ) == null || childSnapshot.Child( "score" ).Value == null ) {
-								Debug.LogWarning( "Score nulo" );
-							} else {
-								scoreText.text = childSnapshot.Child( "score" ).Value.ToString();
-								Debug.LogWarning( childSnapshot.Child( "score" ).Value.ToString() );
-							}
-						}
-					}
-
+					scoreText.text = snapshot.Value.ToString();
 				}
 			} );
 		}
