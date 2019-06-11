@@ -202,7 +202,18 @@ namespace Firebase.Sample.Database {
 				}
 				if( task.IsCompleted ) {
 					DataSnapshot snapshot = task.Result;
-					scoreText.text = snapshot.Value.ToString();
+						int scoreInterino = (int)snapshot.Value;
+						if( DataController.control.bestScore != null ) {
+							if( Int32.Parse( DataController.control.bestScore ) > scoreInterino ) {
+								scoreText.text = DataController.control.bestScore;
+							} else {
+								scoreText.text = snapshot.Value.ToString();
+							}
+						} else {
+							scoreText.text = snapshot.Value.ToString();
+						}
+						
+					
 				}
 			} );
 		}
