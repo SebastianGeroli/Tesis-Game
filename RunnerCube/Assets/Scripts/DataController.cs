@@ -45,7 +45,7 @@ public class DataController : MonoBehaviour
     }
     public void Load()
     {
-        if ( File.Exists(Application.persistentDataPath + "/PlayerInfo.banana")){
+        if ( File.Exists(Application.persistentDataPath + "/PlayerInfo.dat")){
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/PlayerInfo.dat",FileMode.Open);
             PlayerData data = (PlayerData) bf.Deserialize(file);
