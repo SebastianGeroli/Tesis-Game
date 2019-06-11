@@ -539,6 +539,11 @@ namespace Firebase.Sample.Auth {
 			SceneManager.LoadScene( sceneName );
 
 		}
+		//Return Auth
+		public Firebase.Auth.FirebaseAuth ReturnAuth() {
+			return auth;
+		}
+		//Cambiar escena
 		IEnumerator ChangeScene() {
 			yield return new WaitForSeconds( 3 );
 			if( DataController.control.displayName != null ) {
@@ -550,6 +555,7 @@ namespace Firebase.Sample.Auth {
 			}
 			yield return null;
 		}
+
 	}
 
 

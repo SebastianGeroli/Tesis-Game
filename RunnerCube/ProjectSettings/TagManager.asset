@@ -16,6 +16,7 @@ TagManager:
   - Layer2
   - Layer1
   - GameManager
+  - Auth
   layers:
   - Default
   - TransparentFX
