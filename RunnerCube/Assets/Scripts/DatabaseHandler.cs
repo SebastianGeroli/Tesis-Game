@@ -194,16 +194,27 @@ namespace Firebase.Sample.Database {
 			SceneManager.LoadScene( sceneName );
 		}
 		public void RetriveUserScore() {
-			FirebaseDatabase.DefaultInstance.GetReference( auth.CurrentUser.UserId ).GetValueAsync().ContinueWith((task)=> {
+			FirebaseDatabase.DefaultInstance.GetReference( auth.CurrentUser.UserId ).GetValueAsync().ContinueWith( ( task ) => {
 				if( task.IsFaulted ) {
 					// Handle the error...
+					Debug.LogWarning( "Error en la tarea retrieve user score" );
 				} else if( task.IsCompleted ) {
+
 					DataSnapshot snapshot = task.Result;
 					// Do something with snapshot...
-					score = (int)snapshot.Child( "score" ).Value;
-					scoreText.text = score.ToString();
+					if( snapshot != null && snapshot.ChildrenCount > 0 ) {
+						foreach( var childSnapshot in snapshot.Children ) {
+							if( childSnapshot.Child( "score" ) == null || childSnapshot.Child( "score" ).Value == null ) {
+								Debug.LogWarning( "Score nulo" );
+							} else {
+								scoreText.text = childSnapshot.Child( "score" ).Value.ToString();
+								Debug.LogWarning( childSnapshot.Child( "score" ).Value.ToString() );
+							}
+						}
+					}
+
 				}
-			});
+			} );
 		}
 	}
 }
