@@ -555,7 +555,9 @@ namespace Firebase.Sample.Auth {
 			}
 			yield return null;
 		}
-
+		public void OnApplicationQuit() {
+			auth.SignOut();
+		}
 	}
 
 

@@ -6,6 +6,6 @@
   <string name="project_id" translatable="false">runnercube-dgs</string>
   <string name="google_api_key" translatable="false">AIzaSyCWw43F2F2sn4K9ypJouwb9WfXTGc0fx88</string>
   <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCWw43F2F2sn4K9ypJouwb9WfXTGc0fx88</string>
-  <string name="google_app_id" translatable="false">1:320108550929:android:573bd9b06f40ffff</string>
+  <string name="google_app_id" translatable="false">1:320108550929:android:6579e737238480de</string>
   <string name="default_web_client_id" translatable="false">320108550929-uvkvduc56pdf41lm6erpaks8spp8ji8k.apps.googleusercontent.com</string>
 </resources>

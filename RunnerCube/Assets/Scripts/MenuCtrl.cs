@@ -16,6 +16,8 @@ public class MenuCtrl : MonoBehaviour
 
     public void Quit()
     {
+		Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+		auth.SignOut();
         Application.Quit();
     }
 

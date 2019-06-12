@@ -162,6 +162,55 @@ Support
 
 Release Notes
 -------------
+### 6.1.1
+  - Overview
+    - Fixed an issue when generating Firebase config files on Windows.
+  - Changes
+    - General (Editor): Fixed an issue when generating Firebase config files on
+      Windows.
+    - General (Editor): Upgraded Play Services Resolver to from 1.2.115 to
+      1.2.116. For more information see [this
+      document](https://github.com/googlesamples/unity-jar-resolver/blob/master/CHANGELOG.md#version-12115---jun-7-2019).
+
+### 6.1.0
+  - Overview
+    - Added Auth credential persistence on Desktop, fixed and cleaned up some
+      documentation, converted testapps to use ContinueOnMainThread(), fixed
+      issues in Auth and Database, and added additional information to
+      Messaging notifications.
+  - Changes
+    - General (Editor): Removed Firebase Invites documentation from the
+      in-editor documentation.
+    - General (Editor): Fixed an issue with resource generation when Firebase
+      plugin files have been moved from their default locations.
+    - General (iOS): Fixed an issue where connections via NSURLSession
+      (used internally by the iOS SDK) can be prematurely closed by the client
+      if NSAppTransportSecurity is set to YES in the Info.plist and
+      NSAllowsArbitraryLoadsInWebContent is not set. This can be fixed by
+      setting NSAllowsArbitraryLoadsInWebContent  to the same value as
+      NSAppTransportSecurity.
+    - General (Editor): Upgraded Play Services Resolver to from 1.2.109 to
+      1.2.115. For more information see [this
+      document](https://github.com/googlesamples/unity-jar-resolver/blob/master/CHANGELOG.md#version-12115---may-28-2019).
+    - Auth (Desktop): User's credentials will now persist between sessions.  See
+      the [documentation](http://firebase.google.com/docs/auth/unity/manage-users#persist_a_users_credential)
+      for more information.
+    - Auth (Desktop): As part of the above change, if you access CurrentUser
+      immediately after creating the FirebaseAuth instance, it will block until
+      the saved user's state is finished loading.
+    - Auth (Desktop): Fixed an issue where Database/Functions/Storage might not
+      use the latest auth token immediately after sign-in.
+    - Auth (Android): Fixed an issue where an error code could get reported
+      incorrectly on Android.
+    - Crashlytics, Functions: Fixed an issue that could cause a crash during
+      shutdown due to the destruction order of plugins being nondeterministic.
+    - Database (iOS): Fixed a race condition that could cause a crash
+      when cleaning up database listeners on iOS.
+    - Database (iOS): Fixed an issue where long (64-bit) values could get
+      written to the database incorrectly (truncated to 32-bits) on 32-bit
+      devices.
+    - Messaging (Android): Added channel_id to Messaging notifications.
+
 ### 6.0.0
   - Overview
     - Released
