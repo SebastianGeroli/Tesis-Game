@@ -38,11 +38,14 @@ public class Player:MonoBehaviour {
 	private void OnTriggerEnter( Collider other ) {
 		obstacle = other.gameObject.GetComponent<Transform>();
 		if( obstacle.tag == "Obstacle" || obstacle.tag == "Corner" ) {
+			transform.DOPunchScale( new Vector3( 0.5f , 0.5f , 0f ) , 0.5f );
+			Handheld.Vibrate();
 			SetVidas( GetVidas() - 1 );
 			VidasUpdate();
 			//Debug.Log(string.Format("{0} vidas restantes" , vidas));
 		} else if( obstacle.parent != null && obstacle.parent.tag == "Obstacle" || obstacle.parent != null && obstacle.parent.tag == "Corner" ) {
-
+			transform.DOPunchScale( new Vector3( 0.5f , 0.5f , 0f ) , 0.5f );
+			Handheld.Vibrate();
 			SetVidas( GetVidas() - 1 );
 			VidasUpdate();
 			//Debug.Log(string.Format("{0} vidas restantes",vidas));
