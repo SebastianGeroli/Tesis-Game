@@ -31,6 +31,7 @@ namespace Firebase.Sample.Auth {
 	// startup.
 	public class AuthHandler:MonoBehaviour {
 		bool userCreated;
+		//public static AuthHandler authHandler;
 		public InputField emailText;
 		public InputField passwordText;
 		public InputField displayNameText;
@@ -48,10 +49,6 @@ namespace Firebase.Sample.Auth {
 		// Flag set when a token is being fetched.  This is used to avoid printing the token
 		// in IdTokenChanged() when the user presses the get token button.
 		private bool fetchingToken = false;
-		// Enable / disable password input box.
-		// NOTE: In some versions of Unity the password input box does not work in
-		// iOS simulators.
-		bool UIEnabled = true;
 
 		const int kMaxLogSize = 16382;
 		Firebase.DependencyStatus dependencyStatus = Firebase.DependencyStatus.UnavailableOther;
@@ -61,8 +58,13 @@ namespace Firebase.Sample.Auth {
 		// add them if possible.
 		//Awake
 		private void Awake() {
-			userCreated = false;
-			DontDestroyOnLoad( this.gameObject );
+			//if( authHandler == null ) {
+			//	userCreated = false;
+			//	DontDestroyOnLoad( gameObject );
+			//	authHandler = this;
+			//} else if( authHandler != this ) {
+			//	Destroy( gameObject );
+			//}
 		}
 		//Virtual Start
 		public virtual void Start() {
@@ -97,14 +99,6 @@ namespace Firebase.Sample.Auth {
 			auth.StateChanged -= AuthStateChanged;
 			auth.IdTokenChanged -= IdTokenChanged;
 			auth = null;
-		}
-
-		void DisableUI() {
-			UIEnabled = false;
-		}
-
-		void EnableUI() {
-			UIEnabled = true;
 		}
 		//FixedUpdate
 		private void FixedUpdate() {
@@ -262,7 +256,6 @@ namespace Firebase.Sample.Auth {
 			password = passwordText.text;
 			displayName = displayNameText.text;
 			DebugLog( String.Format( "Attempting to create user {0}..." , email ) );
-			DisableUI();
 
 			// This passes the current displayName through to HandleCreateUserAsync
 			// so that it can be passed to UpdateUserProfile().  displayName will be
@@ -270,7 +263,6 @@ namespace Firebase.Sample.Auth {
 			string newDisplayName = displayNameText.text;
 			return auth.CreateUserWithEmailAndPasswordAsync( email , password )
 			.ContinueWith( ( task ) => {
-				EnableUI();
 				if( LogTaskCompletion( task , "User Creation" ) ) {
 					var user = task.Result;
 					DataController.control.email = email;
@@ -293,12 +285,10 @@ namespace Firebase.Sample.Auth {
 			}
 			displayName = newDisplayName ?? displayName;
 			DebugLog( "Updating user profile" );
-			DisableUI();
 			return auth.CurrentUser.UpdateUserProfileAsync( new Firebase.Auth.UserProfile {
 				DisplayName = displayName ,
 				PhotoUrl = auth.CurrentUser.PhotoUrl ,
 			} ).ContinueWith( task => {
-				EnableUI();
 				if( LogTaskCompletion( task , "User profile" ) ) {
 					DataController.control.displayName = auth.CurrentUser.DisplayName;
 					DisplayDetailedUserInfo( auth.CurrentUser , 1 );
@@ -311,7 +301,6 @@ namespace Firebase.Sample.Auth {
 			email = emailText.text;
 			password = passwordText.text;
 			DebugLog( String.Format( "Attempting to sign in as {0}..." , email ) );
-			DisableUI();
 			if( signInAndFetchProfile ) {
 				return auth.SignInAndRetrieveDataWithCredentialAsync(
 				  Firebase.Auth.EmailAuthProvider.GetCredential( email , password ) ).ContinueWith(
@@ -326,10 +315,12 @@ namespace Firebase.Sample.Auth {
 		// illustrates the use of Credentials, which can be aquired from many
 		// different sources of authentication.
 		public void SigninWithEmailCredentialAsync() {
+			if( auth.CurrentUser != null ) {
+				SignOut();
+			}
 			email = emailText.text;
 			password = passwordText.text;
 			DebugLog( String.Format( "Attempting to sign in as {0}..." , email ) );
-			DisableUI();
 			if( signInAndFetchProfile ) {
 				auth.SignInAndRetrieveDataWithCredentialAsync(
 				 Firebase.Auth.EmailAuthProvider.GetCredential( email , password ) ).ContinueWith(
@@ -345,7 +336,6 @@ namespace Firebase.Sample.Auth {
 		// Attempt to sign in anonymously.
 		public void SigninAnonymouslyAsync() {
 			DebugLog( "Attempting to sign anonymously..." );
-			DisableUI();
 			auth.SignInAnonymouslyAsync().ContinueWith( HandleSignInWithUser );
 		}
 
@@ -379,7 +369,6 @@ namespace Firebase.Sample.Auth {
 
 		// Called when a sign-in without fetching profile data completes.
 		void HandleSignInWithUser( Task<Firebase.Auth.FirebaseUser> task ) {
-			EnableUI();
 			if( LogTaskCompletion( task , "Sign-in" ) ) {
 				DebugLog( String.Format( "{0} signed in" , task.Result.DisplayName ) );
 			}
@@ -387,7 +376,6 @@ namespace Firebase.Sample.Auth {
 
 		// Called when a sign-in with profile data completes.
 		void HandleSignInWithSignInResult( Task<Firebase.Auth.SignInResult> task ) {
-			EnableUI();
 			if( LogTaskCompletion( task , "Sign-in" ) ) {
 				DisplaySignInResult( task.Result , 1 );
 			}
@@ -430,18 +418,15 @@ namespace Firebase.Sample.Auth {
 				return tcs.Task;
 			}
 			DebugLog( "Reauthenticating..." );
-			DisableUI();
 			Firebase.Auth.Credential cred = Firebase.Auth.EmailAuthProvider.GetCredential( email , password );
 			if( signInAndFetchProfile ) {
 				return user.ReauthenticateAndRetrieveDataAsync( cred ).ContinueWith( task => {
-					EnableUI();
 					if( LogTaskCompletion( task , "Reauthentication" ) ) {
 						DisplaySignInResult( task.Result , 1 );
 					}
 				} );
 			} else {
 				return user.ReauthenticateAsync( cred ).ContinueWith( task => {
-					EnableUI();
 					if( LogTaskCompletion( task , "Reauthentication" ) ) {
 						DisplayDetailedUserInfo( auth.CurrentUser , 1 );
 					}
@@ -498,11 +483,9 @@ namespace Firebase.Sample.Auth {
 				return tcs.Task;
 			}
 			DebugLog( "Unlinking email credential" );
-			DisableUI();
 			return auth.CurrentUser.UnlinkAsync(
 			  Firebase.Auth.EmailAuthProvider.GetCredential( email , password ).Provider )
 				.ContinueWith( task => {
-					EnableUI();
 					LogTaskCompletion( task , "Unlinking" );
 				} );
 		}

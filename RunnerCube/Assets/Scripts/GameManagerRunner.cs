@@ -143,11 +143,9 @@ public class GameManagerRunner:MonoBehaviour
         if (useSecondCamera)
         {
             camera1.enabled = false;
-            camera2.enabled = true;
         }
         else {
             camera1.enabled = true;
-            camera2.enabled = false;
         }
     }
 

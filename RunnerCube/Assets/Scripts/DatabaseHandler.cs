@@ -35,16 +35,20 @@ namespace Firebase.Sample.Database {
 		private string logText = "";
 		private string email = "";
 		private int score = 100;
+		private int scoreInterino;
 		protected Firebase.Auth.FirebaseAuth auth;
 		const int kMaxLogSize = 16382;
 		DependencyStatus dependencyStatus = DependencyStatus.UnavailableOther;
 		protected bool isFirebaseInitialized = false;
-
+		private void Awake() {
+			auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+		}
 		// When the app starts, check to make sure that we have
 		// the required dependencies to use Firebase, and if not,
 		// add them if possible.
+
 		protected virtual void Start() {
-			auth = GameObject.FindGameObjectWithTag( "Auth" ).GetComponent<Auth.AuthHandler>().ReturnAuth();
+			scoreInterino = 0;
 			if( auth.CurrentUser != null ) {
 				nameText.text = auth.CurrentUser.DisplayName;
 				email = auth.CurrentUser.Email;
@@ -113,7 +117,7 @@ namespace Firebase.Sample.Database {
 					  }
 				  }
 			  };
-		
+
 		}
 
 		// Exit if escape (or back, on mobile) is pressed.
@@ -195,27 +199,22 @@ namespace Firebase.Sample.Database {
 			SceneManager.LoadScene( sceneName );
 		}
 		public void RetriveUserScore() {
-		FirebaseDatabase.DefaultInstance.GetReference("Leaders").Child(auth.CurrentUser.UserId)
-				.Child( "score" ).GetValueAsync().ContinueWith( task => {
-				if( task.IsFaulted ) {
-					Debug.LogWarning( "Error de GetValue" );
-				}
-				if( task.IsCompleted ) {
-					DataSnapshot snapshot = task.Result;
-						int scoreInterino = (int)snapshot.Value;
-						if( DataController.control.bestScore != null ) {
+			FirebaseDatabase.DefaultInstance.GetReference( "Leaders" ).Child( auth.CurrentUser.UserId )
+					.Child( "score" ).GetValueAsync().ContinueWith( task => {
+						if( task.IsFaulted ) {
+							Debug.LogWarning( "Error de GetValue" );
+						}
+						if( task.IsCompleted ) {
+							DataSnapshot snapshot = task.Result;
+							scoreInterino = Int32.Parse(snapshot.Value.ToString());
+							Debug.LogWarning( scoreInterino );
 							if( Int32.Parse( DataController.control.bestScore ) > scoreInterino ) {
 								scoreText.text = DataController.control.bestScore;
 							} else {
-								scoreText.text = snapshot.Value.ToString();
+								scoreText.text = scoreInterino.ToString();
 							}
-						} else {
-							scoreText.text = snapshot.Value.ToString();
 						}
-						
-					
-				}
-			} );
+					} );
 		}
 	}
 }

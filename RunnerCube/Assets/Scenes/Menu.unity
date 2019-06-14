@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2104859466}
+      - m_Target: {fileID: 2005576373}
         m_MethodName: Mute
         m_Mode: 1
         m_Arguments:
@@ -1695,6 +1695,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2005576373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3902963234139886711, guid: 6a11dbe22959d4e42ad03295685c50a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1816138811}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827e8a2aeeb0a234c8cf7d0f3eb1d4b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046082227
 GameObject:
   m_ObjectHideFlags: 0
