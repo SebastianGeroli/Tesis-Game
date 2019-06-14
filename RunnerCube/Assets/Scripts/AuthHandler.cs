@@ -30,7 +30,7 @@ namespace Firebase.Sample.Auth {
 	// necessary setup (initializing the firebase app, etc) on
 	// startup.
 	public class AuthHandler:MonoBehaviour {
-		bool userCreated;
+		bool userCreated, userLoggedIn;
 		//public static AuthHandler authHandler;
 		public InputField emailText;
 		public InputField passwordText;
@@ -103,8 +103,11 @@ namespace Firebase.Sample.Auth {
 		//FixedUpdate
 		private void FixedUpdate() {
 			if( userCreated ) {
-				SceneManager.LoadScene("Menu");
 				userCreated = false;
+				SceneManager.LoadScene( "Menu" );
+			} else if( userLoggedIn ) {
+				userLoggedIn = false;
+				SceneManager.LoadScene( "Menu" );
 			}
 		}
 		// Output text to the debug log text field, as well as the console.
@@ -250,6 +253,13 @@ namespace Firebase.Sample.Auth {
 
 			});
 		}
+		public void LogInUser() {
+			SigninWithEmailCredentialAsync().ContinueWith((task)=> {
+				if( task.IsCompleted ) {
+					userLoggedIn = true;
+				}
+			});
+		}
 		// Create a user with the email and password.
 		public Task CreateUserWithEmailAsync() {
 			email = emailText.text;
@@ -267,7 +277,7 @@ namespace Firebase.Sample.Auth {
 					var user = task.Result;
 					DataController.control.email = email;
 					DataController.control.password = password;
-					//user.SendEmailVerificationAsync();
+					user.SendEmailVerificationAsync();
 					DisplayDetailedUserInfo( user , 1 );
 					return UpdateUserProfileAsync( newDisplayName: newDisplayName );
 				}
@@ -314,7 +324,7 @@ namespace Firebase.Sample.Auth {
 		// This is functionally equivalent to the Signin() function.  However, it
 		// illustrates the use of Credentials, which can be aquired from many
 		// different sources of authentication.
-		public void SigninWithEmailCredentialAsync() {
+		public Task SigninWithEmailCredentialAsync() {
 			if( auth.CurrentUser != null ) {
 				SignOut();
 			}
@@ -322,15 +332,15 @@ namespace Firebase.Sample.Auth {
 			password = passwordText.text;
 			DebugLog( String.Format( "Attempting to sign in as {0}..." , email ) );
 			if( signInAndFetchProfile ) {
-				auth.SignInAndRetrieveDataWithCredentialAsync(
+				return auth.SignInAndRetrieveDataWithCredentialAsync(
 				 Firebase.Auth.EmailAuthProvider.GetCredential( email , password ) ).ContinueWith(
 				   HandleSignInWithSignInResult );
 			} else {
-				auth.SignInWithCredentialAsync(
+				return auth.SignInWithCredentialAsync(
 				 Firebase.Auth.EmailAuthProvider.GetCredential( email , password ) ).ContinueWith(
 				   HandleSignInWithUser );
 			}
-			GetUserInfo();
+			//GetUserInfo();
 		}
 
 		// Attempt to sign in anonymously.

@@ -1898,7 +1898,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1421013081}
-        m_MethodName: SigninWithEmailCredentialAsync
+        m_MethodName: LogInUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
