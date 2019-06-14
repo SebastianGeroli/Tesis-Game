@@ -30,11 +30,13 @@ namespace Firebase.Sample.Auth {
 	// necessary setup (initializing the firebase app, etc) on
 	// startup.
 	public class AuthHandler:MonoBehaviour {
+		Exception exceptionMaster;
 		bool userCreated, userLoggedIn;
 		//public static AuthHandler authHandler;
 		public InputField emailText;
 		public InputField passwordText;
 		public InputField displayNameText;
+		public Text exceptionText;
 		protected Firebase.Auth.FirebaseAuth auth;
 		protected Dictionary<string , Firebase.Auth.FirebaseUser> userByAuth =
 		  new Dictionary<string , Firebase.Auth.FirebaseUser>();
@@ -58,6 +60,7 @@ namespace Firebase.Sample.Auth {
 		// add them if possible.
 		//Awake
 		private void Awake() {
+			exceptionText.text = "";
 			//if( authHandler == null ) {
 			//	userCreated = false;
 			//	DontDestroyOnLoad( gameObject );
@@ -235,6 +238,7 @@ namespace Firebase.Sample.Auth {
 						authErrorCode = String.Format( "AuthError.{0}: " ,
 						  ( (Firebase.Auth.AuthError)firebaseEx.ErrorCode ).ToString() );
 					}
+					exceptionMaster = exception;
 					DebugLog( authErrorCode + exception.ToString() );
 				}
 			} else if( task.IsCompleted ) {
@@ -245,20 +249,43 @@ namespace Firebase.Sample.Auth {
 		}
 		//Create User
 		public void CreateUser() {
-			CreateUserWithEmailAsync().ContinueWith( ( task ) => {
-				if( LogTaskCompletion( task , "User Created" ) ) {
-					userCreated = true;
-				}
-
-
-			});
+			if( displayNameText.text !=null && displayNameText.text !="") {
+				CreateUserWithEmailAsync().ContinueWith( ( task ) => {
+					if( LogTaskCompletion( task , "User Creation" ) ) {
+						if( task.IsCompleted ) {
+							exceptionText.text = ( "User: " + auth.CurrentUser.DisplayName + " created succesfully" );
+							userCreated = true;
+						} else {
+							exceptionText.text = exceptionMaster.Message;
+						}
+						
+					} else {
+						exceptionText.text = exceptionMaster.Message;
+					}
+				} );
+			} else{
+				exceptionText.text = "Not all inputs are completed";
+			}
 		}
 		public void LogInUser() {
-			SigninWithEmailCredentialAsync().ContinueWith((task)=> {
-				if( task.IsCompleted ) {
-					userLoggedIn = true;
-				}
-			});
+			if( emailText.text != null && password != null ) {
+				SigninWithEmailCredentialAsync().ContinueWith( ( task ) => {
+					if( LogTaskCompletion( task , "Singed In" ) ) {
+						if( task.IsCompleted ) {
+							exceptionText.text =  "Signed in as: " + auth.CurrentUser.DisplayName;
+							userLoggedIn = true;
+						} else {
+							exceptionText.text = exceptionMaster.Message;
+						}
+
+					} else {
+						exceptionText.text = exceptionMaster.Message;
+					}
+				} );
+			} else {
+				exceptionText.text = exceptionMaster.Message;
+			}
+			
 		}
 		// Create a user with the email and password.
 		public Task CreateUserWithEmailAsync() {
