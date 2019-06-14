@@ -111,6 +111,8 @@ namespace Firebase.Sample.Auth {
 			} else if( userLoggedIn ) {
 				userLoggedIn = false;
 				SceneManager.LoadScene( "Menu" );
+			} else if (exceptionMaster!= null){
+				exceptionText.text = exceptionMaster.Message;
 			}
 		}
 		// Output text to the debug log text field, as well as the console.
@@ -352,9 +354,6 @@ namespace Firebase.Sample.Auth {
 		// illustrates the use of Credentials, which can be aquired from many
 		// different sources of authentication.
 		public Task SigninWithEmailCredentialAsync() {
-			if( auth.CurrentUser != null ) {
-				SignOut();
-			}
 			email = emailText.text;
 			password = passwordText.text;
 			DebugLog( String.Format( "Attempting to sign in as {0}..." , email ) );
