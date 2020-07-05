@@ -40,14 +40,14 @@ public class Player:MonoBehaviour {
 		if( obstacle.tag == "Obstacle" || obstacle.tag == "Corner" ) {
 			GetComponent<AudioSource>().Play();
 			transform.DOPunchScale( new Vector3( 0.5f , 0.5f , 0f ) , 0.5f );
-			Handheld.Vibrate();
+			//Handheld.Vibrate();
 			SetVidas( GetVidas() - 1 );
 			VidasUpdate();
 			//Debug.Log(string.Format("{0} vidas restantes" , vidas));
 		} else if( obstacle.parent != null && obstacle.parent.tag == "Obstacle" || obstacle.parent != null && obstacle.parent.tag == "Corner" ) {
 			GetComponent<AudioSource>().Play();
 			transform.DOPunchScale( new Vector3( 0.5f , 0.5f , 0f ) , 0.5f );
-			Handheld.Vibrate();
+			///Handheld.Vibrate();
 			SetVidas( GetVidas() - 1 );
 			VidasUpdate();
 			//Debug.Log(string.Format("{0} vidas restantes",vidas));
