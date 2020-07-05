@@ -2,7 +2,7 @@ fileFormatVersion: 2
 guid: f5d4069c578548ba9f199b46d61bf06d
 labels:
 - gvh
-- gvh_version-6.0.0
+- gvh_version-6.1.1
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -78,7 +78,7 @@ PluginImporter:
     second:
       enabled: 1
       settings:
-        CPU: x86_64
+        CPU: AnyCPU
   - first:
       Standalone: LinuxUniversal
     second:

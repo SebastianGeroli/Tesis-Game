@@ -10,7 +10,6 @@ public class Obstacles : MonoBehaviour
     public bool PuedeSalir = false;
     private Vector3 posInicial;
     public Rigidbody rb;
- 
     /*################################  Getters && Setters  ##################################*/
     //Get & Set de Forma
     public int GetForma()
@@ -48,7 +47,6 @@ public class Obstacles : MonoBehaviour
     //Start
     void Start()
     {
-        
         rb = transform.GetComponent<Rigidbody>();
         rb.isKinematic = true;
     }
@@ -57,6 +55,7 @@ public class Obstacles : MonoBehaviour
     private void FixedUpdate()
     {
         MoveFloor();
+		
     }
 
     //Mover Los Obstaculos

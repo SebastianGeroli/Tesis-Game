@@ -13,6 +13,11 @@ TagManager:
   - Objeto
   - Escenario
   - Corner
+  - Layer2
+  - Layer1
+  - GameManager
+  - Auth
+  - DataController
   layers:
   - Default
   - TransparentFX
